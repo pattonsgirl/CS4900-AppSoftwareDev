@@ -38,22 +38,23 @@ This outline is a proposed ordering.
 
 | Week # - Date    | Tuesday Topic(s)   | Thursday Topic(s) |
 | :-----------:  | ----------- | ----------- |
-| 1 - Aug 26  | Intro to Business Requirements | Intro to Agile |
-| 2 - Sept 2  | Dev Ops - Containerizing the <br>Development Environment    | Progress Check In <br> Database Design - Conceptual Models |
-| 3 - Sept 9  | Database Design - Logical Models  | Database Design - Physical Models     |
-| 4 - Sept 16 | Database Design - DB Initialization Scripts  | Database Design - SQL Essentials     |
-| 5 - Sept 23 | UX/UI - User Flows      | UX/UI - Wireframes    |
-| 6 - Sept 30 | Microservices | Microservices |
-| 7 - Oct 7   | Microservices | Microservices |
-| 8 - Oct 14  | Microservices | Microservices |
-| 9 - Oct 21  | Microservices - Group Project Planning | Microservices - Group Project Planning  |
-| 10 - Oct 28 | Dev Ops - Pipelines     | Dev Ops - Pipelines   |
-| 11 - Nov 4  | Web Design - Toolkit   | Web Design    |
-| 12 - Nov 11 | Web Design  | Web Design     |
-| 13 - Nov 18 | Web Design  | Web Design    |
-| 14 - Nov 25 | Web Design - Group Project Implementation |  Thanksgiving Break <br> No class 11/28  |
-| 15 - Dec 2  | Office Hours with Module Teams |  Project Presentation   |
-| 16 - Dec 9  | --- | Final Exam Block - Retrospective <br> 12/12, 2:45 PM - 4:45 PM   |
+| 1 - Aug 18  | --- | Course Intro - Group Formation, Topic Brainstorming |
+| 2 - Aug 25  | Dev Ops - Containerizing the <br>Development Environment    | Progress Check In <br> Database Design - Conceptual Models |
+| 2 - Sept 1  | Dev Ops - Containerizing the <br>Development Environment    | Progress Check In <br> Database Design - Conceptual Models |
+| 3 - Sept 8  | Database Design - Logical Models  | Database Design - Physical Models     |
+| 4 - Sept 15 | Database Design - DB Initialization Scripts  | Database Design - SQL Essentials     |
+| 5 - Sept 22 | UX/UI - User Flows      | UX/UI - Wireframes    |
+| 6 - Sept 29 | Microservices | Microservices |
+| 7 - Oct 6   | Microservices | Microservices |
+| 8 - Oct 13  | Microservices | Microservices |
+| 9 - Oct 20  | Microservices - Group Project Planning | Microservices - Group Project Planning  |
+| 10 - Oct 27 | Dev Ops - Pipelines     | Dev Ops - Pipelines   |
+| 11 - Nov 3  | Web Design - Toolkit   | Web Design    |
+| 12 - Nov 10 | Web Design  | Web Design     |
+| 13 - Nov 17 | Web Design  | Web Design    |
+| 14 - Nov 24 | Web Design - Group Project Implementation |  Thanksgiving Break <br> No class 11/28  |
+| 15 - Dec 1  | Office Hours with Module Teams |  Project Presentation   |
+| 16 - Dec 8  | --- | Final Exam Block - Retrospective <br> 12/11, 2:45 PM - 4:45 PM   |
 
 ## Grading
 
