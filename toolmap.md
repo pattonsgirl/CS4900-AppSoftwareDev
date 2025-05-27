@@ -1,39 +1,42 @@
 ```mermaid
 mindmap
-  root((Course Tool Map))
-    FrontEnd
-      UI / UX
-        Tools
-          Balsamic
-        Topics
-          User flows
-          Wireframing
-      Responsive Web Design
-        Tools
-          Angular
-          Grid
-          Typescript
-          NodeJS
-    BackEnd
-      Databases
-        Tools
-          Maria DB
-          DBeaver
-        Topics
-          Conceptual models
-          Logical models
-          Physical models
-          DB initialization scripts
-          SQL survival skills
-      Microservices
-      Testing
+  root((Course Topic / Tool Map))
+    UI / UX
+      Tools
+        Balsamic
+      Topics
+        User flows
+        Wireframing
+    Responsive Web Design
+      Tools
+        Angular
+        Grid
+        Typescript
+        NodeJS
+      Topics
+    Databases
+      Tools
+        Maria DB
+        DBeaver
+      Topics
+        Conceptual models
+        Logical models
+        Physical models
+        Initialization scripts
+        SQL survival skills
+    Microservices
+      Tools
+        Postman
+        Spring
+      Topics
     Dev Ops
-        Tools
-          GitHub
-          Docker
-          AWS
-        Topics
-          Containerizing environment
-          Testing pipelines
-          Deployment / hosting
+      Tools
+        GitHub
+        Docker
+      Topics
+        Containerizing environment
+    Agile
+      Tools
+      Topics
+        Business Requirements
 ```

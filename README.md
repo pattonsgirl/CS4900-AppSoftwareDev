@@ -37,24 +37,24 @@ These prerequisites attempt to ensure familiarity with the command line, the bas
 This outline is a proposed ordering.
 
 | Week # - Date    | Tuesday Topic(s)   | Thursday Topic(s) |
-| :-----------:  | ----------- | ----------- |
-| 1 - Aug 18  | --- | Course Intro - Group Formation, Theme Brainstorming |
-| 2 - Aug 25  | Dev Ops - Containerizing the <br>Development Environment    | Progress Check In <br> Database Design - Conceptual Models |
-| 2 - Sept 1  | Dev Ops - Containerizing the <br>Development Environment    | Progress Check In <br> Database Design - Conceptual Models |
-| 3 - Sept 8  | Database Design - Logical Models  | Database Design - Physical Models     |
-| 4 - Sept 15 | Database Design - DB Initialization Scripts  | Database Design - SQL Essentials     |
+| :-----------:  | -----------          | ----------- |
+| 1 - Aug 18  | ---                     | Course Intro - Group Formation, Theme Brainstorming |
+| 2 - Aug 25  | Business Requirements   | Agile Development |
+| 2 - Sept 1  | Bus Req Check-In <br> DB Env Setup    | DB Design - Conceptual Models |
+| 3 - Sept 8  | DB Design - Logical Models            | DB Design - Physical Models   |
+| 4 - Sept 15 | DB Design - Initialization Scripts    | DB Design - SQL Business Queries |
 | 5 - Sept 22 | UX/UI - User Flows      | UX/UI - Wireframes    |
-| 6 - Sept 29 | Microservices | Microservices |
-| 7 - Oct 6   | Microservices | No Class - Fall Break Oct 9/10 |
-| 8 - Oct 13  | Microservices | Microservices |
-| 9 - Oct 20  | Microservices - Group Project Planning | Microservices - Group Project Planning  |
-| 10 - Oct 27 | Dev Ops - Pipelines     | Dev Ops - Pipelines   |
-| 11 - Nov 3  | Web Design - Toolkit   | Web Design    |
-| 12 - Nov 10 | No Class - Veteran's Day  | Web Design     |
-| 13 - Nov 17 | Web Design  | Web Design    |
-| 14 - Nov 24 | Web Design - Group Project Implementation |  Thanksgiving Break <br> No class Nov 27/28  |
-| 15 - Dec 1  | Office Hours with Module Teams |  Project Presentation   |
-| 16 - Dec 8  | --- | Final Exam Block - Retrospective <br> 12/11, 2:45 PM - 4:45 PM   |
+| 6 - Sept 29 | UX/UI                   | DB & UX/UI Handoff <br> Microservices Env Setup |
+| 7 - Oct 6   | Microservices           | No Class 10/9 - Fall Break |
+| 8 - Oct 13  | Microservices           | Microservices |
+| 9 - Oct 20  | Microservices           | Microservices |
+| 10 - Oct 27 | Microservices           | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
+| 11 - Nov 3  | Web Design              | Web Design    |
+| 12 - Nov 10 | No Class 11/11 - Veteran's Day  | Web Design |
+| 13 - Nov 17 | Web Design              | Web Design    |
+| 14 - Nov 24 | Web Design              |  Thanksgiving Break <br> No class Nov 27/28  |
+| 15 - Dec 1  | Project Polishing       |  Project Presentation   |
+| 16 - Dec 8  | ---                     | Final Exam Block - Retrospective <br> 12/11, 2:45 PM - 4:45 PM   |
 
 ## Grading
 
