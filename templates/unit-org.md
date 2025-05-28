@@ -1,35 +1,35 @@
 # Module Flow
 
 1. Information / resource collection
-  - define what students need to have read / watched BEFOREHAND
-  - define what are additional resources of interest (not required)
-  - Students requested BOTH a readable / text resource AND a video resource *if possible* to support multiple types of learning
+    - define what students need to have read / watched BEFOREHAND
+    - define what are additional resources of interest (not required)
+    - Students requested BOTH a readable / text resource AND a video resource *if possible* to support multiple types of learning
 2. Topic delivery
-  - Assume the student have done required reading / watching ahead of class
-    - Informal pop quiz?  Discussion based?
-    - We can quiz the students via the LMS - must have questions two weeks before needed
-  - Utilize WorkOrder Pro for demos & examples IN CLASS (do not assign homework that builds towards WorkOrder Pro)
-  - Give time to review / allow discussion on group project taskings
-  - Provide slides / notes to students BEFORE class
-      - Upload to course material repository
-      - Email to Kayleigh
+    - Assume the student have done required reading / watching ahead of class
+      - Informal pop quiz?  Discussion based?
+      - We can quiz the students via the LMS - must have questions two weeks before needed
+    - Utilize WorkOrder Pro for demos & examples IN CLASS (do not assign homework that builds towards WorkOrder Pro)
+    - Give time to review / allow discussion on group project taskings
+    - Provide slides / notes to students BEFORE class
+        - Upload to course material repository
+        - Email to Kayleigh
 3. Homework Assignments
-  - To be completed INDIVIDUALLY.  Will focus on progressing group project
-  - Assignments will be brought to class for group discussion time / module instructor feedback
-  - Make assignments small (1-2 hours) between Tuesday & Thursday.  Longer / more time consuming assignments over weekends
+    - To be completed INDIVIDUALLY.  Will focus on progressing group project
+    - Assignments will be brought to class for group discussion time / module instructor feedback
+    - Make assignments small (1-2 hours) between Tuesday & Thursday.  Longer / more time consuming assignments over weekends
 4. Group Project Assignments
-  - Teams put together collection of completed taskings
-  - TYPICALLY due 1 week after module completion
-  - 0 points for student if student on team has no git history in repo
+    - Teams put together collection of completed taskings
+    - TYPICALLY due 1 week after module completion
+    - 0 points for student if student on team has no git history in repo
 5. Feedback / Grading
-  - Students work exists in GitHub repos
-  - Homework
-    - students must create at least one issue noting something their group liked or needed to be improved on during feedback time
-    - instructors check in that homework taskings were completed, award point score
-  - Group project
-    - score taskings that need to be completed
-    - leave feedback on improvements / advice / positive notes on progress so far 
-  - Module intructors leave SCORE and FEEDBACK in GitHub Issues in repository
+    - Students work exists in GitHub repos
+    - Homework
+      - students must create at least one issue noting something their group liked or needed to be improved on during feedback time
+      - instructors check in that homework taskings were completed, award point score
+    - Group project
+      - score taskings that need to be completed
+      - leave feedback on improvements / advice / positive notes on progress so far 
+    - Module intructors leave SCORE and FEEDBACK in GitHub Issues in repository
 
 ## Getting Granular
 
