@@ -45,10 +45,10 @@ This outline is a proposed ordering.
 | 4 - Sept 15    | DB Design - Initialization Scripts | DB Design - SQL Business Queries |
 | 5 - Sept 22    | UX/UI - User Flows                 | UX/UI - Wireframes    |
 | 6 - Sept 29    | UX/UI                              | DB & UX/UI Handoff <br> Microservices Env Setup |
-| 7 - Oct 6      | Microservices                      | No Class 10/9 - Fall Break |
-| 8 - Oct 13     | Microservices                      | Microservices |
-| 9 - Oct 20     | Microservices                      | Microservices |
-| 10 - Oct 27    | Microservices                      | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
+| 7 - Oct 6      | APIs                      | No Class 10/9 - Fall Break |
+| 8 - Oct 13     | APIs                      | APIs |
+| 9 - Oct 20     | APIs                      | APIs |
+| 10 - Oct 27    | APIs                      | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
 | 11 - Nov 3     | Web Design                         | Web Design    |
 | 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design |
 | 13 - Nov 17    | Web Design                         | Web Design    |
