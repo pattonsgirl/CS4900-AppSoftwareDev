@@ -33,8 +33,8 @@ mindmap
         API Design
         Controller Layer
         Service Layer
-        Data Transfer Object (DTO) Layer
-        Model (or Entity) Layer
+        Data Transfer Object DTO Layer
+        Model / Entity Layer
     Dev Ops
       Tools
         GitHub
