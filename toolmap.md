@@ -24,11 +24,17 @@ mindmap
         Physical models
         Initialization scripts
         SQL survival skills
-    Microservices
+    APIs
       Tools
-        Postman
-        Spring
+        Bruno
+        Java Spring
       Topics
+        HTTP Requests / Responses
+        API Design
+        Controller Layer
+        Service Layer
+        Data Transfer Object (DTO) Layer
+        Model (or Entity) Layer
     Dev Ops
       Tools
         GitHub
