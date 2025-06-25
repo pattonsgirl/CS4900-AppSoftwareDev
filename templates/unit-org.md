@@ -39,7 +39,7 @@ Repository organization:
 - module repositories for homework assignments? - PUBLIC (to enable team sharing later)
 
 ## Examples:
-[Browse everything from Fall 2025](https://github.com/pattonsgirl/CS3900-AppSoftwareDev/tree/main)
+[Browse everything from Fall 2024](https://github.com/pattonsgirl/CS3900-AppSoftwareDev/tree/main)
 - [Pre-class videos / articles](https://github.com/pattonsgirl/CS3900-AppSoftwareDev/blob/main/DatabaseDesign/Assignment-1-required.md)
 - [Instructor notes - this example is best for dense units](https://github.com/pattonsgirl/CS3900-AppSoftwareDev/blob/main/WebDesign/11.07.24%20Instructor%20Notes.md)
     - Do this only if a good quick reference DOES NOT exist for your module - otherwise organize a resource page that points students to examples.  Don't reinvent documentation ;)
