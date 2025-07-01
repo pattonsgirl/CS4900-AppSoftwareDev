@@ -3,11 +3,11 @@ mindmap
   root((Course Topic / Tool Map))
     UI / UX
       Tools
-        Balsamic
+        Figma
       Topics
         User flows
         Wireframing
-    Responsive Web Design
+    Web Design
       Tools
         Angular
         Grid
