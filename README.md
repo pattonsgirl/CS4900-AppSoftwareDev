@@ -39,8 +39,8 @@ This outline is a proposed ordering.
 | Week # - Date  | Tuesday Topic(s)                   | Thursday Topic(s) |
 | :-----------:  | -----------                        | ----------- |
 | 1 - Aug 18     | ---                                | Course Intro - Group Formation, Theme Brainstorming |
-| 2 - Aug 25     | Agile Development <br> Software Delivery Cycle   | Business Requirements |
-| 2 - Sept 1     | User Interviews                | Competitor / Parallel App Research |
+| 2 - Aug 25     | Agile Development <br> Software Delivery Cycle   | User Interviews   |
+| 2 - Sept 1     | Business Requirements              | Competitor / Parallel App Research |
 | 3 - Sept 8     | UX/UI - User Flows / Wireframes    | UX/UI - Figma Color Templates & Basic Wireframe Tools    |
 | 4 - Sept 15    | HANDOFF UX/UI to DB <br> Project Business Reqs & Wireframes in Figma  | DB Design - Conceptual Models |
 | 5 - Sept 22    | DB Design - Logical Models         | DB Design - Physical Models   |
