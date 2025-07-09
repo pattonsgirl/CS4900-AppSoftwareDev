@@ -42,10 +42,10 @@ This outline is a proposed ordering.
 | 2 - Aug 25     | Agile Development <br> Software Delivery Cycle   | User Interviews   |
 | 2 - Sept 1     | Business Requirements              | Competitor / Parallel App Research |
 | 3 - Sept 8     | UX/UI - User Flows / Wireframes    | UX/UI - Figma Color Templates & Basic Wireframe Tools    |
-| 4 - Sept 15    | HANDOFF UX/UI to DB <br> Project Business Reqs & Wireframes in Figma  | DB Design - Conceptual Models |
+| 4 - Sept 15    | HANDOFF UX/UI to DB <br> Wireframes in Figma  | DB Design - Conceptual Models |
 | 5 - Sept 22    | DB Design - Logical Models         | DB Design - Physical Models   |
-| 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries |
-| 7 - Oct 6      | APIs                      | No Class 10/9 - Fall Break |
+| 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries <br> Hand-off to API |
+| 7 - Oct 6      | APIs - Design Specifications <br> Env Setup | No Class 10/9 - Fall Break |
 | 8 - Oct 13     | APIs                      | APIs |
 | 9 - Oct 20     | APIs                      | APIs |
 | 10 - Oct 27    | APIs                      | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
