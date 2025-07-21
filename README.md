@@ -58,19 +58,18 @@ This outline is a proposed ordering.
 
 ## Grading
 
-**Fall 2024 Outline**
+**Fall 2025 DRAFT**
 
 * Note: this is planned on current assignment outlines and noted to set course expectations.  Total number of assignments may change.
 
 | Category   | Weight | Sub-Category   | Sub-Category Weight |
 |------------|--------|----------------|---------------------|
-| Business Requirements <br>& Agile Methods Module | 13.33% | Group Project Components x 2 | 50% of module weight each  |
-| DevOps Module     | 13.33% | Individual Assignments x 2 <br>*Group Project Component will be tied to other modules* | 50% of module weight each  |
-| Database Design Module | 13.33% | Individual Assignments x 5 <br> Group Project Component | 70% <br> 30%  |
-| UI / UX Module | 13.33% | Individual Assignments x 2 <br> Group Project Component | 70% <br> 30%  |
-| Microservices Module | 13.33% | Individual Assignments x 7 <br> Group Project Component | 70% <br> 30%  |
-| Web Design Module | 13.33% | Individual Assignments x 4 <br> Group Project Component | 70% <br> 30%  |
-| Project Final Grade  | 10%  |   |  |
+| Business Requirements <br>& Agile Methods Module | 15% | Invididual Assignment x 2 <br> Group Project Component | 70% <br> 30%  |
+| UI / UX Module | 15% | Individual Assignments x 2 <br> Group Project Component | 70% <br> 30%  |
+| Database Design Module | 15% | Individual Assignments x 5 <br> Group Project Component | 70% <br> 30%  |
+| Microservices Module | 15% | Individual Assignments x 7 <br> Group Project Component | 70% <br> 30%  |
+| Web Design Module | 15% | Individual Assignments x 4 <br> Group Project Component | 70% <br> 30%  |
+| Project Final Grade  | 15%  |   |  |
 | Project Presentation  | 5%  |   |  |
 | Retrospective  | 5%  |   |  |
 
