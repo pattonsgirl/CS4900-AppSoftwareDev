@@ -60,7 +60,7 @@ This outline is a proposed ordering.
 
 **Fall 2025 DRAFT**
 
-* Note: this is planned on current assignment outlines and noted to set course expectations.  Total number of assignments may change.
+* Note: this is planned on current assignment outlines to set course expectations.  Total number of assignments / assignment weight may change.
 
 | Category   | Weight | Sub-Category   | Sub-Category Weight |
 |------------|--------|----------------|---------------------|
@@ -73,11 +73,19 @@ This outline is a proposed ordering.
 | Project Presentation  | 5%  |   |  |
 | Retrospective  | 5%  |   |  |
 
-The grading scale for the course is [90-100] A; [80-90) B; [70-80) C; [60-69) D; [0-60) F. 
+The guiding grading scale for the course is [90-100] A; [80-90) B; [70-80) C; [60-69) D; [0-60) F. 
 
 ### Assignment Requirements
 
-Unless otherwise specified in the assignment description, assignments are to be completed **individually**.  Students may collaborate on ideas and share resources.  Cite collaborations in code comments or commit messages.
+Unless otherwise specified in the assignment description, assignments are to be completed **individually**.  Students may collaborate on ideas and share resources.  Cite collaborations in assignment documentation, code comments, or commit messages.
+
+### Group Project Requirements
+
+Each module will assign a summary of what the added group project parts / functionalities must be with a due date typically within a week after the module is complete.  As all project work is in a GitHub repository, all group members must contribute (via commits) to the group project to recieve the grade earned by the group.  If a group member makes no commits, they may recieve a grade of 0 for that portion of the group project.
+
+#### Feedback Requirements
+
+After submission of group project work, the module instructors will provide detailed feedback that will contain general advice, needed improvements, and possible inquiries.  Teams will be required to create an Issue in their GitHub project for each issue that needs to be resolved or responded to, and will be given a week to address the issues generated.  Module instructors will remain in contact by appointment during this process for clarification or assistance.
 
 ### Honors Requirements
 
