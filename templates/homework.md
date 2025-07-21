@@ -33,6 +33,10 @@ Perform the following tasks in your course **homework** repository.
     - y
     - z
 
+### DURING CLASS
+
+During the class session, you will be reviewing your logical diagram with your team member's to determine an agreed on model to continue with the homework's in this unit.  Upload the agreed upon model to your **group project** repository so that all members have access by midnight after class.
+
 ## Deliverable(s)
 
 > What they need to submit and any format expectations.
