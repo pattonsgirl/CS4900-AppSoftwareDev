@@ -69,7 +69,8 @@ This outline is a proposed ordering.
 | Database Design Module | 15% | Individual Assignments x 5 <br> Group Project Component | 70% <br> 30%  |
 | Microservices Module | 15% | Individual Assignments x 7 <br> Group Project Component | 70% <br> 30%  |
 | Web Design Module | 15% | Individual Assignments x 4 <br> Group Project Component | 70% <br> 30%  |
-| Project Final Grade  | 15%  |   |  |
+| Response to Feedback  | 5%  | Per Unit  | 20% Each |
+| Project Final Grade  | 10%  |   |  |
 | Project Presentation  | 5%  |   |  |
 | Retrospective  | 5%  |   |  |
 
