@@ -14,7 +14,7 @@ Access to module instructors (read section below) will be coordinated via Micros
 **Instructor of record office hours: TBD, otherwise by appointment in Russ 340.**  
     - Communications outside of office hours should be posted to the class Microsoft Teams channel.  
 
-**Module instructor access: TBD.** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the General channel. 
+**Module instructor access: TBD.** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the General channel in Microsoft Teams. 
     - Screen share / synchronous sessions should be requested in advance to be respectful of schedules.
     - If you are going to send an **email**, email both module instructors and the course instructor.
 
@@ -29,9 +29,11 @@ Upon successful completion of this course, students will be able to:
 
 ## Pre-Requisites
 
-CEG 2350 minimum grade of C **AND** CS 1181 minimum grade of C.
+CS 1181 minimum grade of C **AND** CEG 2350 minimum grade of C.
 
-These prerequisites attempt to ensure familiarity with the command line, the basics of using git and GitHub, and competency with programming, code literacy, and basic data structures, although the course will not use Java as its primary programming language.  If you do not feel you meet competency in these areas, talk with your instructor early to consider if this course will be a good fit for you.
+These prerequisites attempt to ensure familiarity with the command line, the basics of using git and GitHub, and competency with programming, code literacy, and basic data structures.  If you do not feel you meet competency in these areas, talk with your instructor early to consider if this course will be a good fit for you.
+
+CS 2800 (Web Development 1) and / or CS 3700 (Intro to Databases) are **recommended** for some foundational knowledge in these concepts but are not required.
 
 ## Course Topics / Outline
 This outline is a proposed ordering.
