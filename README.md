@@ -38,22 +38,22 @@ This outline is a proposed ordering.
 
 | Week # - Date  | Tuesday Topic(s)                   | Thursday Topic(s) |
 | :-----------:  | -----------                        | ----------- |
-| 1 - Aug 18     | ---                                | Course Intro - Group Formation, Theme Brainstorming |
+| 1 - Aug 18     | ---                                | Course Overview <br> Group Formation, Theme Brainstorming |
 | 2 - Aug 25     | Agile Development <br> Software Delivery Cycle   | User Interviews   |
-| 2 - Sept 1     | Business Requirements              | Competitor / Parallel App Research |
+| 2 - Sept 1     | Business Requirements              | Competitor / Parallel App Analysis |
 | 3 - Sept 8     | UX/UI - User Flows / Wireframes    | UX/UI - Figma Color Templates & Basic Wireframe Tools    |
-| 4 - Sept 15    | HANDOFF UX/UI to DB <br> Wireframes in Figma  | DB Design - Conceptual Models |
+| 4 - Sept 15    | Wireframes in Figma <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
 | 5 - Sept 22    | DB Design - Logical Models         | DB Design - Physical Models   |
-| 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries <br> Hand-off to API |
-| 7 - Oct 6      | APIs - Design Specifications <br> Env Setup | No Class 10/9 - Fall Break |
-| 8 - Oct 13     | APIs                      | APIs |
+| 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries <br> HANDOFF DB to API |
+| 7 - Oct 6      | DevOps - Coding in Teams <br> APIs - Design Specifications  | No Class 10/9 - Fall Break |
+| 8 - Oct 13     | APIs - Env Setup & Project Structure   | APIs |
 | 9 - Oct 20     | APIs                      | APIs |
-| 10 - Oct 27    | APIs                      | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
+| 10 - Oct 27    | APIs                      | HANDOFF API to WebDev <br> Web Design - Env Setup   |
 | 11 - Nov 3     | Web Design                         | Web Design    |
 | 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design |
 | 13 - Nov 17    | Web Design                         | Web Design    |
-| 14 - Nov 24    | Web Design                         |  Thanksgiving Break <br> No class Nov 27/28  |
-| 15 - Dec 1     | Project Polishing                  |  Project Presentation   |
+| 14 - Nov 24    | Web Design                         | No Class 11/27 - Thanksgiving Break  |
+| 15 - Dec 1     | Project Polishing                  | Project Presentation   |
 | 16 - Dec 8     | ---                                | Final Exam Block - Retrospective <br> 12/11, 2:45 PM - 4:45 PM   |
 
 ## Grading
