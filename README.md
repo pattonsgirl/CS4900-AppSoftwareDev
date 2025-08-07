@@ -14,7 +14,7 @@ Access to module instructors (read section below) will be coordinated via Micros
 **Instructor of record office hours: TBD, otherwise by appointment in Russ 340.**  
     - Communications outside of office hours should be posted to the class Microsoft Teams channel.  
 
-**Module instructor access: TBD.** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the General channel. 
+**Module instructor access: TBD.** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the General channel in Microsoft Teams. 
     - Screen share / synchronous sessions should be requested in advance to be respectful of schedules.
     - If you are going to send an **email**, email both module instructors and the course instructor.
 
@@ -29,31 +29,34 @@ Upon successful completion of this course, students will be able to:
 
 ## Pre-Requisites
 
-CEG 2350 minimum grade of C **AND** CS 1181 minimum grade of C.
+CS 1181 minimum grade of C **AND** CEG 2350 minimum grade of C.
 
-These prerequisites attempt to ensure familiarity with the command line, the basics of using git and GitHub, and competency with programming, code literacy, and basic data structures, although the course will not use Java as its primary programming language.  If you do not feel you meet competency in these areas, talk with your instructor early to consider if this course will be a good fit for you.
+These prerequisites attempt to ensure familiarity with the command line, the basics of using git and GitHub, and competency with programming, code literacy, and basic data structures.  If you do not feel you meet competency in these areas, talk with your instructor early to consider if this course will be a good fit for you.
+
+CS 2800 (Web Development 1) and / or CS 3700 (Intro to Databases) are **recommended** for some foundational knowledge in these concepts but are not required.
 
 ## Course Topics / Outline
 This outline is a proposed ordering.
 
 | Week # - Date  | Tuesday Topic(s)                   | Thursday Topic(s) |
 | :-----------:  | -----------                        | ----------- |
-| 1 - Aug 18     | ---                                | Course Intro - Group Formation, Theme Brainstorming |
+| 1 - Aug 18     | ---                                | Course Overview <br> Group Formation, Theme Brainstorming |
 | 2 - Aug 25     | Agile Development <br> Software Delivery Cycle   | User Interviews   |
-| 2 - Sept 1     | Business Requirements              | Competitor / Parallel App Research |
+| 2 - Sept 1     | Business Requirements              | Competitor / Parallel App Analysis |
 | 3 - Sept 8     | UX/UI - User Flows / Wireframes    | UX/UI - Figma Color Templates & Basic Wireframe Tools    |
-| 4 - Sept 15    | HANDOFF UX/UI to DB <br> Wireframes in Figma  | DB Design - Conceptual Models |
+| 4 - Sept 15    | Wireframes in Figma <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
 | 5 - Sept 22    | DB Design - Logical Models         | DB Design - Physical Models   |
-| 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries <br> Hand-off to API |
-| 7 - Oct 6      | APIs - From DB to Service | No Class 10/9 - Fall Break |
-| 8 - Oct 13     | APIs - Communicating with HTTP <br> Model Layer <br> Intro to Bruno   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
+| 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries <br> HANDOFF DB to API |
+| 7 - Oct 6      |  APIs - Design Specifications  | No Class 10/9 - Fall Break |
+| 7 - Oct 6      | APIs - From DB to Service <br> DevOps - Coding in Teams | No Class 10/9 - Fall Break |
+| 8 - Oct 13     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
 | 9 - Oct 20     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs | Topics Cont.
-| 10 - Oct 27    | APIs - Wildcard Topics <br> Pagination, Unit Testing, Lombok    | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
+| 10 - Oct 27    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Env Setup   |
 | 11 - Nov 3     | Web Design                         | Web Design    |
 | 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design |
 | 13 - Nov 17    | Web Design                         | Web Design    |
-| 14 - Nov 24    | Web Design                         |  Thanksgiving Break <br> No class Nov 27/28  |
-| 15 - Dec 1     | Project Polishing                  |  Project Presentation   |
+| 14 - Nov 24    | Web Design                         | No Class 11/27 - Thanksgiving Break  |
+| 15 - Dec 1     | Project Polishing                  | Project Presentation   |
 | 16 - Dec 8     | ---                                | Final Exam Block - Retrospective <br> 12/11, 2:45 PM - 4:45 PM   |
 
 ## Grading
@@ -64,11 +67,11 @@ This outline is a proposed ordering.
 
 | Category   | Weight | Sub-Category   | Sub-Category Weight |
 |------------|--------|----------------|---------------------|
-| Business Requirements <br>& Agile Methods Module | 15% | Invididual Assignment x 2 <br> Group Project Component | 70% <br> 30%  |
-| UI / UX Module | 15% | Individual Assignments x 2 <br> Group Project Component | 70% <br> 30%  |
-| Database Design Module | 15% | Individual Assignments x 5 <br> Group Project Component | 70% <br> 30%  |
-| Microservices Module | 15% | Individual Assignments x 7 <br> Group Project Component | 70% <br> 30%  |
-| Web Design Module | 15% | Individual Assignments x 4 <br> Group Project Component | 70% <br> 30%  |
+| Business Requirements <br>& Agile Methods Module | 15% | Invididual Assignment x 2 <br> Group Project Requirements | 70% <br> 30%  |
+| UI / UX Module | 15% | Individual Assignments x 2 <br> Group Project Requirements | 70% <br> 30%  |
+| Database Design Module | 15% | Individual Assignments x 5 <br> Group Project Requirements | 70% <br> 30%  |
+| Microservices Module | 15% | Individual Assignments x 7 <br> Group Project Requirements | 70% <br> 30%  |
+| Web Design Module | 15% | Individual Assignments x 4 <br> Group Project Requirements | 70% <br> 30%  |
 | Response to Feedback  | 5%  | Per Unit  | 20% Each |
 | Project Final Grade  | 10%  |   |  |
 | Project Presentation  | 5%  |   |  |
