@@ -45,10 +45,10 @@ This outline is a proposed ordering.
 | 4 - Sept 15    | HANDOFF UX/UI to DB <br> Wireframes in Figma  | DB Design - Conceptual Models |
 | 5 - Sept 22    | DB Design - Logical Models         | DB Design - Physical Models   |
 | 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries <br> Hand-off to API |
-| 7 - Oct 6      | APIs - Design Specifications <br> Env Setup | No Class 10/9 - Fall Break |
-| 8 - Oct 13     | APIs                      | APIs |
-| 9 - Oct 20     | APIs                      | APIs |
-| 10 - Oct 27    | APIs                      | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
+| 7 - Oct 6      | APIs - From DB to Service | No Class 10/9 - Fall Break |
+| 8 - Oct 13     | APIs - Communicating with HTTP <br> Model Layer <br> Intro to Bruno   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
+| 9 - Oct 20     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs | Topics Cont.
+| 10 - Oct 27    | APIs - Wildcard Topics <br> Pagination, Unit Testing, Lombok    | DB & UX/UI & Microservices Handoff <br> Web Design Env Setup   |
 | 11 - Nov 3     | Web Design                         | Web Design    |
 | 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design |
 | 13 - Nov 17    | Web Design                         | Web Design    |
