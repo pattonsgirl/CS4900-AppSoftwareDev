@@ -50,7 +50,7 @@ This outline is a proposed ordering.
 | 7 - Oct 6      |  APIs - Design Specifications  | No Class 10/9 - Fall Break |
 | 7 - Oct 6      | APIs - From DB to Service <br> DevOps - Coding in Teams | No Class 10/9 - Fall Break |
 | 8 - Oct 13     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
-| 9 - Oct 20     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs | Topics Cont.
+| 9 - Oct 20     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs - Topics Cont.
 | 10 - Oct 27    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Env Setup   |
 | 11 - Nov 3     | Web Design                         | Web Design    |
 | 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design |
