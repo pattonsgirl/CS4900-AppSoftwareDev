@@ -47,7 +47,6 @@ This outline is a proposed ordering.
 | 4 - Sept 15    | UX/UI - Brand Guidelines <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
 | 5 - Sept 22    | DB Design - Logical Models         | DB Design - Physical Models   |
 | 6 - Sept 29    | DB Design - Initialization Scripts | DB Design - SQL Business Queries <br> HANDOFF DB to API |
-| 7 - Oct 6      |  APIs - Design Specifications  | No Class 10/9 - Fall Break |
 | 7 - Oct 6      | APIs - From DB to Service <br> DevOps - Coding in Teams | No Class 10/9 - Fall Break |
 | 8 - Oct 13     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
 | 9 - Oct 20     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs - Topics Cont.
