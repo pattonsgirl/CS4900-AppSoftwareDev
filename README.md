@@ -69,7 +69,7 @@ This outline is a proposed ordering.
 | Business Requirements <br>& Agile Methods Module | 15% | Invididual Assignment x 2 <br> Group Project Requirements | 70% <br> 30%  |
 | UI / UX Module | 15% | Individual Assignments x 2 <br> Group Project Requirements | 70% <br> 30%  |
 | Database Design Module | 15% | Individual Assignments x 5 <br> Group Project Requirements | 70% <br> 30%  |
-| Microservices Module | 15% | Individual Assignments x 7 <br> Group Project Requirements | 70% <br> 30%  |
+| API Module | 15% | Individual Assignments x 7 <br> Group Project Requirements | 70% <br> 30%  |
 | Web Design Module | 15% | Individual Assignments x 4 <br> Group Project Requirements | 70% <br> 30%  |
 | Response to Feedback  | 5%  | Per Unit  | 20% Each |
 | Project Final Grade  | 10%  |   |  |
