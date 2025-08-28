@@ -1,8 +1,5 @@
-## **🧠 Class 2 — Behavior & State Management with** 
+## **🧠 Class 2 — Behavior & State Management with Signals**
 
-## **Signals**
-
-### 
 
 ### **Goal**
 
@@ -89,7 +86,7 @@ export class UserProfileComponent {
 **Parent Component Template:**
 
 ```html
-<app-user-profile [username]="currentUser()" />
+<app-user-profile [username]="currentUser()"/>
 ```
 
 This approach makes component inputs inherently reactive. Instead of using the ngOnChanges lifecycle hook to react to input changes, one can now use a computed signal or an effect that directly depends on the input signal, leading to cleaner and more declarative code.
