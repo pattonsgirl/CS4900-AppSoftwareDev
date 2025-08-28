@@ -60,7 +60,13 @@ Since Angular v17, a new, more intuitive control flow syntax is available direct
 **`@for` and the `track` Property:** For rendering lists of items. The `@for` block requires a track expression, which is a mandatory performance optimization. track tells Angular how to uniquely identify each item in the collection, allowing it to perform minimal DOM updates when the list changes (e.g., items are added, removed, or reordered). This enforcement of a performance best practice is a significant improvement over the old `*ngFor` directive, where the equivalent `trackBy` was optional and often overlooked by beginners.
 
 ```html
-<ul>  @for (item of items; track item.id) {    <li>{{ item.name }}</li>  } @empty {    <li>No items available.</li>  }</ul>
+<ul>
+  @for (item of items; track item.id) {
+    <li>{{ item.name }}</li>
+  } @empty {
+    <li>No items available.</li>
+  }
+</ul>
 ```
 
 The `@for` block also includes an optional `@empty` block to display content when the collection is empty, and provides helpful contextual variables like `$index`, `$first`, and `$last`.
@@ -68,7 +74,11 @@ The `@for` block also includes an optional `@empty` block to display content whe
 * **`@switch` / `@case` / `@default`:** For scenarios with multiple conditions, `@switch` provides a clean alternative to a long chain of `@if` / `@else if` blocks.
 
 ```html
-@switch (user.role) {  @case ('admin') { <admin-dashboard /> }  @case ('editor') { <editor-dashboard /> }  @default { <viewer-dashboard /> }}
+@switch (user.role) {
+  @case ('admin') { <admin-dashboard /> }
+  @case ('editor') { <editor-dashboard /> }
+  @default { <viewer-dashboard /> }
+}
 ```
 
 The following table provides a clear comparison to help students navigate older documentation or codebases they may encounter.
