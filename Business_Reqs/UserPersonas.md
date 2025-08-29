@@ -1,13 +1,12 @@
 # Project Proposal:
 
 # User Persona(s)
----
+
 Identify various target audiences based on your project proposal. 
 
 Choose one or more audiences to design a persona for. Not all need to be represented, but they should not be repeated. 
 
 The expectation is to use ChatGPT (or a generative AI platform of your choice) to assist with creating these personas.
----
 
 ## TARGET AUDIENCE: 
 
