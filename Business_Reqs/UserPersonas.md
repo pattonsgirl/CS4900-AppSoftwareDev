@@ -1,50 +1,59 @@
-# Han D. Man
-### Age: 35
-### Location: Craftsman State University
-### Education: High School
-### Job Title: Maintenance Technician
+# Project Proposal:
+
+# User Persona(s)
+---
+Identify various target audiences based on your project proposal. 
+
+Choose one or more audiences to design a persona for. Not all need to be represented, but they should not be repeated. 
+
+The expectation is to use ChatGPT (or a generative AI platform of your choice) to assist with creating these personas.
+---
+
+## TARGET AUDIENCE: 
+
+## USER PROFILE:
+- [Optional] Profile Photo
+- NAME:
+- AGE:
+- LOCATION:
+- EDUCATION:
+- JOB TITLE:
 
 ## BIO
-Han D. Man is a sixth-generation maintenance technician at Craftsman State University.
-For the first time, CSU is expanding its' campus, and Han refuses to allow anything
-potentialially tarnish the legacy his family has built. He is bringin on an apprentice
-to help ensure nothing falls through the cracks, but Han has never had this much responsibility or
-someone to mento before, let alone at the same time
+Generate a bio for your user here
 
-## Goals
-- insert goals here
+## GOALS
+Identify what the user wants to be enabled to do 
+- INSERT
+- GOALS
+- HERE
 
-## Pain Points
-- insert pain points here
+## PAIN POINTS
+Identify pain points the user has with the current process or feature wishes missing from available solutions
+- INSERT
+- PAIN
+- POINTS
+- HERE
 
-# Gen E. Fir
-### Age: 21
-### Location: Craftsman State University
-### Education: Associates
-### Job Title: Resident Advisor
+---Honors Requirements---
 
-## BIO
+## TRAITS
+Assign the user a 1 - 5 ranking on the following traits:
 
-## Goals
-- insert goals here
+- Technology:
+- Early Adapter:
+- Money Driven:
+- Hard Working:
 
-## Pain Points
-- insert pain points here
+## PERSONALITY
+Determine whether the user ranks more towards one personality trait or the other.
 
-# Will E. Makeit
-### Age: 21
-### Location: Craftsman State University
-### Education: Trade School
-### Job Title: Technician Apprentice
-
-## BIO
-
-## Goals
-- insert goals here
-
-## Pain Points
-- insert pain points here
-
-  
-
-
+User is more of a / an:
+- [ ] Introvert
+- [ ] Extrovert
+---
+- [ ] Thinker
+- [ ] Feeler
+---
+- [ ] Judger
+- [ ] Perceiver
