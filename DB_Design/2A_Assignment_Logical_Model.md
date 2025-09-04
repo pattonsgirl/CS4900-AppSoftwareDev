@@ -14,7 +14,7 @@
 The intent is to learn about logical models and build one using your group project’s theme.
 
 1. In your `dbdesign-assignments-YOURGHUSERNAME` repository, edit the file `DB-Assignment-2.md` in the `Assignments` folder.
-2. Watch the required videos (listed in the [Assignment-2-required.md](Assignment-2-required.md) file)
+2. Watch the required videos or read the required articles (listed in the [2R_PreWork_LogicalModel.md](2R_PreWork_LogicalModel.md) file)
 3. Write a description of the following common logical model terms:
 	- Purpose of a logical model
 	- Primary Key
