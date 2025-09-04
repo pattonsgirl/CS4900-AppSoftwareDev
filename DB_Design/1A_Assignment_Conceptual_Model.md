@@ -14,7 +14,7 @@ The intent is to learn about conceptual models and build one using your group pr
 In the 9/16 class session, your will collaborate with your group to (hopefully) agree to a common conceptual model, which you will then use to design a logical model ahead of the class session on 9/18.
 
 1. In your `dbdesign-assignments-YOURGHUSERNAME` repository, edit the file `DB-Assignment-1.md` in the `Assignments` folder.
-2. Watch the required videos (listed in the [Assignment-1-required.md](Assignment-1-required.md) file)
+2. Watch the required videos (listed in the [Assignment-1-required.md](1R_PreWork_Conceptual_Models.md) file)
 3. Write a description of the following common conceptual model terms:
 	- Purpose of a conceptual model
 	- Entity
