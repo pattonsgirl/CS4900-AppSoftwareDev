@@ -24,7 +24,7 @@ The intent is to learn about logical models and build one using your group proje
 4. Create a logical model for your group project theme
 5. Describe your logical model
 
-In the 9/18 class session, your logical model will undergo peer review which you will use to improve your logical model ahead of the next assignment.
+In the 9/23 class session, you will collaborate with your group to (hopefully) agree to a common logical model, which you will then use to design a physical model ahead of the class session on 9/25.
 
 ## Deliverable(s)
 
