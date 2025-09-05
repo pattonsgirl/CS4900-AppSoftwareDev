@@ -72,5 +72,8 @@ Articles
 6. SQL DEFAULT Constraint
     - https://www.w3schools.com/sql/sql_default.asp
 
-7. Unique constraints and check constraints
+7. SQL NULL Values
+    - https://www.w3schools.com/sql/sql_null_values.asp
+
+8. Unique constraints and check constraints
     - https://learn.microsoft.com/en-us/sql/relational-databases/tables/unique-constraints-and-check-constraints?view=sql-server-ver17
