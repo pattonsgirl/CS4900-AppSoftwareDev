@@ -66,14 +66,18 @@ Articles
 4. Identity column
     - https://en.wikipedia.org/wiki/Identity_column
 
-5. Primary keys vs. unique keys: Fundamental differences
+5. Primary keys vs. foreign keys: Fundamental differences
+    - https://www.gleek.io/blog/primary-vs-foreign
+
+6. Primary keys vs. unique keys: Fundamental differences
     - https://www.gleek.io/blog/primary-vs-unique
 
-6. SQL DEFAULT Constraint
+7. SQL DEFAULT Constraint
     - https://www.w3schools.com/sql/sql_default.asp
 
-7. SQL NULL Values
+8. SQL NULL Values
     - https://www.w3schools.com/sql/sql_null_values.asp
 
-8. Unique constraints and check constraints
+9. Unique constraints and check constraints
     - https://learn.microsoft.com/en-us/sql/relational-databases/tables/unique-constraints-and-check-constraints?view=sql-server-ver17
+
