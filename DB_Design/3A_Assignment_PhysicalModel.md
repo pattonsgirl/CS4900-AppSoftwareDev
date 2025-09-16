@@ -14,7 +14,7 @@
 The intent is to learn about physical models and build one using your group project’s theme.
 
 1. In your `dbdesign-assignments-YOURGHUSERNAME` repository, edit the file `DB-Assignment-3.md` in the `Assignments` folder.
-2. Watch the required videos or read the required articles (listed in the [Assignment-3-required.md](Assignment-3-required.md) file)
+2. Watch the required videos or read the required articles (listed in the [3R_PreWork_PhysicalModel.md](3R_PreWork_PhysicalModel.md) file)
 3. Write a description of the following common physical model components:
 	- Key difference of the physical model compared to the conceptual and logical models
 	- What are the common data types
