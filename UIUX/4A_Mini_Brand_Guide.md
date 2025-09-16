@@ -5,6 +5,9 @@
 * Develop visual consistency and identity for the app
 * Introduce basic branding concepts: typography, color, logo
 
+**Template Figma Brand Guide**
+[Emily's Brand Guide Figma Template](https://www.figma.com/design/sKgFr1Zs6TVxSfKCrX3sZ3/Style-Guide-Template?node-id=0-1&p=f&t=Mw9fz6yyCmbQMU44-0)
+
 **Description**  
 
 * In Figma, create a mini brand guide that includes:
