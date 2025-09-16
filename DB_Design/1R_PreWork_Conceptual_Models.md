@@ -1,4 +1,8 @@
-WATCH
+# Understanding Conceptual Models
+
+You may watch, read, or watch and read, the following resources on conceptual models.
+
+## WATCH
 
 1. Conceptual Model - Database Design - Class 4
 
@@ -10,21 +14,20 @@ WATCH
    * Good4College Video Class  3.15 minutes
    * https://www.youtube.com/watch?v=I-XHfuJ43ic\&list=PLxgB-2Vw414hxm4ZuTRV0Hu1v1xNlrKT6\&index=5
 
---OR--
-
-READ 
+## READ 
 
 Conceptual vs logical vs physical data models: What’s the difference?
 
    * Sonny Rivera Updated Aug 5, 2025
    * https://www.thoughtspot.com/data-trends/data-modeling/conceptual-vs-logical-vs-physical-data-models
 
-DO:
+## COMPLETE
 
-Complete the rubrics.  This includes creating a conceptual model of your group project on your own.
+Complete [Assignment 1A on Conceptual Models](1A_Assignment_Conceptual_Model.md).  
 
+## OPTIONAL
 
-Optional Viewing:
+These are extra resources recommended for those who want to go the extra mile in their database knowledge.
 
 1. History of Databases
 
