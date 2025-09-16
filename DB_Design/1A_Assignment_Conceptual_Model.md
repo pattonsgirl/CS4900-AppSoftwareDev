@@ -21,7 +21,7 @@ In the 9/18 class session, you will collaborate with your group to (hopefully) a
 	- Attribute
 	- Relationship
 4. Build a conceptual model for your group project theme
-	- You may use pen & paper, paint, power point, lucid charts - so long as your conceptual model is visible in your file submission
+	- You may use pen & paper, paint, power point, excalidraw, lucid charts - so long as your conceptual model is visible in your file submission
 	- Your conceptual model should contain:
 		- 3 entities (unless defended in description)
 		- 4 attributes per entity (unless defended in description) (1 pt)
