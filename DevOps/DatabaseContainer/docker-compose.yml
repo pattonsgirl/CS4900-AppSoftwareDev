@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: WSU_4900_DB_Design
+    restart: always
+    volumes:
+      - ./init_improved_w_survey.sql:/docker-entrypoint-initdb.d/init.sql
+      # - ./data:/var/lib/mysql                   # Mount a volume for data persistence (optional)
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=work_order_pro
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306:3306
