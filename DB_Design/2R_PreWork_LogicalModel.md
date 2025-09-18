@@ -1,27 +1,29 @@
-WATCH
+# Understanding Logical Models
+
+You may watch, read, or watch and read, the following resources on logical models.
+
+## WATCH
 
 Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF (Watch first 20 minutes)
 
 * Decomplexify
 * https://www.youtube.com/watch?v=GFQaEYEc8\_8
 
---OR--
-
-READ
+## READ
 
 An Introduction to Database Normalization
 
 * Mike Hillyer  2023
 * https://mikehillyer.com/articles/an-introduction-to-database-normalization/
 
-DO:
+## COMPLETE
 
-As a group, complete the group conceptual mode if not completed in class.
-As an individual, complete a logical model for the group project.
-Complete the rubrics.
+Complete [Assignment 2A on Logical Models](2A_Assignment_LogicalModel.md). 
 
 
-Optional Viewing:
+## OPTIONAL
+
+These are extra resources recommended for those who want to go the extra mile in their database knowledge.
 
 Database Keys Made Easy - Primary, Foreign, Candidate, Surrogate, \& Many More
 
