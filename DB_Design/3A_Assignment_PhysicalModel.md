@@ -20,13 +20,14 @@ The intent is to learn about physical models and build one using your group proj
 	- What are the common data types
 	- Default values / Null values
 	- Check constraints
-4. Create a physical model for your group project theme.  Your physical model should refer to your GROUP logical model in your GROUP project repository.
+4. Link to your GROUP logical model
+5. Create a physical model for your group project theme.  Your physical model should refer to your GROUP logical model in your GROUP project repository.
 	- This class will use MariaDB - since the physical model IS NOT platform agnostic, make sure to look up supported data types for MariaDB.
 	- Recommended tools:
 		- [DBDiagram.io](https://dbdiagram.io/d) comes highly recommended from Winsupply for devs who favor codifying instead of drawing boxes.
 		- [Lucidcharts for ER Diagrams](https://www.lucidchart.com/pages/landing/er-diagram-software)
 		- [DB Schema](https://dbschema.com/)
-5. Describe your physical model
+6. Describe your physical model
 
 In the 9/25 class session, your physical model will undergo your group peer review to collaborate and agree on a common group physical model to be used ahead of the next assignment due 9/30.
 
@@ -46,6 +47,7 @@ Submit to the assignment repository on GitHub.  Your `DB-Assignment-3.md` must i
 	- What are the common data types
 	- Default values / Null values
 	- Check constraints
+- Link to your GROUP logical model
 - Your physical model using group project theme
 - Description of presented physical model
 
