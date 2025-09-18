@@ -21,7 +21,11 @@ The intent is to learn about logical models and build one using your group proje
 	- Foreign Key
 	- Relationships between entities
 	- Normalization
-4. Create a logical model for your group project theme
+4. Create a logical model for your group project theme.  Your logical model should refer to your GROUP conceptual model in your GROUP project repository.
+	- It is strongly recommend to start leaning into a DB design tool starting with your logical model.
+		- [DBDiagram.io](https://dbdiagram.io/d) comes highly recommended from Winsupply for devs who favor codifying instead of drawing boxes.
+		- [Lucidcharts for ER Diagrams](https://www.lucidchart.com/pages/landing/er-diagram-software)
+		- [DB Schema](https://dbschema.com/)
 5. Describe your logical model
 
 In the 9/23 class session, you will collaborate with your group to (hopefully) agree to a common logical model, which you will then use to design a physical model ahead of the class session on 9/25.
@@ -37,11 +41,7 @@ Submit to the assignment repository on GitHub.  Your file must include:
 	- Foreign Key
 	- Relationships between entities
 	- Normalization
-- Your logical model diagram using group project theme.  Your logical model should refer to your GROUP conceptual model in your GROUP project repository.
-	- It is strongly recommend to start leaning into a DB design tool starting with your logical model.
-		- [DBDiagram.io](https://dbdiagram.io/d) comes highly recommended from Winsupply for devs who favor codifying instead of drawing boxes.
-		- [Lucidcharts for ER Diagrams](https://www.lucidchart.com/pages/landing/er-diagram-software)
-		- [DB Schema](https://dbschema.com/)
+- Your logical model diagram using group project theme.
 - Description of presented logical model
 
 ## Submission
