@@ -31,7 +31,7 @@ In the 9/18 class session, you will collaborate with your group to (hopefully) a
 
 ## Deliverable(s)
 
-Submit to the assignment repository on GitHub.  Your README must include:
+Submit to the assignment repository on GitHub.  Your file must include:
 
 - Define the following common conceptual model terms:
 	- Purpose of a conceptual model
@@ -46,8 +46,6 @@ Submit to the assignment repository on GitHub.  Your README must include:
 Submit link to assignment repository to the Dropbox in Pilot. 
 
 ## Rubric
-
-README contains:
 
 DB Assignment 1 Grading
 
