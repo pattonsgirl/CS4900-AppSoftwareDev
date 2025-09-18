@@ -23,7 +23,7 @@ Conceptual vs logical vs physical data models: What’s the difference?
 
 ## COMPLETE
 
-Complete [Assignment 1A on Conceptual Models](1A_Assignment_Conceptual_Model.md).  
+Complete [Assignment 1A on Conceptual Models](1A_Assignment_ConceptualModel.md).  
 
 ## OPTIONAL
 
