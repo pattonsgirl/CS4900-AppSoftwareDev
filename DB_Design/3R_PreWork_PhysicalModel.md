@@ -1,15 +1,8 @@
-WATCH Videos
+# Understanding Physical Models
 
--- OR --
+You may watch, read, or watch and read, the following resources on physical models.
 
-READ Articles
-
-THEN DO:
-
-Complete the rubrics.  This includes creating a physical model of your group project on your own.
-
----------------------------------------------------------------------------------------------------
-Videos
+## WATCH
 
 1. Physical Database Design Learning Activity, Part 1 - Physical Database Design overview
     - Linda DuHadway 3 min 10 seconds
@@ -51,8 +44,7 @@ Videos
     - Linda DuHadway 2 min 12 seconds
     - https://www.youtube.com/watch?v=Y-A4IG0NGuc
 
-
-Articles
+## READ
 
 1. KB - What is a physical data model?
     - https://www.valueblue.com/knowledge-base/what-is-a-physical-data-model
@@ -80,4 +72,10 @@ Articles
 
 9. Unique constraints and check constraints
     - https://learn.microsoft.com/en-us/sql/relational-databases/tables/unique-constraints-and-check-constraints?view=sql-server-ver17
+
+
+## COMPLETE
+
+Complete [Assignment 3A on Physical Models](3A_Assignment_PhysicalModel.md).  
+
 
