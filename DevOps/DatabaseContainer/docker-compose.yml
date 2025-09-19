@@ -6,11 +6,11 @@ services:
     container_name: WSU_4900_DB_Design
     restart: always
     volumes:
-      - ./init_improved_w_survey.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init_mr_fix_it.sql:/docker-entrypoint-initdb.d/init.sql
       # - ./data:/var/lib/mysql                   # Mount a volume for data persistence (optional)
     environment:
       - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=work_order_pro
+      - MYSQL_DATABASE=Mr_Fix_It
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
     ports:
