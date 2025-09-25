@@ -1,6 +1,6 @@
-# Understanding Logical Models
+# DB Initializaton Scripts in MariaDB
 
-You may watch, read, or watch and read, the following resources on logical models.
+You may watch, read, or watch and read, the following resources on DB Initializaton Scripts in MariaDB.
 
 ## WATCH
 
@@ -96,5 +96,6 @@ You may watch, read, or watch and read, the following resources on logical model
     - https://www.red-gate.com/simple-talk/databases/sql-server/database-administration-sql-server/ten-common-database-design-mistakes/
 
 ## COMPLETE
+
 
 Complete [Assignment 4A on Database Scripts](4A_Assignment_DatabaseScripts.md).
