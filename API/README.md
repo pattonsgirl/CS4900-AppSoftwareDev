@@ -37,7 +37,7 @@ In this section, you are going to write some Java that gets data from your datab
 modifies the data in your database according to a client's request. 
 
 
-![img.png](assets/img.png)
+![client-server.png](assets/client-server.png)
 
 
 ### Further Reading
