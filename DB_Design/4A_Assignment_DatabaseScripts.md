@@ -31,8 +31,6 @@ In the 9/30 class session, your physical database scripts will undergo your grou
 
 Submit link to assignment repository to the Dropbox in Pilot. 
 
-URL looks like: https://github.com/WSU-kduncan/dbdesign-assignments-YOURGHUSERNAME
-
 ## Deliverable(s)
 
 Submit to the assignment repository on GitHub.  Your `DB-Assignment-4.md` must include:
