@@ -8,4 +8,4 @@
 # Using DBeaver to Interact with Database
 
 1. Install [DBeaver Community Edition](https://dbeaver.io/download/)
-2. Follow connection / setup instructions in [README.md](DBeaver Usage Instructions/README.md)
+2. Follow connection / setup instructions in [README.md](DBeaver%20Usage%20Instructions/README.md)
