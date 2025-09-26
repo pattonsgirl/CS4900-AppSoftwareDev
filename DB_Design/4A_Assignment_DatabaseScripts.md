@@ -21,9 +21,10 @@ The intent is to learn about physical databases and build one using your group p
 	- What are database roles and what are they used for
 	- Different type of users
 4. Link to your GROUP physical model
-5. Write Create scripts for your physical database for your group project theme
-
-6. Provide descriptions in your scripts.
+5. Create scripts for your physical database for your group project theme
+	- Your team may distribute the work - as long as **you** create a **minimum of one** table initialization script
+	- [Example scripts for initializing Mr. Fix It](https://github.com/pattonsgirl/CS4900-AppSoftwareDev/tree/main/DB_Design/Database%20Scripts)
+7. Provide descriptions in your scripts in comments.
 
 In the 9/30 class session, your physical database scripts will undergo your group peer review to collaborate and agree on common group physical database scripts to be used ahead of the next assignment due 10/2.
 
@@ -52,12 +53,12 @@ DB Assignment 4 Grading
 
 Score: /6 points
 
-- [ ] Your group's physical model (1 pt) /1
-- [ ] Descriptions of common physical database concepts (1 pt) /1
+- [ ] Your group's physical model (1 pt)
+- [ ] Descriptions of common physical database concepts (1 pt)
 - Initialization scripts to create your physical database:
-    - [ ] create script for each table (1 pts) /1
-    - [ ] consistent formatting in all scripts (1 pts) /1
-    - [ ] script names clearly indicates order of execution (1 pts) /1
-- [ ] Description of your create scripts (1 pt) /1
+    - [ ] create script for each table (1 pts)
+    - [ ] consistent formatting in all scripts (1 pts)
+    - [ ] script names clearly indicates order of execution (1 pts)
+- [ ] Description of your create scripts (1 pt)
 
 Feedback: 
