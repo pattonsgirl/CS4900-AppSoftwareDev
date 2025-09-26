@@ -24,5 +24,5 @@ Uniquely named `.md` files within the module folder.
 * [Assignment 1 - Conceptual Models](1A_Assignment_Conceptual_Model.md)
 * [Assignment 2 - Logical Models](2A_Assignment_Logical_Model.md)
 * [Assignment 3 - Physical Models](3A_Assignment_PhysicalModel.md)
-* [Assignment 4 - Database Initialization Scripts](Assignment-4.md)
-* [Assignment 5 - SQL Business Queries](Assignment-5.md)
+* [Assignment 4 - Database Initialization Scripts](4A_Assignment_DatabaseScripts.md)
+* [Assignment 5 - SQL Business Queries](5A_Assignment_DatabaseQueries.md)
