@@ -14,7 +14,7 @@ Collaborate with your group members to finalize your GROUP submissions of the fo
     - There should be a minimum of one user flow and a set of accompanying wireframes for each member of your group
         - 4 group members = 4 user flows = 2 wireframes per flow = 8 wireframes
     - There is an expectation of two wireframes per flow - this should be based on how many views a user would interact with to complete the action
-        - For example, one user flow could be “as a user, I want to add a new card to my inventory database.”  This would be associated with two frames - an add cards frame and perhaps a confirmation message or updated list view.
+        - For example, one user flow could be “as a user, I want to add a new card to my inventory database.”  This would be associated with two frames - an add cards frame and perhaps a confirmation message or updated list view or from what view they would access the add cards feature.
 
 - Brand Guide
     - 1-2 primary colors
