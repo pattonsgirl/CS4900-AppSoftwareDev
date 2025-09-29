@@ -6,7 +6,7 @@ Score X / 6
 - [ ] Project Petitioner
 - [ ] Project Overview
 - [ ] Project Description - elaborates on overview
-- [ ] Project Goals - 2-3 goals outlined
+- [ ] Project Goals - 2-3 goals outlined based on project description
 - [ ] Style - cleanliness / good formatting
 
 # Project Lifecycle Plan Grade
