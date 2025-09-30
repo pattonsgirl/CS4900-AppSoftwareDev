@@ -29,8 +29,6 @@ In the 10/2 class session, your SQL Business queries will undergo your group pee
 
 Submit link to assignment repository to the Dropbox in Pilot. 
 
-URL looks like: https://github.com/WSU-kduncan/dbdesign-assignments-YOURGHUSERNAME
-
 ## Deliverable(s)
 
 Submit to the assignment repository on GitHub.  Your `DB-Assignment-5.md` must include:
