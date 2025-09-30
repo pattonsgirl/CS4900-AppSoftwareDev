@@ -1,6 +1,6 @@
 # SQL Business Queries
 
-You may watch, read, or watch and read, the following resources on DB Initializaton Scripts in MariaDB.
+You may watch, read, or watch and read, the following resources on writing SQL queries.
 
 ## WATCH
 
