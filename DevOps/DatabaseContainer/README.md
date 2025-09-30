@@ -45,3 +45,18 @@ services:
 1. Install [DBeaver Community Edition](https://dbeaver.io/download/)
 2. Follow connection / setup instructions in [README.md](DBeaver%20Usage%20Instructions/README.md)
   - Remember to use port according to what's in the Docker Compose file
+
+## Running Multiple MariaDB Containers
+
+1. Make a folder that contains a docker-compose.yml and DB init script for EACH DB
+   - Make sure the compose files each use a unique host port followed by the default MariaDB port: `####:3306`
+2. Run `docker compose up` (and `docker compose start` here forward) to initialize and start the container.  Run this in each folder.
+3. In DBeaver, establish a connection to EACH MariaDB container by specifying the unique host port defined in the docker-compose.yml file for each DB
+
+## Troubleshooting
+
+Port is already in use (sometimes also a password error)
+- you already have MariaDB installed on your host system. Choose a different host port in your docker-compose.yml file.
+- you already have a container using that host port. Choose a different host port in your docker-compose.yml file.
+
+
