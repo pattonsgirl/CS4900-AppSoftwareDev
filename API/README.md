@@ -45,3 +45,5 @@ modifies the data in your database according to a client's request.
 [REST API Intro - Through "5. DELETE"](https://www.geeksforgeeks.org/node-js/rest-api-introduction/)
 
 [More on request methods](https://restfulapi.net/http-methods/)
+
+[Bruno Docs - Core Features/Send Requests/REST/Overview - be sure to check out all pages under /REST as well](https://docs.usebruno.com/send-requests/REST/overview)
