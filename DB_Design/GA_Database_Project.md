@@ -8,7 +8,7 @@ Collaborate with your group members to finalize your GROUP submissions of the fo
 
 - Model summary file containing (visually):
     - Conceptual model
-        - must be created in a diagramming / drawing software (handdrawn is not acceptable)
+        - may be handdrawn if the picture / scan is clean and legible, otherwise must be created in a diagramming / drawing software
     - Logical model
         - must be created in a diagramming / drawing software (handdrawn is not acceptable)
     - Physical model
