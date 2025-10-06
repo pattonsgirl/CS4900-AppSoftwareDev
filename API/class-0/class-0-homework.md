@@ -8,8 +8,7 @@
 
 Perform the following tasks in the demo [mr-fix-it repo](https://github.com/WSU-kduncan/mr-fixit-service):
 
-### 1. Create a branch off of `develop` and name it the local-part of your WSU email address
-- If your email address is mnoel.5@wright.edu, your branch would be **mnoel**
+### 1. Create a branch off of `put-work-order` and give it your last name
 
 ### 2. Create a directory under `/bruno` named `homework-0`
 
@@ -33,6 +32,8 @@ Perform the following tasks in the demo [mr-fix-it repo](https://github.com/WSU-
 1. Create a new and well-named PUT request under `/bruno/mr-fixit-service/work_order`
 2. Add a request body that will update the description of the new work order you created in Step 6
 3. Save a clearly named screenshot of Bruno including the response, URL, request method, and response status code under `/bruno/homework-0`
+
+### 8. git commit, add, and push your changes to your branch upstream
     
 
 Here is an example of the required components in the screenshot:
