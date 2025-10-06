@@ -184,7 +184,7 @@ The base URL generally consists of the protocol, host, port, and server context 
 
 Here is what a base URL looks like for the Mr. Fix It service:
 
-`http://localhost:8080/dorm-maintenance-service`
+`http://localhost:8080/mr-fixit-service`
 
 This doesn't really get you anywhere useful though. You need to add to the _path_. This part of the path is generally considered the resource. In our case, the resource is the students. 
 A resource is simply whatever you are trying to access or modify in your request.  
@@ -195,7 +195,7 @@ You already started a path with the server context path, but let's add the resou
 
 And here's what it would really look like:
 
-`http://localhost:8080/dorm-maintenance-service/student`
+`http://localhost:8080/mr-fixit-service/student`
 
 An address is super useful - the Java service knows exactly where you want to go, but it needs more information sent in the request to understand what you want to do once you're there.
 
@@ -287,9 +287,4 @@ Next class you'll lay the groundwork for creating the JSON resources your client
 - [JPA - Introduction](https://www.geeksforgeeks.org/java/jpa-introduction/)
 - [Simplifying Data Access in Java: A Comparative Look at DAO and Spring Data JPA](https://medium.com/@ksaquib/simplifying-data-access-in-java-a-comparative-look-at-dao-and-spring-data-jpa-6c3d56fd0c22)
 - [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa)
-
-
-
-
-
 
