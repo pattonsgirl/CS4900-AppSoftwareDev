@@ -43,6 +43,12 @@
 
     > The JAVA_HOME environment variable should look similar to `JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64`
 
+## VSCode configurations
+
+Extension list:
+- WSL (if you are running WSL)
+- Extension Pack for Java (relative to WSL if needed)
+
 ## *Recommended by Winsupply Magicians* Use Windows git credentials in WSL2
 
 > Kayleigh Duncan says this is weird magic.  Just configure `git` in WSL+Ubuntu and authenticate to GitHub with SSH keys.
@@ -74,3 +80,7 @@
     ```
 
     If you don't have Git configured in Windows, adjust the credential > helper to be `cache --timeout=31449600`
+
+## Troubleshooting
+
+Java 25+ will not work with codebase.  Need to downgrade to Java 17
