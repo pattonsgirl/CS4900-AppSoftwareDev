@@ -33,6 +33,10 @@ Perform the following tasks in the demo [mr-fix-it repo](https://github.com/WSU-
 ### 6. Add a new request to update a work order - PUT
 1. In Bruno: create a new and well-named PUT request under `mr-fixit-service > work_order`
 2. Add a request body that will update the description of the new work order you created in Step 5
+   - This will be very similar to the request in Step 5. 
+   - You will need to slightly modify the URL to indicate which work order to update.
+   - You can reuse an existing request body to get the json structure.
+   - In the `mr-fixit-service` java app, look at `WorkOrderController.java` > `updateWorkOrder` method if you want more hints.
 3. Send the request and verify you get a 200 response
 4. In mr-fixit-service: save a clearly named screenshot of Bruno including the response, URL, request method, and response status code in `/homework/homework-0`
 
