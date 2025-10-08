@@ -23,6 +23,6 @@ Perform the following tasks in the Java service of your group repo:
 Assignment score: X / 5 points
 
 -   `[ ]` your Java service runs successfully
--   `[ ]` A Java class is created for each entity in your database (2 pts)
--   `[ ]` Java classes are properly annotated at both the class and field level
+-   `[ ]` A Java class is created for each entity in your database
+-   `[ ]` Java classes are properly annotated at both the class and field level (2 pts)
 -   `[ ]` Code is pushed to the repository with a clear commit message.
