@@ -33,6 +33,25 @@ It is strongly recommended to have group memebers make PR requests of changes to
 
 ## Rubric
 
+Total Score: / 13
 
-Optional (Required for Honors)
+Organization
+- [ ] Content supporting DB is well organized
+- [ ] Database folder contains README describing layout of contents
+- [ ] Instructions on how to start DB with docker-compose / initialization script
+
+DB Components
+- [ ] Business queries formed into working SQL queries answerable by database
+- [ ] docker-compose file properly starts Maria DB environment
+- [ ] DB initialization script reflects physical model
+- [ ] Physical Model reflects logical model
+- [ ] Logical model reflects conceptual model
+- [ ] Conceptual model is understandable
+
+DB Feedback
+- [ ] Feedback for conceptual model applied to logical model
+- [ ] Feedback for logical model applied to physical model
+- [ ] Feedback for physical model applied to DB init script
+- [ ] Feedback for business queries applied
+
 
