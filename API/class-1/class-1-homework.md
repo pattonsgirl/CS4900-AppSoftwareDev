@@ -8,7 +8,8 @@
 
 Perform the following tasks in the Java service of your group repo:
 
-### 1. Create a branch off of the default branch and name the branch your last name
+### 1. Create a branch off of the default branch and name the branch your last name and homework assignment number
+Example: noel-homework-1
 
 ### 2. Create a directory under `/src/main/java/{project-specific-package}` and name it `model`
 
