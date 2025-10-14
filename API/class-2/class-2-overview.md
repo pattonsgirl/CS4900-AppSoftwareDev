@@ -334,39 +334,24 @@ The controller wraps the DTO in a `ResponseEntity` with HTTP status 200 and retu
 
 ---
 
-## Path Variables Explained
+### Path Variables and Request Parameters
 
-### What Are Path Variables?
+> We can use path variables and request parameters in our URLs to get specific resource(s) instead of returning all of them.
 
-Path variables are dynamic segments in a URL path that capture values from the request URL. They allow you to create flexible endpoints that work with different resource identifiers.
-
-### Syntax in Spring Boot
-
-#### 1. Defining a Path Variable in @GetMapping
-```java
-@GetMapping(path = "{id}")
-```
-
-- The curly braces `{id}` define a path variable placeholder
-- The name inside the braces (`id`) is the variable name
-- This creates a URL pattern like `/student/123` where `123` is the value of `id`
-
-#### 2. Binding to a Method Parameter
-```java
-ResponseEntity<StudentDto> getStudentById(@PathVariable Integer id)
-```
-
-- The `@PathVariable` annotation binds the URL path variable to the method parameter
-- Spring automatically extracts the value from the URL and converts it to the parameter type (`Integer`)
-- The parameter name (`id`) must match the path variable name in the `@GetMapping` path
-
-### How Path Variables Work
-
-#### Example URL: `GET /student/42`
+#### Path Variables Example: `GET /student/42`
 
 1. **Request arrives**: `GET /student/42`
 2. **Spring matches pattern**: `/student/{id}` matches the URL
-3. **Extraction**: Spring extracts `42` from the URL
+3. **Extraction**: Spring extracts `42` from the URL path
+4. **Type conversion**: Spring converts the string `"42"` to an `Integer`
+5. **Parameter binding**: The value `42` is passed to the `id` parameter
+6. **Method execution**: `getStudentById(42)` is called
+
+#### Request Parameters Example: `GET /student?id=42`
+
+1. **Request arrives**: `GET /student?id=42`
+2. **Spring matches pattern**: `/student` matches the URL
+3. **Extraction**: Spring extracts `42` from the query string
 4. **Type conversion**: Spring converts the string `"42"` to an `Integer`
 5. **Parameter binding**: The value `42` is passed to the `id` parameter
 6. **Method execution**: `getStudentById(42)` is called
@@ -376,29 +361,53 @@ ResponseEntity<StudentDto> getStudentById(@PathVariable Integer id)
 | Feature | Path Variable | Request Parameter |
 |---------|--------------|-------------------|
 | Syntax | `/student/{id}` | `/student?id=42` |
-| Required | Usually required | Often optional |
+| Annotation | `@PathVariable` | `@RequestParam` |
+| Required | Usually required | Optional by default |
 | Purpose | Identify specific resource | Filter or configure request |
 | Example | `@PathVariable Integer id` | `@RequestParam Integer id` |
 | URL | `/student/42` | `/student?id=42` |
+| Typical Use | Resource identification | Search, filtering, pagination |
+
+### When to Use Each
+
+**Use Path Variables when:**
+- Identifying a specific resource (e.g., `/users/123`, `/orders/456`)
+- The parameter is mandatory for the endpoint to work
+- Building RESTful APIs following resource hierarchy
+- The URL should be clean and readable
+
+**Use Request Parameters when:**
+- Filtering or searching resources (e.g., `/students?major=CS&year=2024`)
+- Providing optional configuration (e.g., `/students?page=2&size=20`)
+- Passing multiple related values (e.g., `/search?q=java&sort=date&limit=10`)
+- The parameters are optional or have default values
 
 ### Multiple Path Variables
 
-Although not used in StudentController, you can have multiple path variables:
-
+You can have multiple path variables in a single endpoint:
 ```java
 @GetMapping(path = "{studentId}/courses/{courseId}")
 ResponseEntity<Enrollment> getEnrollment(
     @PathVariable Integer studentId,
-    @PathVariable Integer courseId
-) {
-    // Handle GET /student/5/courses/101
-}
+    @PathVariable Integer courseId) {}
 ```
 
-### Path Variable Naming
+### Multiple Request Parameters
 
-If the path variable name differs from the parameter name, you can specify it explicitly:
+You can accept multiple request parameters:
+```java
+@GetMapping
+ResponseEntity<List<StudentDto>> searchStudents(
+    @RequestParam(required = false) String major,
+    @RequestParam(required = false) Integer year,
+    @RequestParam(defaultValue = "0") Integer page) {}
+```
 
+### Custom Parameter Naming
+
+If the URL parameter name differs from the method parameter name, specify it explicitly:
+
+**Path Variable:**
 ```java
 @GetMapping(path = "{studentId}")
 ResponseEntity<StudentDto> getStudent(@PathVariable("studentId") Integer id) {
@@ -406,16 +415,51 @@ ResponseEntity<StudentDto> getStudent(@PathVariable("studentId") Integer id) {
 }
 ```
 
+**Request Parameter:**
+```java
+@GetMapping
+ResponseEntity<List<StudentDto>> getStudents(
+    @RequestParam("sort_by") String sortBy) {
+    // URL has sort_by but parameter is named sortBy
+}
+```
+
 ### Type Conversion
 
-Spring automatically converts path variables to the parameter type:
+Spring automatically converts both path variables and request parameters to the parameter type:
 
-- `Integer id` - converts to integer (e.g., `/student/42`)
-- `String name` - keeps as string (e.g., `/student/john-doe`)
-- `Long id` - converts to long (e.g., `/student/9999999999`)
-- `UUID id` - converts to UUID (e.g., `/student/123e4567-e89b-12d3-a456-426614174000`)
+- `Integer id` - converts to integer (e.g., `42`)
+- `String name` - keeps as string (e.g., `john-doe`)
+- `Long id` - converts to long (e.g., `9999999999`)
+- `UUID id` - converts to UUID (e.g., `123e4567-e89b-12d3-a456-426614174000`)
+- `Boolean active` - converts to boolean (e.g., `true` or `false`)
 
-If conversion fails (e.g., `/student/abc` when expecting Integer), Spring returns a 400 Bad Request error.
+>If conversion fails (e.g., `/student/abc` or `?id=abc` when expecting Integer), Spring returns a 400 Bad Request error.
+
+### Summary: Path Variables vs Request Parameters
+
+**Path Variables** (`@PathVariable`):
+- Embedded in URL path: `/student/42`
+- Required by default
+- Identify specific resources
+- Clean, RESTful URLs
+- Used for hierarchical relationships
+- Best for: Resource IDs, required identifiers
+
+**Request Parameters** (`@RequestParam`):
+- Query string: `/student?major=CS&year=2024`
+- Optional by default
+- Filter, sort, configure results
+- More verbose URLs
+- Can have multiple values
+- Best for: Filters, search, pagination, sorting, optional settings
+
+**Rule of thumb:**
+- If you're identifying **what resource**, use `@PathVariable`
+- If you're specifying **how to filter or configure**, use `@RequestParam`
+
+
+
 
 ---
 
