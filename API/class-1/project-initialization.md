@@ -1,6 +1,6 @@
 # Generating Your Group Java Project
 
-> For your group project, the below steps should be done on only ONE machine. You can work together as a group to make sure all the steps are followed, but only ONE person will be commiting the initial project. This is to ensure everyone is working off the of the same repo with the same configuration. After the project is in your group repo, then everyone can pull it and work off of it.
+> For your group project, the below steps should be done on only ONE machine. You can work together as a group to make sure all the steps are followed, but only ONE person will be commiting the initial project. This is to ensure everyone is working off of the same repo with the same configuration. After the project is in your group repo, then everyone can pull it and work off of it.
 
 ## 1. Use spring initializr
 - Normally you would go to [Spring Initializr](https://start.spring.io/) and then set the appropriate selections for the project you are trying to create. Then you would generate and download the zip file, then extract to an appropriate location and you'd be done, however there is a known issue with WSL copying files from Windows, so instead we are providing a wget command for to download a base project
