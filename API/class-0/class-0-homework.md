@@ -8,11 +8,13 @@
 
 ## Description
 
+Make sure you have cloned the Mr. Fix It Service repo: [mr-fix-it repo](https://github.com/WSU-kduncan/mr-fixit-service)
+
 Perform the following tasks in the demo [mr-fix-it repo](https://github.com/WSU-kduncan/mr-fixit-service):
 
 ### 1. Create a branch off of `put-work-order` and name the branch your last name
 
-### 2. Start and run the demo app
+### 2. Start and run the demo app (don't forget to also have the DB running with `docker compose <up or start>`)
 
 ### 3. Open Bruno and open the `mr-fixit-service` collection
 - `/mr-fix-it-service/bruno/mr-fix-it-service`

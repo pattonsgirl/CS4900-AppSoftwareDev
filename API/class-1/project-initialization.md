@@ -1,20 +1,16 @@
 # Generating Your Group Java Project
 
-> For your group project, the below steps should be done on only ONE machine. You can work together as a group to make sure all the steps are followed, but only ONE person will be commiting the initial project. This is to ensure everyone is working off the of the same repo with the same configuration. After the project is in your group repo, then everyone can pull it and work off of it.
+> For your group project, the below steps should be done on only ONE machine. You can work together as a group to make sure all the steps are followed, but only ONE person will be commiting the initial project. This is to ensure everyone is working off of the same repo with the same configuration. After the project is in your group repo, then everyone can pull it and work off of it.
 
 ## 1. Use spring initializr
-- Go to https://start.spring.io/
-- This will generate a basic spring project and save you a lot of hassle
-- Select the options as shown below. The "Artifact" is whatever you want to name your service. For mr-fixit-service, it's.....mr-fixit-service
-- Edit Description however you see fit
-- Don't select any dependencies. In future projects you definitely will want to - but this project, you will take exactly what mr-fixit-service has just to keep things consistent.
+- Normally you would go to [Spring Initializr](https://start.spring.io/) and then set the appropriate selections for the project you are trying to create. Then you would generate and download the zip file, then extract to an appropriate location and you'd be done, however there is a known issue with WSL copying files from Windows, so instead we are providing a wget command for to download a base project
+- `wget "https://start.spring.io/starter.zip?javaVersion=17&name=API_NAME" -O API_NAME.zip` will download the zip file to the current directory. Change API_NAME to the name for your service
+- Use the unzip command `unzip API_NAME.zip -d API_NAME` to get the contents in a usable format. If you are getting an error stating that the unzip command is not found, install it using `apt install unzip` or the appropriate package manager for your environment
+- After you have unzipped, move the folder (the contents should be similar to the root directory for mr-fixit-service) to where you would prefer to keep it located 
+> It is recommended to put your service folder in a development folder in your home directory, `mv API_NAME ~/development`. If there is a sub-folder named the same as the service, move that folder instead.
 
-![spring-initializr.png](assets/spring-initializr.png)
-- Click generate.
-- Unzip the downloaded file in the `API` directory of your group repo. (You may need to create the `API` directory)
-- Pay close attention to the destination directory when unzipping. Do not include the service name in the path (Windows will default to this.) If you do it incorrectly, when you open the project in your IDE, there will be a `your-service-name` directory nested under another `your-service-name` directory.
-![extract-project.png](assets/extract-project.png)
-
+### Example of expected structure
+![spring-initializr.png](assets/terminal_structure.png)
 
 ## 2. Configure build.gradle file
 - Navigate to `/build.gradle` in your project root
@@ -73,13 +69,12 @@ spotless {
 ## 3. Configure application.properties
 - Navigate to `src/main/resources/application.properties`
 - This is where we set up the datasource connection properties and other configuration
-- Paste this, changing the url, username, and password to your specific database 
+- Paste this, changing the url, username, and password to your team database 
 ```
 # MariaDB connection information
 spring.datasource.url=jdbc:mariadb://localhost:3306/Mr_Fix_It
 spring.datasource.username=user
 spring.datasource.password=password
-
 # Needed for Case Sensitive Tables and Columns
 spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 ```
@@ -87,11 +82,18 @@ spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.Ph
 
 ```server.servlet.context-path=/your-service-name```
 
-## 4. Verify the project builds and runs
+## 4. Add Visual Studio Code settings
+- Copy the .vscode folder from mr-fixit-service to your repository. This will ensure that spotless and java are configured correctly for you.
+
+## 5. Verify the project builds and runs
 - Right click on `src/main/java/{your-path}{YourServiceNameApplication.java}`
 - Select "Run Java"
 - Wait for the console to display: "Started YourServiceNameApplication in x seconds"
 
-## 5. git add, commit, push to your remote group repo
-
-
+## 6. Push to GitHub
+- To initialize git for the repo, use the `git init` command
+- It is recommended to rename your default branch to develop using `git branch -m develop`
+- To set the location on GitHub for your repo, use `git remote add origin REPO_URL`. The REPO_URL should end with .git and can be found in your GitHub repository page.
+- Verify that the URL was set correctly `git remote -v`
+- Add all files and create a commit message indicating that you used Spring Initializr to create the repository
+- Push your changes to GitHub `git push origin main`

@@ -39,6 +39,8 @@ modifies the data in your database according to a client's request.
 
 ![client-server.png](assets/client-server.png)
 
+### Demo app
+[mr-fixit-service](https://github.com/WSU-kduncan/mr-fixit-service)
 
 ### Further Reading
 
