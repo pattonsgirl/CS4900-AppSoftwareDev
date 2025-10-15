@@ -1,6 +1,6 @@
 # @Get Endpoints using StudentController
 
-Outlined below is the complete flow of GET requests in the StudentController, from the Controller layer down to the Entity layer, including all intermediate layers. This is similar to last week's reading, but while last week was more conceptual, this breaks a specific flow down further to get a better understanding of how the layers connect.
+Outlined below is the complete flow of GET requests in the StudentController, from the Controller layer down to the Entity layer, including all intermediate layers. This is similar to last week's reading, but while last week was more conceptual, this breaks a specific flow down further into even more layers to get a better understanding of how the layers connect.
 
 >Examples below use mr-fixit-service
 
@@ -324,21 +324,13 @@ The controller wraps the DTO in a `ResponseEntity` with HTTP status 200 and retu
 }
 ```
 
-**Example Error Response for GET /student/999 (not found):**
-```json
-{
-    "error": "Entity Not Found",
-    "message": "Student (999) not found"
-}
-```
-
 ---
 
 ### Path Variables and Request Parameters
 
 > We can use path variables and request parameters in our URLs to get specific resource(s) instead of returning all of them.
 
-#### Path Variables Example: `GET /student/42`
+#### Path Variable Example: `GET /student/42`
 
 1. **Request arrives**: `GET /student/42`
 2. **Spring matches pattern**: `/student/{id}` matches the URL
@@ -347,26 +339,25 @@ The controller wraps the DTO in a `ResponseEntity` with HTTP status 200 and retu
 5. **Parameter binding**: The value `42` is passed to the `id` parameter
 6. **Method execution**: `getStudentById(42)` is called
 
-#### Request Parameters Example: `GET /student?id=42`
+#### Request Parameter Example: `GET /student?id=42`
 
-1. **Request arrives**: `GET /student?id=42`
-2. **Spring matches pattern**: `/student` matches the URL
-3. **Extraction**: Spring extracts `42` from the query string
-4. **Type conversion**: Spring converts the string `"42"` to an `Integer`
-5. **Parameter binding**: The value `42` is passed to the `id` parameter
-6. **Method execution**: `getStudentById(42)` is called
+1. **Request arrives**: `GET /student/search?firstName=Peter`
+2. **Spring matches pattern**: `/student/search` matches the URL
+3. **Extraction**: Spring extracts `Peter` from the query string
+5. **Parameter binding**: The value `Peter` is passed to the `firstName` parameter
+6. **Method execution**: `getStudentsByFirstName("Peter")` is called
 
 ### Path Variable vs Request Parameter
 
-| Feature | Path Variable | Request Parameter |
-|---------|--------------|-------------------|
-| Syntax | `/student/{id}` | `/student?id=42` |
-| Annotation | `@PathVariable` | `@RequestParam` |
-| Required | Usually required | Optional by default |
-| Purpose | Identify specific resource | Filter or configure request |
-| Example | `@PathVariable Integer id` | `@RequestParam Integer id` |
-| URL | `/student/42` | `/student?id=42` |
-| Typical Use | Resource identification | Search, filtering, pagination |
+| Feature     | Path Variable              | Request Parameter                       |
+|-------------|----------------------------|-----------------------------------------|
+| Syntax      | `/student/{id}`            | `/student/search?firstName={firstName}` |
+| Annotation  | `@PathVariable`            | `@RequestParam`                         |
+| Required    | Usually required           | Optional by default                     |
+| Purpose     | Identify specific resource | Filter or configure request             |
+| Example     | `@PathVariable Integer id` | `@RequestParam String firstName`        |
+| URL         | `/student/42`              | `/student/search?firstName=Peter`       |
+| Typical Use | Resource identification    | Search, filtering, pagination           |
 
 ### When to Use Each
 
@@ -377,9 +368,8 @@ The controller wraps the DTO in a `ResponseEntity` with HTTP status 200 and retu
 - The URL should be clean and readable
 
 **Use Request Parameters when:**
-- Filtering or searching resources (e.g., `/students?major=CS&year=2024`)
+- Filtering or searching resources (e.g., `/students?firstName=Jane&active=true`)
 - Providing optional configuration (e.g., `/students?page=2&size=20`)
-- Passing multiple related values (e.g., `/search?q=java&sort=date&limit=10`)
 - The parameters are optional or have default values
 
 ### Multiple Path Variables
