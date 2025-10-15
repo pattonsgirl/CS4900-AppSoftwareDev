@@ -1,6 +1,6 @@
 # @Get Endpoints using StudentController
 
-Outlined below is the complete flow of GET requests in the StudentController, from the Controller layer down to the Entity layer, including all intermediate layers. This is similar to last week's reading, but while last week was more conceptual, this breaks a specific flow down further into even more layers to get a better understanding of how the layers connect.
+Outlined below is the complete flow of GET requests in the StudentController, from the Controller layer down to the Entity layer, including all intermediate layers. This is similar to last week's reading, but while last week was more conceptual, this breaks down each method in the controller, complete with path variables and request parameters, to get a better understanding of how the layers connect.
 
 >Examples below use mr-fixit-service
 
@@ -8,11 +8,12 @@ Outlined below is the complete flow of GET requests in the StudentController, fr
 1. [Architecture Overview](#architecture-overview)
 2. [GET All Students](#get-all-students)
 3. [GET Student By ID](#get-student-by-id)
-4. [Path Variables Explained](#path-variables-explained)
+4. [GET Students By First Name](#get-students-by-first-name)
+5. [Path Variables Explained](#path-variables-explained)
 
 ---
 
-## Architecture Overview
+### Architecture Overview
 
 The StudentController follows a layered architecture pattern:
 
@@ -38,6 +39,110 @@ Database (Student table)
 - **Entity**: Represents the database table structure as a Java class
 
 ---
+
+### Path Variables and Request Parameters
+
+> We can use path variables and request parameters in our URLs to get specific resource(s) instead of returning all of them.
+
+#### Path Variable Example: `GET /student/42`
+
+1. **Request arrives**: `GET /student/42`
+2. **Spring matches pattern**: `/student/{id}` matches the URL
+3. **Extraction**: Spring extracts `42` from the URL path
+4. **Type conversion**: Spring converts the string `"42"` to an `Integer`
+5. **Parameter binding**: The value `42` is passed to the `id` parameter
+6. **Method execution**: `getStudentById(42)` is called
+
+#### Request Parameter Example: `GET /student?id=42`
+
+1. **Request arrives**: `GET /student/search?firstName=Peter`
+2. **Spring matches pattern**: `/student/search` matches the URL
+3. **Extraction**: Spring extracts `Peter` from the query string
+5. **Parameter binding**: The value `Peter` is passed to the `firstName` parameter
+6. **Method execution**: `getStudentsByFirstName("Peter")` is called
+
+### Path Variable vs Request Parameter
+
+| Feature     | Path Variable              | Request Parameter                       |
+|-------------|----------------------------|-----------------------------------------|
+| Syntax      | `/student/{id}`            | `/student/search?firstName={firstName}` |
+| Annotation  | `@PathVariable`            | `@RequestParam`                         |
+| Required    | Usually required           | Optional by default                     |
+| Purpose     | Identify specific resource | Filter or configure request             |
+| Example     | `@PathVariable Integer id` | `@RequestParam String firstName`        |
+| URL         | `/student/42`              | `/student/search?firstName=Peter`       |
+| Typical Use | Resource identification    | Search, filtering, pagination           |
+
+### When to Use Each
+
+**Use Path Variables when:**
+- Identifying a specific resource (e.g., `/users/123`, `/orders/456`)
+- The parameter is mandatory for the endpoint to work
+- Building RESTful APIs following resource hierarchy
+- The URL should be clean and readable
+
+**Use Request Parameters when:**
+- Filtering or searching resources (e.g., `/students?firstName=Jane&active=true`)
+- Providing optional configuration (e.g., `/students?page=2&size=20`)
+- The parameters are optional or have default values
+
+### Multiple Path Variables and Request Parameters
+
+You can accept multiple path variables and request parameters in a single endpoint. There are no examples of multiples in mr-fixit-service. Below is a conceptual example of multiple request parameters.
+
+```java
+@GetMapping
+ResponseEntity<List<StudentDto>> searchStudents(
+    @RequestParam(required = false) String firstName,
+    @RequestParam(required = false) boolean active) {}
+```
+
+### Custom Parameter Naming
+
+If the URL parameter name differs from the method parameter name, specify it explicitly:
+
+**Path Variable:**
+```java
+@GetMapping(path = "{studentId}")
+ResponseEntity<StudentDto> getStudent(@PathVariable("studentId") Integer id) {
+    // The URL has {studentId} but the parameter is named 'id'
+}
+```
+
+**Request Parameter:**
+```java
+@GetMapping
+ResponseEntity<List<StudentDto>> getStudents(
+    @RequestParam("first_name") String firstName) {
+    // URL has first_name but parameter is named firstName
+}
+```
+
+
+### Summary: Path Variables vs Request Parameters
+
+**Path Variables** (`@PathVariable`):
+- Embedded in URL path: `/student/42`
+- Required by default
+- Identify specific resources
+- Clean, RESTful URLs
+- Used for hierarchical relationships
+- Best for: Resource IDs, required identifiers
+
+**Request Parameters** (`@RequestParam`):
+- Query string: `/student/search?firstName=Peter&active=true`
+- Optional by default
+- Filter, sort, configure results
+- More verbose URLs
+- Can have multiple values
+- Best for: Filters, search, pagination, sorting, optional settings
+
+**Rule of thumb:**
+- If you're identifying **what resource**, use `@PathVariable`
+- If you're specifying **how to filter or configure**, use `@RequestParam`
+
+---
+### Now let's walk through the methods in StudentController
 
 ## GET All Students
 
@@ -258,8 +363,8 @@ public Student getStudentById(Integer id) throws EntityNotFoundException {
 - The service receives the `id` parameter from the controller
 - It calls `studentRepository.findById(id)` which returns an `Optional<Student>`
 - **Business logic**: The service checks if the student exists
-    - If not found (`result.isEmpty()`), it throws an `EntityNotFoundException` with a descriptive message
-    - If found, it extracts the `Student` entity from the Optional using `.get()`
+  - If not found (`result.isEmpty()`), it throws an `EntityNotFoundException` with a descriptive message
+  - If found, it extracts the `Student` entity from the Optional using `.get()`
 - This error handling ensures the API returns a meaningful error response when a student doesn't exist
 
 #### 3. Repository Layer
@@ -273,7 +378,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {}
 - The `findById(id)` method is inherited from `JpaRepository<Student, Integer>`
 - The second type parameter `Integer` specifies that the primary key type is Integer
 - Spring Data JPA generates the the equivalent of this SQL query: `SELECT * FROM Student WHERE student_id = ?`
-    - Note: it doesn't actually run `SELECT *` - it will specify each column name.
+  - Note: it doesn't actually run `SELECT *` - it will specify each column name.
 - The `?` parameter is replaced with the actual `id` value
 - Returns an `Optional<Student>` which can be empty if no record matches the ID
 
@@ -326,130 +431,144 @@ The controller wraps the DTO in a `ResponseEntity` with HTTP status 200 and retu
 
 ---
 
-### Path Variables and Request Parameters
+## GET Students By First Name
 
-> We can use path variables and request parameters in our URLs to get specific resource(s) instead of returning all of them.
-
-#### Path Variable Example: `GET /student/42`
-
-1. **Request arrives**: `GET /student/42`
-2. **Spring matches pattern**: `/student/{id}` matches the URL
-3. **Extraction**: Spring extracts `42` from the URL path
-4. **Type conversion**: Spring converts the string `"42"` to an `Integer`
-5. **Parameter binding**: The value `42` is passed to the `id` parameter
-6. **Method execution**: `getStudentById(42)` is called
-
-#### Request Parameter Example: `GET /student?id=42`
-
-1. **Request arrives**: `GET /student/search?firstName=Peter`
-2. **Spring matches pattern**: `/student/search` matches the URL
-3. **Extraction**: Spring extracts `Peter` from the query string
-5. **Parameter binding**: The value `Peter` is passed to the `firstName` parameter
-6. **Method execution**: `getStudentsByFirstName("Peter")` is called
-
-### Path Variable vs Request Parameter
-
-| Feature     | Path Variable              | Request Parameter                       |
-|-------------|----------------------------|-----------------------------------------|
-| Syntax      | `/student/{id}`            | `/student/search?firstName={firstName}` |
-| Annotation  | `@PathVariable`            | `@RequestParam`                         |
-| Required    | Usually required           | Optional by default                     |
-| Purpose     | Identify specific resource | Filter or configure request             |
-| Example     | `@PathVariable Integer id` | `@RequestParam String firstName`        |
-| URL         | `/student/42`              | `/student/search?firstName=Peter`       |
-| Typical Use | Resource identification    | Search, filtering, pagination           |
-
-### When to Use Each
-
-**Use Path Variables when:**
-- Identifying a specific resource (e.g., `/users/123`, `/orders/456`)
-- The parameter is mandatory for the endpoint to work
-- Building RESTful APIs following resource hierarchy
-- The URL should be clean and readable
-
-**Use Request Parameters when:**
-- Filtering or searching resources (e.g., `/students?firstName=Jane&active=true`)
-- Providing optional configuration (e.g., `/students?page=2&size=20`)
-- The parameters are optional or have default values
-
-### Multiple Path Variables
-
-You can have multiple path variables in a single endpoint:
-```java
-@GetMapping(path = "{studentId}/courses/{courseId}")
-ResponseEntity<Enrollment> getEnrollment(
-    @PathVariable Integer studentId,
-    @PathVariable Integer courseId) {}
+### Endpoint
+```
+GET /student/search?firstName={firstName}
 ```
 
-### Multiple Request Parameters
-
-You can accept multiple request parameters:
-```java
-@GetMapping
-ResponseEntity<List<StudentDto>> searchStudents(
-    @RequestParam(required = false) String major,
-    @RequestParam(required = false) Integer year,
-    @RequestParam(defaultValue = "0") Integer page) {}
+### Flow Diagram
+```
+HTTP Request → Controller (extract firstName param) → Service → Repository → Database
+                              ↓
+                            Mapper
+                              ↓
+                     HTTP Response (JSON)
 ```
 
-### Custom Parameter Naming
+### Detailed Flow
 
-If the URL parameter name differs from the method parameter name, specify it explicitly:
+#### 1. Controller Layer
+**File**: `StudentController.java:41-46`
 
-**Path Variable:**
 ```java
-@GetMapping(path = "{studentId}")
-ResponseEntity<StudentDto> getStudent(@PathVariable("studentId") Integer id) {
-    // The URL has {studentId} but the parameter is named 'id'
+@GetMapping(path = "search")
+ResponseEntity<List<StudentDto>> getStudentsByFirstName(@RequestParam String firstName) {
+    return new ResponseEntity<>(
+        studentDtoMapper.toDtoList(studentService.getStudentsByFirstName(firstName)),
+        HttpStatus.OK);
 }
 ```
 
-**Request Parameter:**
+**What happens:**
+- The `@GetMapping(path = "search")` annotation maps GET requests to `/student/search`
+- The `@RequestParam String firstName` annotation extracts the `firstName` value from the query string
+- Unlike path variables, request parameters appear after a `?` in the URL (e.g., `/student/search?firstName=John`)
+- The method returns a `ResponseEntity` containing a list of `StudentDto` objects with HTTP status 200 (OK)
+
+**Example Request:**
+```
+GET /student/search?firstName=John
+```
+In this example, the value `John` is extracted from the query string and passed as the `firstName` parameter.
+
+#### 2. Service Layer Call
+**File**: `StudentService.java:29-35`
+
+The controller calls `studentService.getStudentsByFirstName(firstName)`:
+
 ```java
-@GetMapping
-ResponseEntity<List<StudentDto>> getStudents(
-    @RequestParam("sort_by") String sortBy) {
-    // URL has sort_by but parameter is named sortBy
+public List<Student> getStudentsByFirstName(String firstName) {
+    Optional<List<Student>> result = studentRepository.findByFirstName(firstName);
+    if (result.isPresent() && result.get().isEmpty()) {
+        throw new EntityNotFoundException("Student(s) with first name (" + firstName + ") not found");
+    }
+    return result.get();
 }
 ```
 
-### Type Conversion
+**What happens:**
+- The service receives the `firstName` parameter from the controller
+- It calls `studentRepository.findByFirstName(firstName)` which returns an `Optional<List<Student>>`
+- **Business logic**: The service checks if students with that first name exist
+  - If the result is present but the list is empty, it throws an `EntityNotFoundException` with a descriptive message
+  - If found, it extracts the list of `Student` entities from the Optional using `.get()`
+- This error handling ensures the API returns a meaningful error response when no students match the search criteria
 
-Spring automatically converts both path variables and request parameters to the parameter type:
+#### 3. Repository Layer
+**File**: `StudentRepository.java:11`
 
-- `Integer id` - converts to integer (e.g., `42`)
-- `String name` - keeps as string (e.g., `john-doe`)
-- `Long id` - converts to long (e.g., `9999999999`)
-- `UUID id` - converts to UUID (e.g., `123e4567-e89b-12d3-a456-426614174000`)
-- `Boolean active` - converts to boolean (e.g., `true` or `false`)
+```java
+Optional<List<Student>> findByFirstName(String firstName);
+```
 
->If conversion fails (e.g., `/student/abc` or `?id=abc` when expecting Integer), Spring returns a 400 Bad Request error.
+**What happens:**
+- This is a custom query method defined in the `StudentRepository` interface
+- Spring Data JPA uses **method name parsing** to automatically generate the query implementation
+- The method name `findByFirstName` follows the naming convention: `findBy` + `PropertyName`
+- Spring Data JPA generates the equivalent of this SQL query: `SELECT * FROM Student WHERE first_name = ?`
+  - Note: it doesn't actually run `SELECT *` - it will specify each column name.
+- The `?` parameter is replaced with the actual `firstName` value
+- Returns an `Optional<List<Student>>` which can contain an empty list if no records match
 
-### Summary: Path Variables vs Request Parameters
+#### 4. Entity Layer
+**File**: `Student.java:121-122`
 
-**Path Variables** (`@PathVariable`):
-- Embedded in URL path: `/student/42`
-- Required by default
-- Identify specific resources
-- Clean, RESTful URLs
-- Used for hierarchical relationships
-- Best for: Resource IDs, required identifiers
+```java
+@Column(name = "first_name", length = 20, nullable = false)
+String firstName;
+```
 
-**Request Parameters** (`@RequestParam`):
-- Query string: `/student?major=CS&year=2024`
-- Optional by default
-- Filter, sort, configure results
-- More verbose URLs
-- Can have multiple values
-- Best for: Filters, search, pagination, sorting, optional settings
+**What happens:**
+- The `@Column(name = "first_name")` annotation maps the `firstName` field to the `first_name` database column
+- Spring Data JPA uses this mapping to construct the WHERE clause in the query
+- When matching records are found, JPA creates `Student` objects for each row and populates all fields from the database
 
-**Rule of thumb:**
-- If you're identifying **what resource**, use `@PathVariable`
-- If you're specifying **how to filter or configure**, use `@RequestParam`
+#### 5. Mapper Layer
+**File**: `StudentDtoMapper.java:19`
 
+After the service returns the list of `Student` entities, the controller invokes the mapper:
 
+```java
+List<StudentDto> toDtoList(List<Student> studentList) throws EntityNotFoundException;
+```
 
+**What happens:**
+- MapStruct converts each `Student` entity in the list to a `StudentDto`
+- This is the same mapper method used in the `getAllStudents()` endpoint
+- The DTO layer protects the internal entity structure from being exposed via the API
+
+#### 6. Response
+The controller wraps the list of DTOs in a `ResponseEntity` with HTTP status 200 and returns it.
+
+**Example Response for GET /student/search?firstName=John:**
+```json
+[
+    {
+        "id": 1,
+        "emailAddress": "john.doe@example.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "phoneNumber": "5551234567",
+        "lastLogin": "2025-10-14T10:30:00Z",
+        "active": true,
+        "dateAdded": "2025-01-15T08:00:00Z",
+        "lastUpdated": "2025-10-14T10:30:00Z"
+    },
+    {
+        "id": 8,
+        "emailAddress": "john.smith@example.com",
+        "firstName": "John",
+        "lastName": "Smith",
+        "phoneNumber": "5559998888",
+        "lastLogin": "2025-10-11T09:15:00Z",
+        "active": true,
+        "dateAdded": "2025-04-05T14:30:00Z",
+        "lastUpdated": "2025-10-11T09:15:00Z"
+    }
+]
+```
 
 ---
 
@@ -475,6 +594,17 @@ Spring automatically converts both path variables and request parameters to the 
 7. If found, entity is returned; if not found, `EntityNotFoundException` is thrown
 8. Controller uses `StudentDtoMapper.toDto()` to convert entity to DTO
 9. Response with single DTO and HTTP 200 is returned
+
+### GET Students By First Name Flow
+1. HTTP GET request to `/student/search?firstName={firstName}` (e.g., `/student/search?firstName=John`)
+2. Spring extracts request parameter `firstName` from the query string
+3. `StudentController.getStudentsByFirstName("John")` is invoked
+4. Controller calls `StudentService.getStudentsByFirstName("John")`
+5. Service calls `StudentRepository.findByFirstName("John")`
+6. Repository queries database: `SELECT * FROM Student WHERE first_name = 'John'`
+7. If found, list of entities is returned; if empty list, `EntityNotFoundException` is thrown
+8. Controller uses `StudentDtoMapper.toDtoList()` to convert entities to DTOs
+9. Response with list of DTOs and HTTP 200 is returned
 
 ### Key Concepts
 - **Path Variables**: Dynamic URL segments that capture resource identifiers (e.g., `{id}`)
