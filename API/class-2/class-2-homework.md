@@ -46,6 +46,7 @@ Example: noel-homework-2
 - There should be one screenshot per request - 3 for standard, 6 for honors.
 
 ### 6. Group activity only - decide critical routes
+- Create a separate branch for this, `group-homework-2-api-definitions`
 - As a group, decide the routes your service must provide by the end of the unit.
 - You will already have 3 defined from this activity
 - Plan what write requests you will need
