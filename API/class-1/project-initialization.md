@@ -7,7 +7,7 @@
 - `wget "https://start.spring.io/starter.zip?javaVersion=17&name=API_NAME" -O API_NAME.zip` will download the zip file to the current directory. Change API_NAME to the name for your service
 - Use the unzip command `unzip API_NAME.zip -d API_NAME` to get the contents in a usable format. If you are getting an error stating that the unzip command is not found, install it using `apt install unzip` or the appropriate package manager for your environment
 - After you have unzipped, move the folder (the contents should be similar to the root directory for mr-fixit-service) to where you would prefer to keep it located 
-> It is recommend to put your service folder in a development folder in your home directory, `mv API_NAME ~/development`. If there is a sub-folder named the same as the service, move that folder instead.
+> It is recommended to put your service folder in a development folder in your home directory, `mv API_NAME ~/development`. If there is a sub-folder named the same as the service, move that folder instead.
 
 ### Example of expected structure
 ![spring-initializr.png](assets/terminal_structure.png)
