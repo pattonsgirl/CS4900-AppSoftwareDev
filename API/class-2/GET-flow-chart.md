@@ -1,30 +1,49 @@
 ```mermaid
 graph TD
-    %% Define nodes
-    A[Client]:::client
-    B[DispatcherServlet]:::mvc
-    C[Controller @GetMapping]:::mvc
-    D[Service Layer]:::service
-    E[Repository Layer - Spring Data JPA]:::repo
-    F[JPA / Hibernate]:::jpa
-    G[Database]:::db
 
-    %% Request flow (solid arrows)
-    A -->|HTTP GET Request| B
-    B -->|Maps to| C
+    %% --- WEB LAYER ---
+    subgraph Web_Layer[Web Layer]
+        A[Client]:::client
+        B[DispatcherServlet]:::mvc
+        C[Controller @GetMapping]:::mvc
+
+        A -->|HTTP GET Request| B
+        B -->|Maps to| C
+    end
+
+    %% --- SERVICE LAYER ---
+    subgraph Service_Layer[Service Layer]
+        D[Service Layer]:::service
+    end
+
+    %% --- DATA LAYER ---
+    subgraph Data_Layer[Data Layer]
+        E[Repository Layer - Spring Data JPA]:::repo
+        F[JPA / Hibernate]:::jpa
+        G[Database]:::db
+    end
+
+    %% --- REQUEST FLOW ---
     C -->|Calls| D
-    D -->|Invokes findAll()| E
+
+    D -->|Invokes findAll| E
+
     E -->|Translates to SQL| F
+
     F -->|Executes Query| G
 
-    %% Response flow (dashed arrows)
+    %% --- RESPONSE FLOW ---
     G -.->|Returns Records| F
-    F -.->|Maps to Entities| E
-    E -.->|Returns Entities| D
-    D -.->|Returns Entities| C
-    C -.->|Serializes & Responds (JSON)| A
 
-    %% Styles
+    F -.->|Maps to Entities| E
+
+    E -.->|Returns Entities| D
+
+    D -.->|Returns Entities| C
+
+    C -.->|Serializes and Responds as JSON| A
+
+    %% --- STYLES ---
     classDef client fill:#fff8e1,stroke:#fbc02d,stroke-width:2px,color:#000,font-weight:bold
     classDef mvc fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
     classDef service fill:#e8f5e9,stroke:#43a047,stroke-width:2px,color:#000
