@@ -3,7 +3,7 @@ graph TD;
     %% Define nodes
     A[Client 🧑‍💻]:::client
     B[DispatcherServlet]:::mvc
-    C[Controller (@GetMapping)]:::mvc
+    C[Controller (aGetMapping)]:::mvc
     D[Service Layer]:::service
     E[Repository Layer (Spring Data JPA)]:::repo
     F[JPA / Hibernate]:::jpa
