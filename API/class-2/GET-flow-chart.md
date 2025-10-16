@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[Client] -->|HTTP GET Request| B[DispatcherServlet]
     B -->|Maps to| C[Controller (@GetMapping)]
@@ -10,3 +11,4 @@ graph TD
     E -->|Returns Entities| D
     D -->|Returns Entities| C
     C -->|Serializes & Responds| A
+```
