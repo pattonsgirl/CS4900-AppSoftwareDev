@@ -1,13 +1,13 @@
 ```mermaid
-graph TD;
+graph TD
     %% Define nodes
-    A[Client 🧑‍💻]:::client
+    A[Client]:::client
     B[DispatcherServlet]:::mvc
-    C[Controller (aGetMapping)]:::mvc
+    C[Controller @GetMapping]:::mvc
     D[Service Layer]:::service
-    E[Repository Layer (Spring Data JPA)]:::repo
+    E[Repository Layer - Spring Data JPA]:::repo
     F[JPA / Hibernate]:::jpa
-    G[(Database)]:::db
+    G[Database]:::db
 
     %% Request flow (solid arrows)
     A -->|HTTP GET Request| B
@@ -25,11 +25,11 @@ graph TD;
     C -.->|Serializes & Responds (JSON)| A
 
     %% Styles
-    classDef client fill:#fffae5,stroke:#f0b400,stroke-width:2px,color:#000,font-weight:bold;
-    classDef mvc fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000;
-    classDef service fill:#e8f5e9,stroke:#43a047,stroke-width:2px,color:#000;
-    classDef repo fill:#fff3e0,stroke:#fb8c00,stroke-width:2px,color:#000;
-    classDef jpa fill:#ede7f6,stroke:#7e57c2,stroke-width:2px,color:#000;
-    classDef db fill:#fce4ec,stroke:#e91e63,stroke-width:2px,color:#000,font-weight:bold;
+    classDef client fill:#fff8e1,stroke:#fbc02d,stroke-width:2px,color:#000,font-weight:bold
+    classDef mvc fill:#e3f2fd,stroke:#2196f3,stroke-width:2px,color:#000
+    classDef service fill:#e8f5e9,stroke:#43a047,stroke-width:2px,color:#000
+    classDef repo fill:#fff3e0,stroke:#fb8c00,stroke-width:2px,color:#000
+    classDef jpa fill:#ede7f6,stroke:#7e57c2,stroke-width:2px,color:#000
+    classDef db fill:#fce4ec,stroke:#e91e63,stroke-width:2px,color:#000,font-weight:bold
 
 ```
