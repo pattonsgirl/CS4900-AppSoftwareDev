@@ -11,7 +11,7 @@ Location: Russ 355
 
 Access to module instructors (read section below) will be coordinated via Microsoft Teams (see access link in Course Information in Pilot).  The instructor of record will, frankly, be learning all of this too - utilize their office hours if you feel unable to productively interact with the module teams.
 
-**Instructor of record office hours: WF 10:30 – 11:30 AM, TR 11:00 AM - 12:00 PM, or by appointment, in Russ 340.**  
+**Instructor of record office hours: See Pilot -> Content -> Course Info**  
     - Communications outside of office hours should be posted to the class Microsoft Teams channel.  
 
 **Module instructor access: via Microsoft Teams** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the General channel in Microsoft Teams. 
