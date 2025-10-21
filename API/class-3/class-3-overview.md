@@ -3,6 +3,8 @@
 ## Table of Contents
 1. [MapStruct](#what-is-mapstruct)
 2. [Code Style](#java-coding-standards)
+3. [Commit Messages](#git-commit-messages)
+4. [Package Architecture](#package-architecture-package-by-layer-vs-package-by-feature)
 
 
 ## What is MapStruct?
@@ -290,3 +292,209 @@ The [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html
 
 `./gradlew spotlessApply
 `
+
+---
+## git commit messages
+
+Your future self, and your teammates, will thank you for writing clear, informative commit messages. [Read this](https://cbea.ms/git-commit/) to take your messages to the next level.
+
+> As an aside, [here is a general git cheat sheet](https://git-scm.com/cheat-sheet)
+
+---
+
+## Package Architecture: Package-by-Layer vs. Package-by-Feature
+
+There are two primary approaches to organizing code in a software project: **package-by-layer** and **package-by-feature**. Each has its own advantages and trade-offs.
+
+### Package-by-Layer (current architecture of `mr-fixit-service`)
+
+package-by-layer organizes code based on technical concerns. All classes of the same type are grouped together regardless of which business feature they support.
+
+### `mr-fixit-service` Project Structure
+```
+com.winsupply.mrfixitservice/
+├── config/
+│   ├── H2TcpConfig.java
+│   └── JpaAuditingConfig.java
+├── controller/
+│   ├── LocationController.java
+│   ├── MaintenanceTechnicianController.java
+│   ├── StudentController.java
+│   └── WorkOrderController.java
+├── dto/
+│   ├── BuildingDto.java
+│   ├── MaintenanceTechnicianDto.java
+│   ├── RoomDto.java
+│   ├── RoomIdDto.java
+│   ├── RoomTypeDto.java
+│   ├── StudentDto.java
+│   ├── WorkOrderCategoryDto.java
+│   ├── WorkOrderDto.java
+│   ├── WorkOrderRequestDto.java
+│   └── WorkOrderStatusDto.java
+├── mapper/
+│   ├── BuildingDtoMapper.java
+│   ├── MaintenanceTechnicianDtoMapper.java
+│   ├── RoomDtoMapper.java
+│   ├── RoomIdDtoMapper.java
+│   ├── RoomTypeDtoMapper.java
+│   ├── StudentDtoMapper.java
+│   ├── WorkOrderCategoryDtoMapper.java
+│   ├── WorkOrderDtoMapper.java
+│   ├── WorkOrderRequestDtoMapper.java
+│   └── WorkOrderStatusDtoMapper.java
+├── model/
+│   ├── composite/
+│   │   └── RoomId.java
+│   ├── Building.java
+│   ├── MaintenanceTechnician.java
+│   ├── Room.java
+│   ├── RoomType.java
+│   ├── Student.java
+│   ├── WorkOrder.java
+│   ├── WorkOrderCategory.java
+│   └── WorkOrderStatus.java
+├── repository/
+│   ├── BuildingRepository.java
+│   ├── MaintenanceTechnicianRepository.java
+│   ├── RoomRepository.java
+│   ├── RoomTypeRepository.java
+│   ├── StudentRepository.java
+│   ├── WorkOrderCategoryRepository.java
+│   ├── WorkOrderRepository.java
+│   └── WorkOrderStatusRepository.java
+├── service/
+│   ├── LocationService.java
+│   ├── MaintenanceTechnicianService.java
+│   ├── StudentService.java
+│   ├── WorkOrderCategoryService.java
+│   ├── WorkOrderService.java
+│   └── WorkOrderStatusService.java
+└── MrFixitServiceApplication.java
+```
+
+### Advantages
+- **Clear separation of concerns**: Each layer has a single responsibility
+- **Consistent architecture**: Easy to enforce architectural patterns across the application
+- **Familiar pattern**: Most developers are familiar with this structure
+- **Easy to find classes by type**: All controllers, services, repositories are grouped together
+
+### Disadvantages
+- **High coupling between layers**: Changes to one feature often require modifications across multiple packages
+- **Poor encapsulation**: Related feature code is scattered across the codebase
+- **Difficult to assess feature scope**: Understanding a single feature requires navigating multiple packages
+- **Harder to modularize**: Extracting a feature into a separate module requires gathering files from multiple locations
+- **Package bloat**: As the application grows, each layer package becomes increasingly large
+
+---
+
+### Package-by-Feature
+
+package-by-feature organizes code around business capabilities or features. All classes related to a specific feature are grouped together regardless of their technical layer.
+
+### If `mr-fixit-service` used package-by-feature
+```
+com.winsupply.mrfixitservice/
+├── common/
+│   └── config/
+│       ├── H2TcpConfig.java
+│       └── JpaAuditingConfig.java
+├── workorder/
+│   ├── controller/
+│   │   └── WorkOrderController.java
+│   ├── dto/
+│   │   ├── WorkOrderCategoryDto.java
+│   │   ├── WorkOrderDto.java
+│   │   ├── WorkOrderRequestDto.java
+│   │   └── WorkOrderStatusDto.java
+│   ├── mapper/
+│   │   ├── WorkOrderCategoryDtoMapper.java
+│   │   ├── WorkOrderDtoMapper.java
+│   │   ├── WorkOrderRequestDtoMapper.java
+│   │   └── WorkOrderStatusDtoMapper.java
+│   ├── model/
+│   │   ├── WorkOrder.java
+│   │   ├── WorkOrderCategory.java
+│   │   └── WorkOrderStatus.java
+│   ├── repository/
+│   │   ├── WorkOrderCategoryRepository.java
+│   │   ├── WorkOrderRepository.java
+│   │   └── WorkOrderStatusRepository.java
+│   └── service/
+│       ├── WorkOrderCategoryService.java
+│       ├── WorkOrderService.java
+│       └── WorkOrderStatusService.java
+├── location/
+│   ├── controller/
+│   │   └── LocationController.java
+│   ├── dto/
+│   │   ├── BuildingDto.java
+│   │   ├── RoomDto.java
+│   │   ├── RoomIdDto.java
+│   │   └── RoomTypeDto.java
+│   ├── mapper/
+│   │   ├── BuildingDtoMapper.java
+│   │   ├── RoomDtoMapper.java
+│   │   ├── RoomIdDtoMapper.java
+│   │   └── RoomTypeDtoMapper.java
+│   ├── model/
+│   │   ├── composite/
+│   │   │   └── RoomId.java
+│   │   ├── Building.java
+│   │   ├── Room.java
+│   │   └── RoomType.java
+│   ├── repository/
+│   │   ├── BuildingRepository.java
+│   │   ├── RoomRepository.java
+│   │   └── RoomTypeRepository.java
+│   └── service/
+│       └── LocationService.java
+├── technician/
+│   ├── controller/
+│   │   └── MaintenanceTechnicianController.java
+│   ├── dto/
+│   │   └── MaintenanceTechnicianDto.java
+│   ├── mapper/
+│   │   └── MaintenanceTechnicianDtoMapper.java
+│   ├── model/
+│   │   └── MaintenanceTechnician.java
+│   ├── repository/
+│   │   └── MaintenanceTechnicianRepository.java
+│   └── service/
+│       └── MaintenanceTechnicianService.java
+├── student/
+│   ├── controller/
+│   │   └── StudentController.java
+│   ├── dto/
+│   │   └── StudentDto.java
+│   ├── mapper/
+│   │   └── StudentDtoMapper.java
+│   ├── model/
+│   │   └── Student.java
+│   ├── repository/
+│   │   └── StudentRepository.java
+│   └── service/
+│       └── StudentService.java
+└── MrFixitServiceApplication.java
+```
+
+### Advantages
+- **High cohesion**: All code related to a feature is in one place
+- **Better encapsulation**: Feature implementation details can be kept private to the package
+- **Easier to understand feature scope**: Navigate to one package to see everything about a feature
+- **Easier to modularize**: Each feature package can potentially become its own module
+- **Easier to delete features**: Remove one package to eliminate a feature entirely
+- **Better team organization**: Different teams can own different feature packages with minimal conflicts
+- **Scales better**: As the application grows, features remain organized and navigable
+
+### Disadvantages
+- **Less obvious architectural layers**: The layered architecture is less visually apparent
+- **Potential code duplication**: Shared utilities might be duplicated if not properly extracted to common packages
+- **Requires more discipline**: Developers must be careful about dependencies between features
+- **Less familiar**: Some developers may find this structure initially confusing
+
+---
+
+
+
+
