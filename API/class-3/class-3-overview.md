@@ -1,4 +1,4 @@
-.# MapStruct & Code Style
+# MapStruct & Code Style
 
 ## Table of Contents
 1. [MapStruct](#what-is-mapstruct)
