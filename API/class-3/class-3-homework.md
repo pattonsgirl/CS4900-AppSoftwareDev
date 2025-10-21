@@ -1,4 +1,4 @@
-## Homework 3 - Catch Up / Group Project Verification
+## Homework 3 - GET cleanup / Group Project - Entity Select
 
 ## Purpose / Objectives
 > The purpose of this assignment is to ensure your group project has a good foundation, is capable of handling GET requests, and is ready to begin PUT/POST requests next lesson.
