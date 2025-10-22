@@ -10,7 +10,7 @@ Outlined below are the differences between POST and PUT requests in the service,
 
 **Characteristics**:
 - **Non-idempotent** - Multiple identical requests create multiple resources
-- **URL doesn't contain resource ID** - The server assigns the ID
+- **URL doesn't contain the final resource ID** - The server generally assigns the ID
 - **Status codes**:
     - `201 CREATED` - Successfully created (best practice)
     - `200 OK` - Also acceptable for creation
@@ -22,7 +22,7 @@ Outlined below are the differences between POST and PUT requests in the service,
 **Purpose**: Update existing resources (full replacement)
 
 **Characteristics**:
-- **Idempotent** - Multiple identical requests produce the same result
+- **Idempotent** - Multiple identical requests produce the same result (unless you have audit fields - these will be updated with each request)
 - **URL contains resource ID** - Client specifies which resource to update
 - **Full replacement** - Typically replaces the entire resource
 - **Status codes**:
@@ -34,7 +34,7 @@ Outlined below are the differences between POST and PUT requests in the service,
 
 ### How the `submitWorkOrder` Method Works
 
-The `submitWorkOrder` method is located in `WorkOrderController.java:54` and is annotated with `@PostMapping`, making it handle POST requests to `/work_order`.
+The `submitWorkOrder` method is located in `WorkOrderController.java` and is annotated with `@PostMapping`, making it handle POST requests to `/work_order`.
 
 ### Method Signature
 ```java
@@ -101,8 +101,8 @@ The service would need a new `updateStudent` method:
 ```
 
 ### Important Notes
-- **Updates existing resources** - Modifies a work order that already exists
-- **Requires ID in URL** - Uses path variable `{id}` to identify which work order to update
+- **Updates existing resources** - Modifies a student that already exists
+- **Requires ID in URL** - Uses path variable `{id}` to identify which student to update
 - **Idempotent** - Making the same PUT request multiple times produces the same result
 
 ---
@@ -115,7 +115,7 @@ The service would need a new `updateStudent` method:
 - Example: PATCH to only update status without changing other fields
 
 **DELETE Method** 
-- _**DANGER ZONE**_
+- (_**DANGER ZONE**_)
 - This will delete the record from your database 
 - Hard deleting records is often avoided - once it's gone, it's gone, and you have no way of looking up history or restoring it.
 - Consider "soft-deleting" a record if it is no longer needed - this is often done through `isActive` or `status` columns. You can update the column to false, N, or any other value that indicates this record is no longer active. Then, when you are querying, you add this column to your `where` clause to only get active records.
