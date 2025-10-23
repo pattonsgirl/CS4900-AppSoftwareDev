@@ -298,7 +298,11 @@ The [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html
 
 Your future self, and your teammates, will thank you for writing clear, informative commit messages. [Read this](https://cbea.ms/git-commit/) to take your messages to the next level.
 
-> As an aside, [here is a general git cheat sheet](https://git-scm.com/cheat-sheet)
+> As an aside, here are some general resources that are highly recommended:
+> 
+> [git branching](https://learngitbranching.js.org)
+> 
+> [git cheat sheet](https://git-scm.com/cheat-sheet)
 
 ---
 
