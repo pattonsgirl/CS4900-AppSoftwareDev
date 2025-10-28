@@ -10,8 +10,8 @@ Perform the following tasks.
 ### 1. Clone the Course Repository
 1.  In your terminal, navigate to the directory where you store your projects.
 2.  Clone the repository using the following command:
-    `git clone https://github.com/pattonsgirl/CS4900-AppSoftwareDev.git`
-3.  Open the cloned `CS4900-AppSoftwareDev` folder in your code editor (e.g., VS Code).
+    `git clone https://github.com/WSU-kduncan/mr-fixit-ui.git`
+3.  Open the cloned project folder in your code editor (e.g., VS Code).
 
 ### 2. Install Dependencies
 1.  Open an integrated terminal within your code editor (inside the project's root folder).
