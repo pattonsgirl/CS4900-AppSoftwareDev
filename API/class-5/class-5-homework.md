@@ -35,7 +35,16 @@ This is it, guys. Make any final touches, implement any last minute functionalit
 
 ### 3. Ensure changes are commited and pushed/merged to upstream default branch
 
+### 4. README.md with instructions
+Minimum requirements:
+- required tools (Java version, any other dependencies)
+- how to run API (which branch, point to DB repo & instructions, how to start service)
+- how to test (point to endpoint design doc and Bruno collections, quick info of test runs that should work)
+
 # Rubric
+
+### Contribution requirements
+Every team member should have one or more commits against this final compilation of your group's API. No commits = no credit.  Heavy recommendation to use PRs to avoid accidental clobbering - or at least to identify merge conflicts before creating chaos. 
 
 ### Group Assignment
 Assignment score: X / 10 points
@@ -44,8 +53,13 @@ Assignment score: X / 10 points
 -   `[ ]` Project has proper package-by-layer architecture with clearly named packages
 -   `[ ]` Classes, packages, methods, and variables follow Java coding standards
 -   `[ ]` Code is consistently formatted
--   `[ ]` GET controller methods are created for one entity (two entities for honors) to find all, find by id, and find by search string (2pts)
--   `[ ]` POST/PUT/DELETE controller methods are created for one entity (two entities for honors)
+-   `[ ]` GET controller methods are created for one entity to find all, find by id, and find by search string
+  - `[ ]` Honors: two entities with GET controller methods to find all, find by id, and find by search string  
+-   `[ ]` POST/PUT/DELETE controller methods are created for one entity
+  - `[ ]` Honors: two entities with POST / PUT / DELETE controller methods  
+-   `[ ]` Polished Bruno collection(s) that support testing your implemented endpoints
+-   `[ ]` Updated API design / endpoint document that *also* denotes what is currently implemented (keep this up to date as your team containues implementing endpoints)
+-   `[ ]` README.md in repo with project instructions
 -   `[ ]` Code is pushed to the repository with a clear commit message
 
 
