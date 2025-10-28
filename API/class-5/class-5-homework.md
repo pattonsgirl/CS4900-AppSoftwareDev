@@ -57,9 +57,9 @@ Assignment score: X / 10 points
 -   `[ ]` Classes, packages, methods, and variables follow Java coding standards
 -   `[ ]` Code is consistently formatted
 -   `[ ]` GET controller methods are created for one entity to find all, find by id, and find by search string
-  - `[ ]` Honors: two entities with GET controller methods to find all, find by id, and find by search string  
+    - `[ ]` Honors: two entities with GET controller methods to find all, find by id, and find by search string  
 -   `[ ]` POST/PUT/DELETE controller methods are created for one entity
-  - `[ ]` Honors: two entities with POST / PUT / DELETE controller methods  
+    - `[ ]` Honors: two entities with POST / PUT / DELETE controller methods  
 -   `[ ]` Polished Bruno collection(s) that support testing your implemented endpoints
 -   `[ ]` Updated API definitions document that *also* denotes what is currently implemented (keep this up to date as your team continues implementing pieces of the API)
 -   `[ ]` README.md in repo with project instructions
