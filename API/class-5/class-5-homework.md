@@ -29,11 +29,20 @@ Example: noel-homework-3
 
 ### 1. Merge all final changes
 This is it, guys. Make any final touches, implement any last minute functionality - whatever you need to make sure your project is ready for the front end!
+- Ensure a directory called `api-definitions` exists in the root of the group repo and contains your api definitions document
 
 ### 2. Ensure proper architecture and code style
 - Follow the steps in [Cleanup](#cleanup) for your group's default branch
 
-### 3. Ensure changes are commited and pushed/merged to upstream default branch
+### 3. Create/Edit a README.md file
+- Create or revise your README.md file. If it doesn't exist, create it in the root of your group repo.
+- Include requirements for running the application
+  - Java version required
+  - How to start the docker container for your database (would suggest creating a copy of the database/docker files in your group repo so that everything is in one place)
+  - Description of what the service does/provides (reference the api definitions document)
+  - Contributors
+
+### 4. Ensure changes are commited and pushed/merged to upstream default branch
 
 # Rubric
 
@@ -44,8 +53,9 @@ Assignment score: X / 10 points
 -   `[ ]` Project has proper package-by-layer architecture with clearly named packages
 -   `[ ]` Classes, packages, methods, and variables follow Java coding standards
 -   `[ ]` Code is consistently formatted
--   `[ ]` GET controller methods are created for one entity (two entities for honors) to find all, find by id, and find by search string (2pts)
--   `[ ]` POST/PUT/DELETE controller methods are created for one entity (two entities for honors)
+-   `[ ]` All endpoints are implemented according the api definitions document (2pts)
+-   `[ ]` Bruno collection is updated with all endpoints (2pts)
+-   `[ ]` README.md file exists in project root with startup instructions and overview of project
 -   `[ ]` Code is pushed to the repository with a clear commit message
 
 
