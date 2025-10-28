@@ -38,11 +38,11 @@ This is it, guys. Make any final touches, implement any last minute functionalit
 ### 4. Documentation polish
 1. Update the API definition document with any changes and denote what has been implemented
 2. Update Bruno collection to test all working endpoints
-3. README.md with instructions
-Minimum requirements:
-- required tools (Java version, any other dependencies)
-- how to run API (which branch, point to DB repo & instructions, how to start service)
-- how to test (point to API definition doc and Bruno collections, quick info of test runs that should work)
+3. README.md with instructions  
+  - Minimum requirements:
+    - required tools (Java version, any other dependencies)
+    - how to run API (which branch, point to DB repo & instructions, how to start service)
+    - how to test (point to API definition doc and Bruno collections, quick info of test runs that should work)
 
 # Rubric
 
