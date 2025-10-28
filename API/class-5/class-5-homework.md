@@ -35,11 +35,14 @@ This is it, guys. Make any final touches, implement any last minute functionalit
 
 ### 3. Ensure changes are commited and pushed/merged to upstream default branch
 
-### 4. README.md with instructions
+### 4. Documentation polish
+1. Update the API definition document with any changes and denote what has been implemented
+2. Update Bruno collection to test all working endpoints
+3. README.md with instructions
 Minimum requirements:
 - required tools (Java version, any other dependencies)
 - how to run API (which branch, point to DB repo & instructions, how to start service)
-- how to test (point to endpoint design doc and Bruno collections, quick info of test runs that should work)
+- how to test (point to API definition doc and Bruno collections, quick info of test runs that should work)
 
 # Rubric
 
@@ -58,7 +61,7 @@ Assignment score: X / 10 points
 -   `[ ]` POST/PUT/DELETE controller methods are created for one entity
   - `[ ]` Honors: two entities with POST / PUT / DELETE controller methods  
 -   `[ ]` Polished Bruno collection(s) that support testing your implemented endpoints
--   `[ ]` Updated API design / endpoint document that *also* denotes what is currently implemented (keep this up to date as your team containues implementing endpoints)
+-   `[ ]` Updated API definitions document that *also* denotes what is currently implemented (keep this up to date as your team continues implementing pieces of the API)
 -   `[ ]` README.md in repo with project instructions
 -   `[ ]` Code is pushed to the repository with a clear commit message
 
