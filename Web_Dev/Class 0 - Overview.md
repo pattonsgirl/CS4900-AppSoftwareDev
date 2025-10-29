@@ -2,109 +2,205 @@
 
 ### **Goal**
 
-Set up a working development environment, understand the purpose of the Angular Command Line Interface (CLI), and dissect the structure of a modern, standalone-by-default Angular project.
+Set up a working development environment, understand the evolution and philosophy of modern Angular, and dissect the structure of a standalone-by-default Angular project using the WSU Work Order Management application as our reference.
 
 ### **Topics**
 
+#### **Setting the Stage: From AngularJS to Modern Angular**
+
+Understanding Angular's evolution helps appreciate modern design decisions. The journey from AngularJS (Angular 1.x) through Angular 2+ to today's modern Angular (v14-17+) represents a strategic response to developer feedback and competitive pressures. Modern Angular is characterized by three key pillars:
+
+1. **Standalone Components** - Eliminating mandatory `NgModule` system, reducing boilerplate
+2. **Signals** - Fine-grained reactivity system for intuitive state management
+3. **New Template Syntax** - Built-in control flow blocks like `@if` and `@for`
+
+This curriculum focuses exclusively on this modern paradigm, teaching Angular the way the framework team now recommends.
+
+#### **Core Philosophy: Opinionated, Structured, and Scalable**
+
+Angular is an "opinionated" framework providing built-in solutions for routing, dependency injection, and data management. This contrasts with React's approach where developers select tools from the ecosystem.
+
+**Trade-offs:**
+- **Advantage**: Reduced decision fatigue, consistent architecture, excellent for enterprise applications
+- **Disadvantage**: Less flexibility when you disagree with Angular's opinions
+
 #### **Installing Node.js and npm**
 
-The foundation of any modern web development environment is Node.js. It serves as a JavaScript runtime environment, allowing developers to execute JavaScript code outside of a web browser. Bundled with Node.js is npm (Node Package Manager), the world's largest software registry. Npm is an essential tool for managing project dependencies—the external libraries and tools an application relies on.
+Node.js is a JavaScript runtime environment enabling code execution outside browsers. npm (Node Package Manager) is essential for managing project dependencies.
 
-Please install the latest Long-Term Support (LTS) version of Node.js from the official website:
-
-[Node.js](https://nodejs.org/)
-
-#### 
+Install the latest LTS version: [https://nodejs.org/](https://nodejs.org/)
 
 #### **What is a Package Manager?**
 
-A package manager like npm automates the process of installing, updating, and managing the libraries (packages) a project needs. It reads a configuration file, package.json, which lists all dependencies. When a command like npm install is run, npm downloads the correct versions of these packages from its registry and places them in a `node_modules` folder within the project. This ensures that every developer working on the project has the exact same set of tools, creating a consistent and reproducible development environment.
-
-#### 
+Package managers automate installing, updating, and managing libraries. npm reads `package.json` to download dependencies into `node_modules`, ensuring consistent development environments across teams.
 
 #### **Installing the Angular CLI**
 
-The Angular Command Line Interface (CLI) is a powerful tool for initializing, developing, scaffolding, and maintaining Angular applications. It handles complex configuration and build processes, allowing developers to focus on writing code.
+The Angular CLI is a powerful tool for initializing, scaffolding, and maintaining applications.
 
-To install the CLI globally on a machine, students should open their terminal or command prompt and run:
-
-```
+```bash
 npm install -g @angular/cli
 ```
 
-The `-g` flag signifies a global installation, making the ng command available anywhere on the system. As of Angular version 7, the major versions of the Angular core framework and the CLI are aligned, ensuring compatibility.
-
-#### 
+The `-g` flag enables global installation, making the `ng` command available system-wide.
 
 #### **Setting up the IDE (VSCode Recommended)**
 
-A capable Integrated Development Environment (IDE) is crucial for productivity. Visual Studio Code (VSCode) is highly recommended for Angular development due to its excellent TypeScript support and a rich ecosystem of extensions.
+Visual Studio Code offers excellent TypeScript support and Angular extensions.
 
 * **VSCode Download:** [https://code.visualstudio.com/](https://code.visualstudio.com/)  
-* **Recommended Extension:** The official **Angular Language Service** extension provides code completion, navigation, and real-time error checking within templates, significantly improving the development experience.
+* **Recommended Extension:** **Angular Language Service** for code completion and error checking
 
-#### 
+#### **Two Paths: Clone the Course Repository OR Create New Project**
 
-#### **Generating the First Angular Project**
+**Option 1: Clone the WSU Work Order Management Application (Recommended)**
 
-With the CLI installed, creating a new Angular application is a single command. Since Angular version 17, the CLI defaults to creating projects with the modern standalone architecture.
+Work with the complete application we'll study throughout the course:
 
-In the terminal, navigate to a desired directory and run:
-
+```bash
+git clone https://github.com/WSU-kduncan/mr-fixit-ui.git
+cd mr-fixit-ui
+npm install
+ng serve
 ```
-ng new my-angular-app
+
+**Option 2: Create a New Angular Project from Scratch**
+
+Start fresh with your own application:
+
+```bash
+ng new wsu-work-order-app
 ```
 
-The CLI will prompt for a few configuration choices:
+CLI prompts:
+1. **"Would you like to add Angular routing?"** — Select **Yes**
+2. **"Which stylesheet format would you like to use?"** — Select **SCSS** (recommended, used in WSU project)
 
-1. **"Would you like to add Angular routing?"** — Select **Yes**. This sets up the necessary files for navigation.  
-2. **"Which stylesheet format would you like to use?"** — Select **CSS**. This is the most straightforward option for beginners.
+#### **The Modern Project Structure**
 
-#### 
+Modern Angular eliminates the monolithic `app.module.ts` in favor of a decoupled structure with clear separation of concerns:
 
-#### **Delving into the Modern Project Structure**
+**`src/main.ts` - Application Entry Point**
 
-The project structure generated by the CLI is organized for clarity and scalability. The previous reliance on a monolithic app.module.ts has been replaced by a more decoupled and logical file structure that better separates concerns. This architectural improvement isolates responsibilities, making the application easier to understand and maintain.
-
-**src/main.ts (The Application Entry Point):** This is the first file that executes. Its sole responsibility is to bootstrap, or launch, the application. It uses the bootstrapApplication function to start the root component (AppComponent). This is a significant departure from the legacy approach of bootstrapping an NgModule.
+The bootstrap file that launches the application using `bootstrapApplication()`:
 
 ```ts
-// src/main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, appConfig)
-.catch((err) => console.error(err));
+  .catch((err) => console.error(err));
 ```
 
-**src/app/app.config.ts (Application-Level Configuration):** This file is the central hub for application-wide configuration, replacing the role previously held by the root `AppModule`. It is where services, such as the `router` or `HttpClient`, are made available to the entire application through an array of providers. This configuration is then passed to the `bootstrapApplication` function in [`main.ts`](http://main.ts).
+**`src/app/app.config.ts` - Application Configuration**
+
+Central hub for application-wide configuration, replacing the old `AppModule`. Providers register services like routing, HTTP client, and interceptors:
 
 ```ts
-// src/app/app.config.ts
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-
 export const appConfig: ApplicationConfig = {
-  providers:
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes, withComponentInputBinding()),
+    provideHttpClient(withInterceptors([retryInterceptor, errorInterceptor]))
+  ]
 };
 ```
 
-**src/app/app.routes.ts (Defining Navigation):** This file explicitly defines the application's navigation routes. Each route maps a URL path to a specific component. This array of routes is then imported into `app.config.ts` and provided to the application.
+**Key providers in the WSU application:**
+- `provideRouter()` - Registers routing with automatic input binding
+- `provideHttpClient()` - Configures HTTP with retry and error interceptors
+- `provideZoneChangeDetection()` - Optimizes change detection performance
 
-**src/app/app.component.ts (The Root Component):** This is the main component that acts as the container for the entire application. The key feature to note in its `@Component` decorator is standalone: true. This flag signifies that the component does not need to be declared in an NgModule and manages its own dependencies.
+**`src/app/app.routes.ts` - Route Definitions**
 
-#### **Serving the App (ng serve)**
+Defines navigation mapping URL paths to components. Modern Angular uses lazy loading for optimal performance:
 
-To compile and run the application, use the Angular CLI's `ng serve` command from within the project directory.
-
+```ts
+export const routes: Routes = [
+  { 
+    path: 'dashboard',
+    loadComponent: () => import('./features/dashboard/dashboard.component')
+      .then(m => m.DashboardComponent)
+  },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+];
 ```
+
+**`src/app/app.component.ts` - Root Component**
+
+The main container component marked with `standalone: true`:
+
+```ts
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, ErrorNotificationComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
+})
+export class App {
+  protected title = 'wsu-test';
+}
+```
+
+#### **What are Standalone Components?**
+
+Standalone components are self-contained units that don't require `NgModule` declarations. They revolutionize Angular by:
+
+**Key Features:**
+- `standalone: true` - Declares the component as self-contained
+- `imports: []` - Explicitly lists template dependencies
+- Direct lazy loading via router without wrapping in modules
+
+**Benefits:**
+- **Reduced Boilerplate** - Eliminates `.module.ts` files
+- **Simplified Mental Model** - Dependencies declared locally in the component
+- **Better Tree-Shaking** - Smaller bundle sizes, unused code removed
+- **Easier Lazy Loading** - Load individual components, not entire modules
+
+**Example: StatusBadgeComponent from WSU Application**
+
+```ts
+@Component({
+  selector: 'app-status-badge',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './status-badge.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class StatusBadgeComponent {
+  status = input.required<WorkOrderStatus | string>();
+  size = input<'sm' | 'md' | 'lg'>('md');
+  
+  badgeClass = computed(() => {
+    // Automatically recalculates when status or size changes
+    return `badge ${this.statusClass()} badge--${this.size()}`;
+  });
+}
+```
+
+This component demonstrates modern Angular patterns: signal-based inputs, computed values, and standalone architecture.
+
+#### **Interoperability with NgModules**
+
+Angular provides seamless integration between standalone and module-based code:
+
+- **Using standalone in modules:** Add to `imports` array (not `declarations`)
+- **Using modules in standalone:** Import entire module into component's `imports`
+
+This hybrid approach enables gradual migration and use of third-party libraries (Angular Material, Kendo UI) that may still use modules.
+
+#### **Serving the App**
+
+Start the development server with live reloading:
+
+```bash
 ng serve -o
 ```
 
-The `-o` flag automatically opens the application in a new browser tab, typically at `http://localhost:4200`. The development server provides live reloading, meaning any saved changes to the source code will automatically trigger a rebuild and refresh the browser.
+The `-o` flag opens `http://localhost:4200` automatically. Changes to source files trigger automatic rebuild and browser refresh.
 
-#### **A Brief Philosophical Overview**
+#### **Philosophy: Component-Based Architecture**
 
-Modern front-end development is about building interactive, dynamic user interfaces by breaking them down into small, reusable, and encapsulated pieces of code called **components**. Frameworks like Angular provide the structure, tools, and best practices to manage the complexity of these applications, handling everything from rendering the UI to managing application state and communicating with backend servers. The latest Angular methodologies focus on reducing boilerplate and making this process as simple and performant as possible.
+Modern front-end development builds interactive UIs from small, reusable, encapsulated **components**. Angular provides the complete structure, tools, and patterns to manage application complexity—from rendering and state management to routing and server communication. Modern Angular methodologies minimize boilerplate while maximizing performance and developer productivity.
