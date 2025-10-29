@@ -1,4 +1,4 @@
-# Assignment 0 - Setup Verification
+# Homework 0 - Setup Verification
 
 ## Purpose / Objectives
 > The purpose of this assignment is to ensure your development environment is working correctly by cloning, installing, and running an existing Angular project. You will also demonstrate basic interaction with the application by applying a filter to its data.
