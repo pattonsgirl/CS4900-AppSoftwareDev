@@ -30,6 +30,8 @@ Example: noel-homework-3
 ### 1. Merge all final changes
 This is it, guys. Make any final touches, implement any last minute functionality - whatever you need to make sure your project is ready for the front end!
 
+> Not all endpoints / routes need to be implemented at this time - however from the homework scaffolding your group should have a **minimum** of one entity with a GET / PUT / POST / DELETE implemented. We recommend focusing entities / routes that are critical to a base functioning front end. 
+
 ### 2. Ensure proper architecture and code style
 - Follow the steps in [Cleanup](#cleanup) for your group's default branch
 
@@ -43,6 +45,7 @@ This is it, guys. Make any final touches, implement any last minute functionalit
     - required tools (Java version, any other dependencies)
     - how to run API (which branch, point to DB repo & instructions, how to start service)
     - how to test (point to API definition doc and Bruno collections, quick info of test runs that should work)
+> The README document should be cliff notes of software dependencies, reminders to setup your DB, running your project, and a guided demo for a user with Bruno.  Thought about differently - in a few months when you want to use this project for an interview, it should be a quick start guide to get your head back in the game.
 
 # Rubric
 
