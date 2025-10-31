@@ -36,7 +36,7 @@ This is it, guys. Make any final touches, implement any last minute functionalit
 ### 3. Ensure changes are commited and pushed/merged to upstream default branch
 
 ### 4. Documentation polish
-1. Update the API definition document with any changes and denote what has been implemented
+1. Update the API definition document with any changes and denote what has been implemented (see Homework 2 - Critical Routes)
 2. Update Bruno collection to test all working endpoints
 3. README.md with instructions  
   - Minimum requirements:
