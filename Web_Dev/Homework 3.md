@@ -8,7 +8,7 @@
 
 ## Description
 
-Perform the following tasks in your course **homework** repository.
+Make a **branch** off of your GROUP UI repository OR off of `lastname-homework2` named `lastname-homework3`.  Perform the following tasks on this branch.
 
 ### 1. Configure HttpClient
 1.  Configure `HttpClient` in your application by opening `src/app/app.config.ts` and adding `provideHttpClient()` to the `providers` array.
@@ -24,7 +24,7 @@ Perform the following tasks in your course **homework** repository.
 3.  In your component's template, update the `@for` loop to iterate over the new signal that holds the fetched data. Ensure your `track` expression uses a unique identifier from the API data, such as `item.id`.
 
 ### 4. git add, commit, and push
-1.  Push your commits, including the updated `app.config.ts`, service, and component files, to your course **homework** repository.
+1.  Push your commits, including the updated `app.config.ts`, service, and component files, to your `lastname-homework3` branch in your GROUP UI repository.
 
 # Rubric
 
