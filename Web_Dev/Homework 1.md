@@ -8,7 +8,9 @@
 
 ## Description
 
-Perform the following tasks in your course **homework** repository.
+Make sure you have cloned / pulled the latest changes from your GROUP UI repository - remember from homework 0 one team member should have initialized the angular project for this repository.
+
+Make a **branch** off of your GROUP UI repository named `lastname-homework1`.  Perform the following tasks on this branch.
 
 ### 1. Generate New Component
 1.  Use the Angular CLI to generate a new standalone component relevant to your project's theme (e.g., `user-list`, `product-card`).
@@ -32,7 +34,7 @@ Perform the following tasks in your course **homework** repository.
 2.  (Optional Stretch Goal) Add an `@empty` block to your `@for` loop that displays a message when the data array is empty.
 
 ### 7. git add, commit, and push
-1.  Push your commits, including all files for the newly generated component (`.ts`, `.html`, `.css`) and any modified template files, to your course **homework** repository.
+1.  Push your commits, including all files for the newly generated component (`.ts`, `.html`, `.css`) and any modified template files, to your `lastname-homework1` branch in your GROUP UI repository.
 
 # Rubric
 
