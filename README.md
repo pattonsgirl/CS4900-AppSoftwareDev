@@ -50,11 +50,11 @@ This outline is a proposed ordering.
 | 7 - Oct 6      | APIs - From DB to Service <br> DevOps - Coding in Teams | No Class 10/9 - Fall Break |
 | 8 - Oct 13     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
 | 9 - Oct 20     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs - Topics Cont.
-| 10 - Oct 27    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Env Setup   |
-| 11 - Nov 3     | Web Design - Setup & <br>The Anatomy of a Modern Angular App | Web Design - Foundations: <br>Standalone Components & Modern Templates   |
-| 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design - Behavior & <br>State Management with Signals |
-| 13 - Nov 17    | Web Design - HTTP Requests &<br> Async Programming  | Web Design - Data Round Trip &<br> Full-Stack Display   |
-| 14 - Nov 24    | Web Design - Project Work, <br>Review, and Troubleshooting  | No Class 11/27 - Thanksgiving Break  |
+| 10 - Oct 27    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
+| 11 - Nov 3     | Web Design - Foundations: <br>Standalone Components & Modern Templates  | Web Design - Behavior & <br>State Management with Signals   |
+| 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design - HTTP Requests &<br> Async Programming |
+| 13 - Nov 17    | Web Design - Data Round Trip &<br> Full-Stack Display  | Web Design - Project Work, <br>Review, and Troubleshooting  |
+| 14 - Nov 24    | Web Design - Wildcard Topics <br> Testing, Pagination  | No Class 11/27 - Thanksgiving Break  |
 | 15 - Dec 1     | Project Polishing                  | Project Presentation   |
 | 16 - Dec 8     | ---                                | Final Exam Block - Retrospective <br> 12/11, 2:45 PM - 4:45 PM   |
 
