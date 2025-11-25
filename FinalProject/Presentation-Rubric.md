@@ -41,7 +41,7 @@ Demonstration 2:
 3. Did you think about users wanting to ____
 4. What else would you implement if you had more time?
 
-## Recommended Grade:
+## Recommended Presentation Grade:
 - 100 - 90 = A = all demonstration requirements met & good understanding of foundational elements
 - 90 - 80 = B = some demonstration requirements met (perhaps with workarounds used, like Bruno, do to not having proper connection) & good understanding of foundational elements
 - 80 - 70 = C = some demonstration requirements met & some to poor understanding of foundational elements
