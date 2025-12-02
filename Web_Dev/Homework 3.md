@@ -33,7 +33,7 @@ Assignment score: X / 5 points
 -   `[ ]` `HttpClient` is correctly provided to the application.
 -   `[ ]` The data service is updated to make an HTTP `GET` request.
 -   `[ ]` A TypeScript interface correctly models the API response data.
--   `[ ]S` The component correctly uses `toSignal` with an `initialValue`.
+-   `[ ]` The component correctly uses `toSignal` with an `initialValue`.
 -   `[ ]` The template successfully renders the data fetched from the remote API.
 
 **Feedback:**

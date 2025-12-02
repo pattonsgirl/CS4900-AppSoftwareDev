@@ -98,3 +98,23 @@ Review any project feedback. It is likely you will have made changes to your API
 - `[ ]` Code is pushed to the repository with a clear commit message
 
 ## Content / Task Expectations for the `CS4900-UI` Group Repository
+
+Here is the final checklist for items in your UI repository. 
+
+UI Implementation:
+- `[ ]` Application makes one or more HTTP GET requests. (READ) Data is successfully fetched and displayed.
+- `[ ]` Application makes one or more HTTP POST requests. (CREATE) A reactive form can create and POST new items via the service.
+- `[ ]` Application makes one or more HTTP DELETE requests. (DELETE) UI includes functionality to delete items, which calls the service.
+- `[ ]` The UI list correctly refreshes after CREATE and DELETE operations.
+- `[ ]` Good commit structure based on the completion of CRUD components.
+
+Honors (pick one or more):
+- `[ ]` Application makes one or more HTTP PUT requests. (UPDATE) A reactive form can update existing items via the service.
+- `[ ]` Application interfaces with an external API (not the group project API)
+
+`README.md` in the root of the repository folder with:  
+- `[ ]` required tools (Angular version, any other dependencies)
+- `[ ]` how to run UI (which branch, point to API repo & instructions, how to start application)
+- `[ ]` screenshot(s) or video clips of working state of application and one or two things it currently does (this should be something the user could also try)
+
+> The README document should be cliff notes of software dependencies and what runs in your project. 
