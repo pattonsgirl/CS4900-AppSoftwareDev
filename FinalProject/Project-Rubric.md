@@ -4,13 +4,47 @@
 
 This repository will contain the core of your project description, your database design, and UI / UX user flows and wireframes.
 
-### Project Description & MVP
+### README & MVP
 
-Add a `README.md` page to the repository.
+It is expected that you have some "drift" from Bri's MVP packets, so you'll need to define the *current* truth of your project.
 
-Add a folder named `MVP`
+Add a `README.md` page to the repository. This is no longer your Project Proposal, but is now your description.  The README page should cover the following:
 
-It is expected that you have some "drift" from Bri's MVP packets.
+Project Information:
+- [ ] Project Name *Optional* using wordmark
+- [ ] Project Overview - one sentence summary
+- [ ] Project Description - elaborates on overview
+- [ ] Project Goals - 2-3 goals outlined based on project description
+- [ ] Style - cleanliness / good formatting
+
+Project Composition  
+Link to each of the following. Along with your link, provide a one sentence summary about what the user will find there
+- [ ] MVP
+- [ ] UI / UX design
+- [ ] Database design / Database instructions
+- [ ] API repository
+- [ ] Web Design repository
+
+---
+
+Add a file called `MVP.md` to the repository.  Remember that MVP means *Minimum Viable Product*.  In this document, revist / update the following information about the focus of your application:
+
+- Point of View
+  - [ ] Who:
+  - [ ] Who NOT:
+- Entities
+  - [ ] What:
+  - [ ] What NOT:
+- Actions
+  - [ ] When
+  - [ ] When NOT:
+- Links
+  - [ ] Where:
+  - [ ] Where NOT:
+- Actions
+  - [ ] Why:
+  - [ ] Why NOT:
+- [ ] Style - cleanliness / good formatting
 
 ---
 
@@ -20,7 +54,7 @@ So look - no one will have the heart to tell you to toss your dream designs and 
 
 Create a `README.md` file in your group's UIUX folder in the repository: 
 - [ ] Screenshots of your user flow(s), wireframe(s) and brand guide
-    - Your figma accounts are NOT permanent - take this moment to grab what you need / export files / upload screenshots
+    - Your Figma accounts are NOT permanent - take this moment to grab what you need / export files / upload screenshots
 - [ ] User flow(s) and wireframe(s) with include descriptions to explain the associated action / interaction
 - [ ] Brand guide must have notes on tone or personality (1–2 bullet points)
 - Optional (Required for Honors)
@@ -56,11 +90,11 @@ Review any project feedback. It is likely you will have made changes to your API
 - `[ ]` Code is consistently formatted
 - `[ ]` GET controller methods are created for one entity to find all, find by id, and find by search string
     - `[ ]` Honors: two entities with GET controller methods to find all, find by id, and find by search string  
-- `[ ]` POST/PUT/DELETE controller methods are created for one entities 
+- `[ ]` POST/PUT/DELETE controller methods are created for one or more entities 
     - `[ ]` Honors: two entities with POST / PUT / DELETE controller methods  
 - `[ ]` Polished Bruno collection(s) that support testing your implemented endpoints
 - `[ ]` Updated API definitions document that *also* denotes what is currently implemented (keep this up to date as your team continues implementing pieces of the API)
-- `[ ]` README.md in repo with project instructions
+- `[ ]` README.md in repo with project instructions (tools needed, how to execute, how to test with Bruno)
 - `[ ]` Code is pushed to the repository with a clear commit message
 
 ## Content / Task Expectations for the `CS4900-UI` Group Repository
