@@ -16,6 +16,17 @@ It is expected that you have some "drift" from Bri's MVP packets.
 
 ### UI / UX Design
 
+So look - no one will have the heart to tell you to toss your dream designs and make new diagrams based on reality of what your app looks like now that your group is implementing the web design portion.  If your final project is a massively different vision from your OG design, do go back to Figma and make some adjustments.  If your OG design is still your end game plan, keep it going.
+
+Create a `README.md` file in your group's UIUX folder in the repository: 
+- [ ] Screenshots of your user flow(s), wireframe(s) and brand guide
+    - Your figma accounts are NOT permanent - take this moment to grab what you need / export files / upload screenshots
+- [ ] User flow(s) and wireframe(s) with include descriptions to explain the associated action / interaction
+- [ ] Brand guide must have notes on tone or personality (1–2 bullet points)
+- Optional (Required for Honors)
+    - [ ] Iconography - https://fonts.google.com/icons - You can customize the icons to fit your style.
+    - [ ] Wordmark
+
 ---
 
 ### Database Design
