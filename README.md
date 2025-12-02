@@ -60,21 +60,20 @@ This outline is a proposed ordering.
 
 ## Grading
 
-**Fall 2025 DRAFT**
+**Fall 2025**
 
 * Note: this is planned on current assignment outlines to set course expectations.  Total number of assignments / assignment weight may change.
 
 | Category   | Weight | Sub-Category   | Sub-Category Weight |
 |------------|--------|----------------|---------------------|
-| Business Requirements <br>& Agile Methods Module | 15% | Invididual Assignment x 5 <br> Group Project Requirements | 70% <br> 30%  |
-| UI / UX Module | 15% | Individual Assignments x 4 <br> Group Project Compilation | 70% <br> 30%  |
-| Database Design Module | 15% | Individual Assignments x 5 <br> Group Assignments x 5 <br> Group Project Compilation | 70% <br> 15% <br> 15%  |
-| API Module | 15% | Individual Assignments x 5 <br> Group Project Assignments x 2 <br> Group Project Compilation | 70% <br> 20% <br> 10%  |
-| Web Design Module | 15% | Individual Assignments x 5 <br> Group Project Compilation | 70% <br> 30%  |
-| Response to Feedback  | 5%  | Per Unit  | 20% Each |
+| Business Requirements <br>& Agile Methods Module | 16% | Invididual Assignment x 5 <br> Group Project Requirements | 70% <br> 30%  |
+| UI / UX Module | 16% | Individual Assignments x 4 <br> Group Project Compilation | 70% <br> 30%  |
+| Database Design Module | 16% | Individual Assignments x 5 <br> Group Assignments x 5 <br> Group Project Compilation | 70% <br> 15% <br> 15%  |
+| API Module | 16% | Individual Assignments x 5 <br> Group Project Assignments x 2 <br> Group Project Compilation | 70% <br> 20% <br> 10%  |
+| Web Design Module | 16% | Individual Assignments x 5 <br> Group Project Compilation | 70% <br> 30%  |
 | Project Final Grade  | 10%  |   |  |
 | Project Presentation  | 5%  |   |  |
-| Retrospective  | 5%  |   |  |
+| Retrospective <br>& Resume Review  | 5%  |   |  |
 
 The guiding grading scale for the course is [90-100] A; [80-90) B; [70-80) C; [60-69) D; [0-60) F. 
 
