@@ -2,6 +2,8 @@
 
 All team members must talk during the presentation. Not attending or not speaking during the presentation = 0 for the team member.
 
+Dress code is business casual (nice pants and usually a polo top). Inappropriate dress (pjs / sweatpants) will result in dismissal from the presentation room and a 0 on the presentation portion.
+
 ## Project Presentation Elements
 Score of 0 to 5 for the following elements. 
 - 0 being weak presentation that shows lack of understanding of key elements
