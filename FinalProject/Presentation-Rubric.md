@@ -45,7 +45,7 @@ Demonstration 2:
 
 ## Recommended Presentation Grade:
 - 100 - 90 = A = all demonstration requirements met & good understanding of foundational elements
-- 90 - 80 = B = some demonstration requirements met (perhaps with workarounds used, like Bruno, do to not having proper connection) & good understanding of foundational elements
+- 90 - 80 = B = most demonstration requirements met (perhaps with workarounds used, like Bruno, due to not having proper connection) & good understanding of foundational elements"
 - 80 - 70 = C = some demonstration requirements met & some to poor understanding of foundational elements
 - 70 - 60 = D = miniminal demonstration requirements met & some to poor understanding of foundational elements
 - 60 - 0 = F = no demonstration requirements met & none to poor understanding of foundational elements
