@@ -1,5 +1,11 @@
 # Final Project Delivery Rubric
 
+## Contributions (or team member will receive a 0)
+
+- Each team members must make reasonable number of contributions to group project commit history between 12/1 & 12/10
+    - Just a spelling update here or there is not considered a significant contribution
+- Failure to be author of contributions towards the compilation below will result in a 0 for the final group project score
+
 ## Content / Task Expectations for the `CS4900` Group Repository
 
 This repository will contain the core of your project description, your database design, and UI / UX user flows and wireframes.
