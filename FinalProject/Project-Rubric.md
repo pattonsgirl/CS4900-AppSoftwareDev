@@ -116,6 +116,8 @@ UI Implementation:
 - `[ ]` Application makes one or more HTTP DELETE requests. (DELETE) UI includes functionality to delete items, which calls the service.
 - `[ ]` The UI list correctly refreshes after CREATE and DELETE operations.
 - `[ ]` Good commit structure based on the completion of CRUD components.
+- `[ ]` Application utilizes modern Angular control flow (@if, @for, @switch) for list rendering and conditional content display.
+- `[ ]` Visual elements utilize attribute/style binding ([class], [style]) to dynamically update the appearance (e.g., color, visibility, size) of list items, buttons, or containers based on internal component or application state (e.g., error state, loading state, item quantity).
 
 Honors (pick one or more):
 - `[ ]` Application makes one or more HTTP PUT requests. (UPDATE) A reactive form can update existing items via the service.
