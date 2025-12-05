@@ -21,7 +21,10 @@ Project Information:
 - [ ] Project Overview - one sentence summary
 - [ ] Project Description - elaborates on overview
 - [ ] Project Goals - 2-3 goals outlined based on project description
+- [ ] Screenshots showing off the final app (may be duplicated from UI repo)
+- [ ] Link to Presentation PDF (upload Presentation to Repo)
 - [ ] Style - cleanliness / good formatting
+
 
 Project Composition  
 Link to each of the following. Along with your link, provide a one sentence summary about what the user will find there
