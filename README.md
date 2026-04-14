@@ -1,5 +1,5 @@
 # CS 4900 – Application of the Software Development Lifecycle
-## Fall 2025
+## Fall 2026 (Preview)
 ## Course Developed by Winsupply & Wright State University
 
 ## Course Information
@@ -40,23 +40,22 @@ This outline is a proposed ordering.
 
 | Week # - Date  | Tuesday Topic(s)                   | Thursday Topic(s) |
 | :-----------:  | -----------                        | ----------- |
-| 1 - Aug 18     | ---                                | Course Overview <br> Group Formation, Theme Brainstorming |
-| 2 - Aug 25     | Agile Development <br> Software Delivery Cycle   | User Interviews / Personas  |
-| 2 - Sept 1     | Defining Business Requirements     | Competitor / Parallel Theme Analysis <br> HANDOFF to UI/ UX  |
-| 3 - Sept 8     | UX/UI - User Flows / Wireframes <br> Intro to Figma   | UX/UI - Usability Heuristics <br> Wireframe Reviews    |
-| 4 - Sept 15    | UX/UI - Brand Guidelines <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
-| 5 - Sept 22    | DB Design - Logical Models         | DB Design - Physical Models   |
-| 6 - Sept 29    | DB Design - Initialization Scripts <br> DevOps - DB Container w/ Maria | DB Design - SQL Business Queries <br> HANDOFF DB to API |
-| 7 - Oct 6      | APIs - From DB to Service <br> DevOps - Coding in Teams | No Class 10/9 - Fall Break |
-| 8 - Oct 13     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
-| 9 - Oct 20     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs - Topics Cont.
-| 10 - Oct 27    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
-| 11 - Nov 3     | Web Design - Foundations: <br>Standalone Components & Modern Templates  | Web Design - Behavior & <br>State Management with Signals   |
-| 12 - Nov 10    | No Class 11/11 - Veteran's Day     | Web Design - HTTP Requests &<br> Async Programming |
-| 13 - Nov 17    | Web Design - Data Round Trip &<br> Full-Stack Display  | Web Design - Project Work, <br>Review, and Troubleshooting  |
-| 14 - Nov 24    | Web Design - Wildcard Topics <br> Testing, Pagination  | No Class 11/27 - Thanksgiving Break  |
-| 15 - Dec 1     | Project Polishing                  | Project Presentation   |
-| 16 - Dec 8     | ---                                | Final Exam Block - Retrospective <br> 12/11, 2:45 PM - 4:45 PM   |
+| 1 - Aug 24     | Course Overview <br> Group Formation, Theme Brainstorming    | Agile Development <br> Software Delivery Cycle <br> User Interviews / Personas  |
+| 2 - Aug 31     | Defining Business Requirements     | Competitor / Parallel Theme Analysis <br> HANDOFF to UI/ UX  |
+| 3 - Sept 7     | UX/UI - User Flows / Wireframes <br> Intro to Figma   | UX/UI - Usability Heuristics <br> Wireframe Reviews    |
+| 4 - Sept 14    | UX/UI - Brand Guidelines <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
+| 5 - Sept 21    | DB Design - Logical Models         | DB Design - Physical Models   |
+| 6 - Sept 28    | DB Design - Initialization Scripts <br> DevOps - DB Container w/ Maria | DB Design - SQL Business Queries <br> HANDOFF DB to API |
+| 7 - Oct 5      | APIs - From DB to Service <br> DevOps - Coding in Teams | TBD |
+| 8 - Oct 12     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
+| 9 - Oct 19     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs - Topics Cont.
+| 10 - Oct 26    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
+| 11 - Nov 2     | Web Design - Foundations: <br>Standalone Components & Modern Templates  | Web Design - Behavior & <br>State Management with Signals   |
+| 12 - Nov 9    | TBD     | Web Design - HTTP Requests &<br> Async Programming |
+| 13 - Nov 16    | Web Design - Data Round Trip &<br> Full-Stack Display  | Web Design - Project Work, <br>Review, and Troubleshooting  |
+| 14 - Nov 23    | Web Design - Wildcard Topics <br> Testing, Pagination  | No Class 11/26 - Thanksgiving Break  |
+| 15 - Nov 30     | Project Polishing                  | Project Presentation   |
+| 16 - Dec 7     | ---                                | Final Exam Block - Retrospective <br> 12/10, 2:45 PM - 4:45 PM   |
 
 ## Grading
 
