@@ -26,17 +26,17 @@ CS 2800 (Web Development 1) and / or CS 3700 (Intro to Databases) are **recommen
 ### Office Hours
 
 **Module instructor access:**
-    - **In-person** - for one hour immediately after the course session (TR 3:30 - 4:30 PM) or by appointment.
-    - **via Slack** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the general channel. 
-        - Screen share / synchronous sessions should be requested in advance to be respectful of schedules.
-    - **Email** communications should include one of the module instructors and the course instructor.
+- **In-person** - for one hour immediately after the course session (TR 3:30 - 4:30 PM) or by appointment.
+- **via Slack** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the general channel. 
+    - Screen share / synchronous sessions should be scheduled in advance to be respectful of all parties.
+- **Email** communications should include one of the module instructors and the course instructor.
 
 ## Course Topics / Outline
 This outline is a proposed ordering.
 
 | Week # - Date  | Tuesday Topic(s)                   | Thursday Topic(s) |
 | :-----------:  | -----------                        | ----------- |
-| 1 - Aug 24     | Course Overview <br> Group Formation, Theme Brainstorming    | BR - Agile Development <br> Software Delivery Cycle <br> User Interviews / Personas  |
+| 1 - Aug 24     | Course Overview <br> Group Formation <br> Theme Brainstorming    | BR - Agile Development <br> Software Delivery Cycle <br> User Interviews / Personas  |
 | 2 - Aug 31     | BR - Defining Business Requirements / MVP    | BR - Reviewing MVP Proposals <br> HANDOFF to UI/ UX <br> UX/UI - Competitor Analysis  |
 | 3 - Sept 7     | UX/UI - User Flows / Wireframes <br> Intro to Figma   | UX/UI - Usability Heuristics <br> Wireframe Reviews    |
 | 4 - Sept 14    | UX/UI - Brand Guidelines <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
