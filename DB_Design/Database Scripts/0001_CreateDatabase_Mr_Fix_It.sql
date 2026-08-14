@@ -1,5 +1,0 @@
-CREATE DATABASE Mr_Fix_It;
-
-CREATE OR REPLACE ROLE Mr_Fix_It_Views;
-
-GRANT SELECT ON Mr_Fix_It.* TO Mr_Fix_It_Views;
