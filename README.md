@@ -2,26 +2,14 @@
 ## Fall 2026 (Preview)
 ## Course Developed by Winsupply & Wright State University
 
-## Course Information
-Instructor of record: Kayleigh Duncan  
-Time: TR 2:00 PM - 3:20 PM  
-Location: Russ 355  
-
-### Office Hours
-
-Access to module instructors (read section below) will be coordinated via Microsoft Teams (see access link in Course Information in Pilot).  The instructor of record will, frankly, be learning all of this too - utilize their office hours if you feel unable to productively interact with the module teams.
-
-**Instructor of record office hours: See Pilot -> Content -> Course Info**  
-    - Communications outside of office hours should be posted to the class Microsoft Teams channel.  
-
-**Module instructor access: via Microsoft Teams** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the General channel in Microsoft Teams. 
-    - Screen share / synchronous sessions should be requested in advance to be respectful of schedules.
-    - If you are going to send an **email**, email both module instructors and the course instructor.
-
 ## Course Description
-Software development is a team activity where successful software is continually enhanced and refined to add value over time. Working in a team environment with other developers, quality assurance, product owners, and scrum masters is a skill needed for anyone entering or working in a corporate environment. This course will introduce and practice software development in a real world scenario. Students will begin with defining requirements, using agile methodology, then advance to create database designs, create functional UI/UX designs, create microservices, pushing code in a CI/CD pipeline, and create a front end web application. During the software development lifecycle you will practice merging and branching code, code reviews, and unit and performance tests. You will be partnered with software developers, database engineers, and IT leadership from a local Dayton company (Winsupply) for practical hands-on experience and mentorship.
+Software development is a team activity where successful software is continually enhanced and refined to add value over time. Working in a team environment with other developers, quality assurance, product owners, and scrum masters is a skill needed for anyone entering or working in a corporate environment. 
 
-## Student Learning Outcomes 
+This course will introduce and practice software development in a real world scenario. Students will begin with defining requirements, understanding agile methodology, then advance to create and implement database designs, layout functional UI/UX designs, design and build an API, and finally connect all pieces with a front end web application. During the software development lifecycle you will practice merging and branching code and code reviews. Additional concepts will be introduced as time allows, such as containerization, CI/CD pipelines, and unit testing. 
+
+You will be partnered with software developers, database engineers, and IT leadership from a local Dayton company (Winsupply) for practical hands-on experience and mentorship.
+
+## Student Learning Objectives 
 Upon successful completion of this course, students will be able to:	
 1. Demonstrate proficiency in the use of agile software development frameworks
 2. Elicit business requirements, and design and implement a software solution that meets those requirements.
@@ -31,41 +19,49 @@ Upon successful completion of this course, students will be able to:
 
 CS 1181 minimum grade of C **AND** CEG 2350 minimum grade of C.
 
-These prerequisites attempt to ensure familiarity with the command line, the basics of using git and GitHub, and competency with programming, code literacy, and basic data structures.  If you do not feel you meet competency in these areas, talk with your instructor early to consider if this course will be a good fit for you.
+These prerequisites attempt to ensure familiarity with the command line, the basics of using git and GitHub, and competency with programming, code literacy, and basic data structures.  If you do not feel you meet competency in these areas, talk with the course instructor early to consider if this course will be a good fit for your learning goals.
 
-CS 2800 (Web Development 1) and / or CS 3700 (Intro to Databases) are **recommended** for some foundational knowledge in these concepts but are not required.
+CS 2800 (Web Development 1) and / or CS 3700 (Intro to Databases) are **recommended** for some foundational knowledge in these concepts but are not required. You will be given pre work for all topics so that you can review foundational concepts and apply it in assignments.
+
+### Office Hours
+
+**Module instructor access:**
+    - **In-person** - for one hour immediately after the course session (TR 3:30 - 4:30 PM) or by appointment.
+    - **via Slack** Responses may not be immediate.  Posting to the correct module theme will get you the speediest help.  If you are unsure, post to the general channel. 
+        - Screen share / synchronous sessions should be requested in advance to be respectful of schedules.
+    - **Email** communications should include one of the module instructors and the course instructor.
 
 ## Course Topics / Outline
 This outline is a proposed ordering.
 
 | Week # - Date  | Tuesday Topic(s)                   | Thursday Topic(s) |
 | :-----------:  | -----------                        | ----------- |
-| 1 - Aug 24     | Course Overview <br> Group Formation, Theme Brainstorming    | Agile Development <br> Software Delivery Cycle <br> User Interviews / Personas  |
-| 2 - Aug 31     | Defining Business Requirements     | Competitor / Parallel Theme Analysis <br> HANDOFF to UI/ UX  |
+| 1 - Aug 24     | Course Overview <br> Group Formation, Theme Brainstorming    | BR - Agile Development <br> Software Delivery Cycle <br> User Interviews / Personas  |
+| 2 - Aug 31     | BR - Defining Business Requirements / MVP    | BR - Reviewing MVP Proposals <br> HANDOFF to UI/ UX <br> UX/UI - Competitor Analysis  |
 | 3 - Sept 7     | UX/UI - User Flows / Wireframes <br> Intro to Figma   | UX/UI - Usability Heuristics <br> Wireframe Reviews    |
 | 4 - Sept 14    | UX/UI - Brand Guidelines <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
 | 5 - Sept 21    | DB Design - Logical Models         | DB Design - Physical Models   |
 | 6 - Sept 28    | DB Design - Initialization Scripts <br> DevOps - DB Container w/ Maria | DB Design - SQL Business Queries <br> HANDOFF DB to API |
-| 7 - Oct 5      | APIs - From DB to Service <br> DevOps - Coding in Teams | TBD |
+| 7 - Oct 5      | APIs - From DB to Service <br> DevOps - Coding in Teams | APIs - TODO |
 | 8 - Oct 12     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
 | 9 - Oct 19     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs - Topics Cont.
 | 10 - Oct 26    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
 | 11 - Nov 2     | Web Design - Foundations: <br>Standalone Components & Modern Templates  | Web Design - Behavior & <br>State Management with Signals   |
-| 12 - Nov 9    | TBD     | Web Design - HTTP Requests &<br> Async Programming |
+| 12 - Nov 9    | Web Design - TODO     | Web Design - HTTP Requests &<br> Async Programming |
 | 13 - Nov 16    | Web Design - Data Round Trip &<br> Full-Stack Display  | Web Design - Project Work, <br>Review, and Troubleshooting  |
 | 14 - Nov 23    | Web Design - Wildcard Topics <br> Testing, Pagination  | No Class 11/26 - Thanksgiving Break  |
-| 15 - Nov 30     | Project Polishing                  | Project Presentation   |
+| 15 - Nov 30     | Project Polishing                  | Project Presentation <br> **Dress Code: Business Casual**   |
 | 16 - Dec 7     | ---                                | Final Exam Block - Retrospective <br> 12/10, 2:45 PM - 4:45 PM   |
 
 ## Grading
 
-**Fall 2025**
+**Fall 2026**
 
-* Note: this is planned on current assignment outlines to set course expectations.  Total number of assignments / assignment weight may change.
+* Note: this is based on current assignment outlines to set course expectations.  Total number of assignments / assignment weight may change. Students will be informed of changes asap.
 
 | Category   | Weight | Sub-Category   | Sub-Category Weight |
 |------------|--------|----------------|---------------------|
-| Business Requirements <br>& Agile Methods Module | 16% | Invididual Assignment x 5 <br> Group Project Requirements | 70% <br> 30%  |
+| Business Requirements <br>& Agile Methods Module | 16% | Individual Assignment x 5 <br> Group Project Requirements | 70% <br> 30%  |
 | UI / UX Module | 16% | Individual Assignments x 4 <br> Group Project Compilation | 70% <br> 30%  |
 | Database Design Module | 16% | Individual Assignments x 5 <br> Group Assignments x 5 <br> Group Project Compilation | 70% <br> 15% <br> 15%  |
 | API Module | 16% | Individual Assignments x 5 <br> Group Project Assignments x 2 <br> Group Project Compilation | 70% <br> 20% <br> 10%  |
@@ -82,7 +78,7 @@ Unless otherwise specified in the assignment description, assignments are to be 
 
 ### Group Project Requirements
 
-Each module will assign a summary of what the added group project parts / functionalities must be with a due date typically within a week after the module is complete.  As all project work is in a GitHub repository, all group members must contribute (via commits) to the group project to recieve the grade earned by the group.  If a group member makes no commits, they may recieve a grade of 0 for that portion of the group project.
+Each module will assign a summary of what the added group project parts / functionalities must be with a due date typically within a week after the module is complete.  As all project work is in a GitHub repository, all group members must contribute (via commits) to the group project to receive the grade earned by the group.  If a group member makes no commits, they may receive a grade of 0 for that portion of the group project.
 
 #### Feedback Requirements
 
@@ -90,23 +86,33 @@ After submission of group project work, the module instructors will provide deta
 
 ### Honors Requirements
 
-Students taking the course to satisfy the requirements of a university honors program will be given additional requirements for their assignments / group project.  To earn honors credit, students must earn an A or B for the overall course grade, and complete all extra honors requirements detailed in assignment / group project requirements. 
+Students taking the course to satisfy the requirements of a university honors program will be given additional requirements for their assignments / group project.  To earn honors credit, students must earn an A or B for the overall course grade, and complete additional honors requirements detailed in assignment / group project requirements. 
 
 ## Late work
 
 Assignments are due by the due date posted.  Due to the pacing of this course, it is essential to complete assignments to the best of your ability within the time frame given. Late assignments will be accepted for feedback purposes only.  If you have a documented justification for needing an extension contact the course instructor.
 
-## Academic Integrity
+## Academic Integrity & AI Usage
 
-Discussion of course contents with other students is an important part of the academic process and is encouraged. However, it is expected that course assignments will be completed on an individual basis unless otherwise stated. If you work with other students on general concepts, be certain to acknowledge the collaboration and its extent in the assignment. Unacknowledged collaboration will be considered dishonest. Copying or significant collaboration on individual assignments will be considered a violation of the university guidelines for academic honesty. If the same work is turned in by two or more students for individual assignments, all parties involved may be held equally accountable for violation of academic integrity. You are responsible for ensuring that other students do not have access to your individual work.  If you suspect that your work has been compromised notify the course instructor immediately. Failure to attend the first day of class, where we will note this policy, does not excuse you from following these policies. If you have any questions about collaboration or any other issues related to academic integrity, please see the instructor immediately for clarification. 
+Discussion of course contents with other students is an important part of the academic process and is encouraged. However, it is expected that course assignments will be completed on an individual basis unless otherwise stated. If you work with other students on general concepts, be certain to acknowledge the collaboration and its extent in the assignment. Unacknowledged collaboration will be considered dishonest. Copying or significant collaboration on individual assignments will be considered a violation of the university guidelines for academic honesty. If the same work is turned in by two or more students for individual assignments, all parties involved may be held equally accountable for violation of academic integrity. If you suspect that your work has been compromised notify the course instructor immediately. Failure to attend the first day of class, where we will note this policy, does not excuse you from following these policies. If you have any questions about collaboration or any other issues related to academic integrity, please see the instructor immediately for clarification. 
 
 In addition to the policy stated in this syllabus, students are expected to comply with the [Wright State University Code of Student Conduct](http://www.wright.edu/students/judicial/conduct.html), and in particular the portions pertaining to [Academic Integrity](http://www.wright.edu/students/judicial/integrity.html) at all times.
 
-## Use of AI Tools
+### Use of AI Tools
 
-Generative AI (e.g. ChatGPT, Midjourney, Co-pilot, etc.): You may not use AI to complete assignments unless stated otherwise by the instructor / module leaders.  For those assignments where AI tools are permitted, you must include a statement of what AI tools were used in the completion of the assignment, how they were used, and what portions of the assignment include material that was developed with the assistance of AI tools.  If you have any questions about whether or not use of a particular tool or technology is allowed, check with your instructor / module leaders first. 
+Generative AI (e.g. Claude, Gemini, ChatGPT, Midjourney, Co-pilot, etc.): You may not use AI to complete assignments unless stated otherwise by the instructor / module leaders. 
 
-In using AI tools, be aware that every assignment submission will be graded using the criteria provided in the assignment. Be aware that ChatGPT and other AI tools may not develop accurate or high-quality work that earns a passing grade. You will always be expected to check and verify AI-generated results for quality and accuracy. You will be graded on the work you turn in.
+For those assignments where AI tools are permitted, you must include a statement of what AI tools were used in the completion of the assignment, how they were used, and what portions of the assignment include material that was developed with the assistance of AI tools.  
+
+If you have any questions about whether or not use of a particular tool or technology is allowed, check with the course instructor / module leaders first. 
+
+In using AI tools, be aware that every assignment submission will be graded using the criteria provided in the assignment. Be aware that Generative AI tools may not develop accurate or high-quality work that earns a passing assignment grade. You will always be expected to check and verify AI-generated results for quality and accuracy. You will be graded on the work you turn in.
+
+If you cannot explain your submitted work in code-reviews / stand-ups or if your submitted work heavily uses strategies commonly recommended by AI, it may be flagged for suspicion of AI usage or un-cited collaboration. You will be asked to meet with the instructor to review the accusation and an Academic Integrity Violation will be filed.
+
+In addition to the policy stated in this syllabus, students are expected to comply with the [Wright State University Code of Student Conduct](http://www.wright.edu/students/judicial/conduct.html), and in particular the portions pertaining to [Academic Integrity](http://www.wright.edu/students/judicial/integrity.html) at all times.
+
+Two or more Academic Integrity Violations on work in this course will result in an F in the course.
 
 ## Additional Needs
 
