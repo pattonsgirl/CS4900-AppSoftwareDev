@@ -72,17 +72,19 @@ This outline is a proposed ordering.
 
 The guiding grading scale for the course is [90-100] A; [80-90) B; [70-80) C; [60-69) D; [0-60) F. 
 
+Two or more Academic Integrity Violations on work in this course will result in an F in the course (see Academic Integrity and AI Usage).
+
 ### Assignment Requirements
 
 Unless otherwise specified in the assignment description, assignments are to be completed **individually**.  Students may collaborate on ideas and share resources.  Cite collaborations in assignment documentation, code comments, or commit messages.
 
 ### Group Project Requirements
 
-Each module will assign a summary of what the added group project parts / functionalities must be with a due date typically within a week after the module is complete.  As all project work is in a GitHub repository, all group members must contribute (via commits) to the group project to receive the grade earned by the group.  If a group member makes no commits, they may receive a grade of 0 for that portion of the group project.
+Each module will assign a set of deliverables that the group project must implement. The collection will typically within a week after the module is complete. As all project work is in a GitHub repository, all group members must contribute (via commits) to the group project to receive the grade earned by the group.  If a group member makes no commits, they will receive a grade of 0 for that portion of the group project.
 
 #### Feedback Requirements
 
-After submission of group project work, the module instructors will provide detailed feedback that will contain general advice, needed improvements, and possible inquiries.  Teams will be required to create an Issue in their GitHub project for each issue that needs to be resolved or responded to, and will be given a week to address the issues generated.  Module instructors will remain in contact by appointment during this process for clarification or assistance.
+After submission of group project work, the module instructors will provide detailed feedback that will contain general advice, needed improvements, and possible inquiries.  Teams will be required to create an Issue in their GitHub project for each issue that needs to be resolved or responded to, and will be given a week to address the Issues generated.  Module instructors will remain in contact by appointment during this process for clarification or assistance.
 
 ### Honors Requirements
 
@@ -90,7 +92,7 @@ Students taking the course to satisfy the requirements of a university honors pr
 
 ## Late work
 
-Assignments are due by the due date posted.  Due to the pacing of this course, it is essential to complete assignments to the best of your ability within the time frame given. Late assignments will be accepted for feedback purposes only.  If you have a documented justification for needing an extension contact the course instructor.
+Assignments are due by the due date posted. Due to the pacing of this course, it is essential to complete assignments to the best of your ability within the time frame given. Late assignments will be reviewed for feedback purposes only. If you have a documented justification (such as a medical emergency) contact the course instructor immediately.
 
 ## Academic Integrity & AI Usage
 
@@ -100,7 +102,11 @@ In addition to the policy stated in this syllabus, students are expected to comp
 
 ### Use of AI Tools
 
-Generative AI (e.g. Claude, Gemini, ChatGPT, Midjourney, Co-pilot, etc.): You may not use AI to complete assignments unless stated otherwise by the instructor / module leaders. 
+Generative AI (e.g. Claude, Gemini, ChatGPT, Midjourney, Co-pilot, etc.): **You may not use AI to complete assignments unless stated otherwise by the instructor / module leaders.**
+
+You may use generative AI as an inquisitory resource to ask questions on concepts and provide examples, but your submitted work - code or documentation - should be written by you. You should first attempt to reach out / attend office hours to the module instructor for assistance with debugging or implementation hangups.
+
+You may use an AI tool to polish documentation work, but you must submit an original commit with your unedited work.
 
 For those assignments where AI tools are permitted, you must include a statement of what AI tools were used in the completion of the assignment, how they were used, and what portions of the assignment include material that was developed with the assistance of AI tools.  
 
@@ -111,6 +117,8 @@ In using AI tools, be aware that every assignment submission will be graded usin
 If you cannot explain your submitted work in code-reviews / stand-ups or if your submitted work heavily uses strategies commonly recommended by AI, it may be flagged for suspicion of AI usage or un-cited collaboration. You will be asked to meet with the instructor to review the accusation and an Academic Integrity Violation will be filed.
 
 In addition to the policy stated in this syllabus, students are expected to comply with the [Wright State University Code of Student Conduct](http://www.wright.edu/students/judicial/conduct.html), and in particular the portions pertaining to [Academic Integrity](http://www.wright.edu/students/judicial/integrity.html) at all times.
+
+A good guiding philosophy on using AI in software development / project contribution can be reviewed in the [openjdk AI policy](https://openjdk.org/legal/ai) - [https://openjdk.org/legal/ai](https://openjdk.org/legal/ai)
 
 Two or more Academic Integrity Violations on work in this course will result in an F in the course.
 
