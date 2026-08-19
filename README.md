@@ -42,15 +42,15 @@ This outline is a proposed ordering.
 | 4 - Sept 14    | UX/UI - Brand Guidelines <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
 | 5 - Sept 21    | DB Design - Logical Models         | DB Design - Physical Models   |
 | 6 - Sept 28    | DB Design - Initialization Scripts <br> DevOps - DB Container w/ Maria | DB Design - SQL Business Queries <br> HANDOFF DB to API |
-| 7 - Oct 5      | APIs - From DB to Service <br> DevOps - Coding in Teams | APIs - TODO |
-| 8 - Oct 12     | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design   | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers |
-| 9 - Oct 19     | APIs - POST, PUT, DELETE requests <br> DTO Layer    | APIs - Topics Cont.
-| 10 - Oct 26    | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
+| 7 - Oct 5      | APIs - From DB to Service <br> DevOps - Coding in Teams | APIs - Communicating with HTTP <br> Model Layer <br> Bruno for API Design |
+| 8 - Oct 12     | APIs - GET requests / query parameters <br> Controller, Server, DAO Layers | APIs - POST, PUT, DELETE requests <br> DTO Layer |
+| 9 - Oct 19     | APIs - Wildcard Topics <br> Pagination, Testing, Lombok    | APIs - Topics Cont. |
+| 10 - Oct 26    | APIs - Project Work, <br>Review, and Troubleshooting    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
 | 11 - Nov 2     | Web Design - Foundations: <br>Standalone Components & Modern Templates  | Web Design - Behavior & <br>State Management with Signals   |
-| 12 - Nov 9    | Web Design - TODO     | Web Design - HTTP Requests &<br> Async Programming |
-| 13 - Nov 16    | Web Design - Data Round Trip &<br> Full-Stack Display  | Web Design - Project Work, <br>Review, and Troubleshooting  |
-| 14 - Nov 23    | Web Design - Wildcard Topics <br> Testing, Pagination  | No Class 11/26 - Thanksgiving Break  |
-| 15 - Nov 30     | Project Polishing                  | Project Presentation <br> **Dress Code: Business Casual**   |
+| 12 - Nov 9    | Web Design - HTTP Requests &<br> Async Programming     | Web Design - Data Round Trip &<br> Full-Stack Display |
+| 13 - Nov 16    | Web Design - Wildcard Topics <br> Testing, Pagination  | Web Design - Project Work, <br>Review, and Troubleshooting  |
+| 14 - Nov 23    | Web Design - Project Work, <br>Review, and Troubleshooting  | No Class 11/26 - Thanksgiving Break  |
+| 15 - Nov 30     | Project Polishing <br> Presentation Preparation     | Project Presentation <br> **Dress Code: Business Casual**   |
 | 16 - Dec 7     | ---                                | Final Exam Block - Retrospective <br> 12/10, 2:45 PM - 4:45 PM   |
 
 ## Grading
