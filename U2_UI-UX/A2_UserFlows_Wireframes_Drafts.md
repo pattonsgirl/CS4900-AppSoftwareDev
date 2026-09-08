@@ -9,10 +9,11 @@
 **Figma Taskings / Userflow and Wireframe Drafting**  
 You received an invitation to join the educational Figma team. Through this invite, you will see a collection of project boards for all teams. Within your team folder, create a file for your user flows and wireframes \- YOURLASTNAME-ufw-drafts 
 
-Use Figma to digitize the low-fidelity user flows and wireframes you sketched in class. Your user flows and wireframes should note how your app is having the user interact with the key app requirements \- Create, Edit, View All, Search, Dashboard / Homepage.
+Use Figma to digitize the low-fidelity user flow and wireframes you sketched in class. Your user flows and wireframes should note how your app is having the user interact with the key app requirements \- Create, Edit, View All, Search, Dashboard / Homepage.
 
-* Refer to this [user flow template](https://www.figma.com/design/sKgFr1Zs6TVxSfKCrX3sZ3/Style-Guide-Template?node-id=283-1374) you can use when digitizing your user flow. Copy and paste the elements you want to use into your own Figma page.   
-* **Include at least 2 screens for your wireframes.**   
+* **Digitize your group's user flow**. Refer to this [user flow template](https://www.figma.com/design/sKgFr1Zs6TVxSfKCrX3sZ3/Style-Guide-Template?node-id=283-1374) you can use when digitizing your user flow. Copy and paste the elements you want to use into your own Figma page.
+    - You may all use the same userflow if the timing works out. Wireframes (below) should be completed individually.
+* For each of your user's actions, create wireframes - **Include at least 2 screens for your wireframes.**   
   * The frame for your screen should be 1440px wide by 1080px tall.   
   * The height may be more depending on the content of your screen.   
   * This [library of components](https://www.figma.com/design/sKgFr1Zs6TVxSfKCrX3sZ3/Style-Guide-Template?node-id=11-4) **contains a pre-made frame** that you can copy and paste into your Figma page.   
@@ -23,10 +24,10 @@ Use Figma to digitize the low-fidelity user flows and wireframes you sketched in
 
 * In your GROUP Project Repository, create a branch \- LASTNAME-ufw-drafts  
 * On your branch, in a folder named LASTNAME-ufw-drafts. Create a [README.md](http://README.md) file containing:  
-  1. Link to your Figma file (**shared link**) containing your digital versions of your user flow and wireframes.  
+  1. Link to your Figma file (**shared link**) containing the digital version of your user flow and wireframes.  
      * To create a shared link, click your page under the Pages section of the left hand panel within Figma. Your page should be titled “Last Name \- Wireframe Theme Reference”  
      * Once you have selected your page, click the blue button in the top right corner labeled “Share”. It will open a modal where you can select “Copy Link” in the top right corner. Drop that link into your Github repository.   
-  2. A series of screenshots \- the user flow and the corresponding wireframe organized with headers that help annotate Create, Edit, View All, Search, Dashboard / Homepage.
+  2. A series of screenshots \- the user flow and the corresponding wireframes organized with headers that help annotate Create, Edit, View All, Search, Dashboard / Homepage.
 
 **For Next Class ‼️**  
 Review the following material:
