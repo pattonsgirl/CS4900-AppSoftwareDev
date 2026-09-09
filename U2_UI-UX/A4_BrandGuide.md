@@ -45,4 +45,3 @@ Assignment score: X / 5 points
 - [ ] Iconography  
 - [ ] Wordmark/Logo  
 - [ ] Notes on personality (1-2 bullet points)
-
