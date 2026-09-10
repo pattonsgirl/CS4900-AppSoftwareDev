@@ -17,7 +17,7 @@ In the 9/17 class session, you will collaborate with your group to (hopefully) a
 	- create a branch named `lastname-conceptualmodel`
 	- create a folder named `conceptual-model`
 	- create a file named `lastname-cmh.md`.
-2. Watch the required videos or read the required articles (listed in the [1R_PreWork_Conceptual_Models.md](1R_PreWork_Conceptual_Models.md) file)
+2. Watch the required videos or read the required articles (listed in the [1R_PreWork_ConceptualModel.md](1R_PreWork_ConceptualModel.md) file)
 3. Write a description of the following common conceptual model terms:
 	- Purpose of a conceptual model
 	- Entity
