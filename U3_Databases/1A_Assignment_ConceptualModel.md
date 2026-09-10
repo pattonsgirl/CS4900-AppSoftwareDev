@@ -11,9 +11,12 @@
 
 The intent is to learn about conceptual models and build one using your group project’s theme.
 
-In the 9/18 class session, you will collaborate with your group to (hopefully) agree to a common conceptual model, which you will then use to design a logical model ahead of the class session on 9/23.
+In the 9/17 class session, you will collaborate with your group to (hopefully) agree to a common conceptual model, which you will then use to design a logical model ahead of the class session on 9/22.
 
-1. In your HOMEWORK repository, create a folder named `DatabaseDesign`, then create a file named `DB-Assignment-1.md`.
+1. In your team's database repository:
+	- create a branch named `lastname-conceptualmodel`
+	- create a folder named `conceptual-model`
+	- create a file named `lastname-cmh.md`.
 2. Watch the required videos or read the required articles (listed in the [1R_PreWork_Conceptual_Models.md](1R_PreWork_Conceptual_Models.md) file)
 3. Write a description of the following common conceptual model terms:
 	- Purpose of a conceptual model
@@ -24,14 +27,14 @@ In the 9/18 class session, you will collaborate with your group to (hopefully) a
 	- You may use pen & paper, paint, power point, excalidraw, lucid charts - so long as your conceptual model is visible in your file submission
 	- Your conceptual model should contain:
 		- 3 entities (unless defended in description)
-		- 4 attributes per entity (unless defended in description) (1 pt)
+		- 4 attributes per entity (unless defended in description)
 		- Relationship between entities properly defined (and justified in description)
 5. Describe your conceptual model
 
 
 ## Deliverable(s)
 
-Submit to the assignment repository on GitHub.  Your file must include:
+Submit a link to your branch with your work to the Dropbox in Pilot.  Your submission must include:
 
 - Define the following common conceptual model terms:
 	- Purpose of a conceptual model
