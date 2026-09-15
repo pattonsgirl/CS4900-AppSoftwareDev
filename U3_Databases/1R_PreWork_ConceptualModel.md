@@ -7,7 +7,7 @@ You may watch, read, or watch and read, the following resources on conceptual mo
 1. Conceptual Model - Database Design - Class 4
 
    * Good4College Video Class  3.75 minutes
-   * https://www.youtube.com/watch?v=9r\_EslnDxf0\&list=PLxgB-2Vw414hxm4ZuTRV0Hu1v1xNlrKT6\&index=4
+   * https://www.youtube.com/watch?v=9r_EslnDxf0
 
 2. Entity Relationship Diagram - ERD - Conceptual Model - Crow's Foot Notation - Class 5
 
