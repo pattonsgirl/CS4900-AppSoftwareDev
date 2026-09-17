@@ -7,7 +7,7 @@ You may watch, read, or watch and read, the following resources on logical model
 Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF (Watch first 20 minutes)
 
 * Decomplexify
-* https://www.youtube.com/watch?v=GFQaEYEc8\_8
+* https://www.youtube.com/watch?v=GFQaEYEc8_8
 
 ## READ
 
