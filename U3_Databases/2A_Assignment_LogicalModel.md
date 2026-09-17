@@ -13,7 +13,10 @@
 
 The intent is to learn about logical models and build one using your group project’s theme.
 
-1. In your HOMEWORK repository, create a folder named `DatabaseDesign`, then create a file named `DB-Assignment-2.md`.
+1. In your team's database repository:
+	- create a branch named `lastname-logicalmodel`
+	- create a folder named `logical-model`
+	- create a file named `lastname-lmh.md`.
 2. Watch the required videos or read the required articles (listed in the [2R_PreWork_LogicalModel.md](2R_PreWork_LogicalModel.md) file)
 3. Write a description of the following common logical model terms:
 	- Purpose of a logical model
@@ -29,11 +32,11 @@ The intent is to learn about logical models and build one using your group proje
 		- [DB Schema](https://dbschema.com/)
 6. Describe your logical model
 
-In the 9/23 class session, you will collaborate with your group to (hopefully) agree to a common logical model, which you will then use to design a physical model ahead of the class session on 9/25.
+In the 9/22 class session, you will collaborate with your group to (hopefully) agree to a common logical model, which you will then use to design a physical model ahead of the class session on 9/24.
 
 ## Deliverable(s)
 
-Submit to the assignment repository on GitHub.  Your file must include:
+Submit a link to your branch with your work to the Dropbox in Pilot.  Your submission must include:
 
 - Your updated conceptual diagram
 - Define the following common logical model terms:
