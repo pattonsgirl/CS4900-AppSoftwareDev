@@ -13,7 +13,10 @@
 
 The intent is to learn about physical models and build one using your group project’s theme.
 
-1. In your HOMEWORK repository, create a folder named `DatabaseDesign`, then create a file named `DB-Assignment-3.md`.
+1. In your team's database repository:
+	- create a branch named `lastname-physicalmodel`
+	- create a folder named `physical-model`
+	- create a file named `lastname-lmh.md`.
 2. Watch the required videos or read the required articles (listed in the [3R_PreWork_PhysicalModel.md](3R_PreWork_PhysicalModel.md) file)
 3. Write a description of the following common physical model components:
 	- Key difference of the physical model compared to the conceptual and logical models
@@ -29,17 +32,11 @@ The intent is to learn about physical models and build one using your group proj
 		- [DB Schema](https://dbschema.com/)
 6. Describe your physical model
 
-In the 9/25 class session, your physical model will undergo your group peer review to collaborate and agree on a common group physical model to be used ahead of the next assignment due 9/30.
-
-## Submission
-
-Submit link to assignment repository to the Dropbox in Pilot. 
-
-URL looks like: https://github.com/WSU-kduncan/dbdesign-assignments-YOURGHUSERNAME
+In the 9/24 class session, your physical model will undergo your group peer review to collaborate and agree on a common group physical model to be used ahead of the next assignment due 9/29.
 
 ## Deliverable(s)
 
-Submit to the assignment repository on GitHub.  Your `DB-Assignment-3.md` must include:
+Submit a link to your branch with your work to the Dropbox in Pilot.  Your submission must include:
 
 - Your group's logical model
 - Describe each of the following common physical model components:
@@ -50,6 +47,10 @@ Submit to the assignment repository on GitHub.  Your `DB-Assignment-3.md` must i
 - Link to your GROUP logical model
 - Your physical model using group project theme
 - Description of presented physical model
+
+## Submission
+
+Submit link to assignment repository to the Dropbox in Pilot.
 
 ## Rubric
 
