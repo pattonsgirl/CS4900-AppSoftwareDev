@@ -12,6 +12,10 @@
 
 The intent is to learn about SQL queries, tables joins, and indexes to build a SQL Toolbox for your group project theme.
 
+1. In your team's database repository:
+	- create a branch named `lastname-sql-queries`
+	- create a folder named `sql-queries`
+	- create a file named `lastname-sqlq.md`
 1. In your HOMEWORK repository, create a folder named `DatabaseDesign`, then create a file named `DB-Assignment-5.md`.
 2. Watch the required videos or read the required articles (listed in the [5R_PreWork_DatabaseQueries.md](5R_PreWork_DatabaseQueries.md) file)
 3. Write a description of the following common database concepts:
@@ -23,15 +27,11 @@ The intent is to learn about SQL queries, tables joins, and indexes to build a S
 5. Write SQL queries for your group project theme
 6. Provide description your SQL queries.
 
-In the 10/2 class session, your SQL Business queries will undergo your group peer review which you will use to create a SQL Toolbox to assist in your next classes.
-
-## Submission
-
-Submit link to assignment repository to the Dropbox in Pilot. 
+In the 10/1 class session, your SQL Business queries will undergo your group peer review which you will use to create a SQL Toolbox to assist in your next classes.
 
 ## Deliverable(s)
 
-Submit to the assignment repository on GitHub.  Your `DB-Assignment-5.md` must include:
+Submit a link to your branch with your work to the Dropbox in Pilot.  Your submission must include:
 
 - Your group's scripts to create your group's physical database
 - Describe each of the following common database concepts:
@@ -42,6 +42,10 @@ Submit to the assignment repository on GitHub.  Your `DB-Assignment-5.md` must i
 - Link to the Final version of your GROUP physical model
 - Your SQL queries for your group project theme
 - Description of your SQL query scripts
+
+## Submission
+
+Submit link to assignment repository to the Dropbox in Pilot. 
 
 ## Rubric
 

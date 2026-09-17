@@ -12,7 +12,10 @@
 
 The intent is to learn about physical databases and build one using your group project’s theme.
 
-1. In your HOMEWORK repository, create a folder named `DatabaseDesign`, then create a file named `DB-Assignment-4.md`.
+1. In your team's database repository:
+	- create a branch named `lastname-physicaldb`
+	- create a folder named `physicaldb`
+	- create a file named `lastname-pdb.md`
 2. Watch the required videos or read the required articles (listed in the [4R_PreWork_DatabaseScripts.md](4R_PreWork_DatabaseScripts.md) file)
 3. Write a description of the following common physical database concepts:
 	- What information should be included in a create table statement
@@ -26,15 +29,13 @@ The intent is to learn about physical databases and build one using your group p
 	- [Example scripts for initializing Mr. Fix It](https://github.com/pattonsgirl/CS4900-AppSoftwareDev/tree/main/DB_Design/Database%20Scripts)
 7. Provide descriptions in your scripts in comments.
 
-In the 9/30 class session, your physical database scripts will undergo your group peer review to collaborate and agree on common group physical database scripts to be used ahead of the next assignment due 10/2.
+In the 9/29 class session, your physical database scripts will undergo your group peer review to collaborate and agree on common group physical database scripts to be used ahead of the next assignment due 10/1.
 
-## Submission
 
-Submit link to assignment repository to the Dropbox in Pilot. 
 
 ## Deliverable(s)
 
-Submit to the assignment repository on GitHub.  Your `DB-Assignment-4.md` must include:
+Submit a link to your branch with your work to the Dropbox in Pilot.  Your submission must include:
 
 - Your group's physical model
 - Describe each of the following common physical database concepts:
@@ -46,6 +47,10 @@ Submit to the assignment repository on GitHub.  Your `DB-Assignment-4.md` must i
 - Link to your GROUP physical model
 - Your scripts to create your physical database for your group project theme
 - Description of your create scripts
+
+## Submission
+
+Submit link to assignment repository to the Dropbox in Pilot. 
 
 ## Rubric
 
