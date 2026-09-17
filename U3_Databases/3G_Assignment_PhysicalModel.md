@@ -1,9 +1,9 @@
 # Group Assignment - Physical Model
 
-In your GROUP repository, in the folder called `Database`...
+In your group's database repository in the **main** branch...
 
-As a GROUP, finalize a physical model.  Upload a digital copy of the physical model to the GROUP repository. 
+As a GROUP, finalize a physical model.  Upload a digital copy of the physical model to the GROUP repository on the **MAIN** branch. 
 
-Your group will get a chance to polish the diagram ahead of the group submission for the database portion of the course.
+You will get a chance to polish the diagram ahead of the group submission for the database portion of the course. Don't let perfection be the enemy as long as the agreed on elements are present and legible.
 
-Refer to the GROUP physical model when working on your database initialization HOMEWORK assignment.
+Refer to the GROUP physical model when working on your physical database scripts HOMEWORK assignment.
