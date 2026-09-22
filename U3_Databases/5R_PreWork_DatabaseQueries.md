@@ -61,8 +61,8 @@ You may watch, read, or watch and read, the following resources on writing SQL q
 5. How to Create a SQL Statement
     - https://blink.ucsd.edu/technology/help-desk/queries/SQL/index.html#4.-Review-your-select-statement
 
-6. How to Filter Data in MariaDB
-    - https://www.getgalaxy.io/learn/glossary/how-to-filter-data-in-mariadb
+6. Filtering Data in MySQL | How to filter query results
+    - https://www.prisma.io/dataguide/mysql/reading-and-querying-data/filtering-data
 
 7. MariaDB Joins
     - https://www.geeksforgeeks.org/mariadb/mariadb-joins/

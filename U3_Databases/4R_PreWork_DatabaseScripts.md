@@ -84,7 +84,7 @@ You may watch, read, or watch and read, the following resources on DB Initializa
     - https://mariadb.com/docs/server/security/user-account-management/roles/roles_overview
 
 8. Role Based Access Control (RBAC) - Apono Wiki
-https://www.apono.io/wiki/role-based-access-control-rbac/
+    - https://www.apono.io/wiki/role-based-access-control-rbac/
 
 9. Different Types of Database Users
     - https://www.geeksforgeeks.org/different-types-of-database-users/
