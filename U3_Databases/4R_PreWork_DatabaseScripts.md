@@ -62,8 +62,8 @@ You may watch, read, or watch and read, the following resources on DB Initializa
 
 ## READ
 
-1. Quick Reference To Some Common MariaDB Queries
-    - https://hostnextra.com/learn/paths/mariadb/quick-reference-to-some-common-mariadb-queries
+1. Cheat Sheet for MariaDB SQL Database Commands | Zuar
+    - https://www.zuar.com/blog/mariadb-cheat-sheet/
 
 2. Alter Tables in MariaDB
     - https://www.geeksforgeeks.org/mariadb/alter-table-in-mariadb/
@@ -83,8 +83,8 @@ You may watch, read, or watch and read, the following resources on DB Initializa
 7. MariaDB: Roles Overview
     - https://mariadb.com/docs/server/security/user-account-management/roles/roles_overview
 
-8. How to Manage RBAC in MariaDB
-    - https://www.getgalaxy.io/learn/glossary/how-to-manage-rbac-in-mariadb
+8. Role Based Access Control (RBAC) - Apono Wiki
+https://www.apono.io/wiki/role-based-access-control-rbac/
 
 9. Different Types of Database Users
     - https://www.geeksforgeeks.org/different-types-of-database-users/
