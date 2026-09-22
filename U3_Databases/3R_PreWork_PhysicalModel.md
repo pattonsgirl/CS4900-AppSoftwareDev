@@ -16,7 +16,7 @@ You may watch, read, or watch and read, the following resources on physical mode
     - Linda DuHadway 9 min 6 seconds
     - https://www.youtube.com/watch?v=ueA4J3Ac-WY
 
-4. Physical Database Design Learning Activity, Part 3 - Specifiy if Identity Column
+4. Physical Database Design Learning Activity, Part 3 - Specify if Identity Column
     - Linda DuHadway 2 min 21 seconds
     - https://www.youtube.com/watch?v=r7aFIyCyhrQ
 
@@ -24,7 +24,7 @@ You may watch, read, or watch and read, the following resources on physical mode
     - Linda DuHadway 2 min 7 seconds
     - https://www.youtube.com/watch?v=W2a6ZJwXOzo
 
-6. Physical Database Design Learning Activity, Part 5 - Specifiy Null / Not Null
+6. Physical Database Design Learning Activity, Part 5 - Specify Null / Not Null
     - Linda DuHadway 5 min 36 seconds
     - https://www.youtube.com/watch?v=vdMPQ2c-sdA
 
@@ -46,8 +46,8 @@ You may watch, read, or watch and read, the following resources on physical mode
 
 ## READ
 
-1. KB - What is a physical data model?
-    - https://www.valueblue.com/knowledge-base/what-is-a-physical-data-model
+1. Database Design in DBMS - GeeksforGeeks
+    - https://www.geeksforgeeks.org/dbms/database-design-in-dbms/
 
 2. What’s the Difference Between a Logical Data Model and a Physical Data Model?
     - https://aws.amazon.com/compare/the-difference-between-logical-and-physical-data-model/
