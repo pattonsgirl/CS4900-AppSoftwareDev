@@ -9,7 +9,20 @@
   - `up` will start a container per your instructions in the docker compose file including intializing the DB with your script
   - You may Ctrl+C out of this - it will stop the container
   - `docker compose start` will start the container running again
-5. `docker compose down` will end AND remove the container process.  You don't want to run this unless you are ready to blow away your DB and all it's data.
+5. `docker compose down` will end AND remove the container process.  You don't want to run this unless you are ready to blow away your DB and all its data.
+
+## Troubleshooting
+
+If `docker` does not recognize `compose` or if `docker-compose` is not found, you may need to install the `docker-compose` tool.
+```
+sudo apt install docker-compose
+```
+Then:
+```
+#as required
+docker-compose up
+docker-compose down
+```
 
 ## Updating the docker compose file (What to change)
 
