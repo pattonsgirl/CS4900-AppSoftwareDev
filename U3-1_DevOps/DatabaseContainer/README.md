@@ -24,6 +24,8 @@ docker-compose up
 docker-compose down
 ```
 
+If you installed MariaDB - uninstall it. Something odd is happening with a Windows conflict with MariaDB as an application and MariaDB as a container. You likely only need it for CS 3700 / CS 3800.
+
 ## Updating the docker compose file (What to change)
 
 ```
