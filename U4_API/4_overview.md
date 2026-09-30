@@ -1,4 +1,4 @@
-# @POST, @PUT Endpoints using WorkOrderController
+# Additional HTTP Methods
 
 Outlined below are the differences between POST and PUT requests in the service, as well as additional notes on other write methods. The examples in `mr-fixit-service` are explained in detail to help understand the flow.
 

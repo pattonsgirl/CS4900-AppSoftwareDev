@@ -10,7 +10,7 @@
 > It is recommended to put your service folder in a development folder in your home directory, `mv API_NAME ~/development`. If there is a sub-folder named the same as the service, move that folder instead.
 
 ### Example of expected structure
-![spring-initializr.png](assets/terminal_structure.png)
+![spring-initializr.png](assets/class-1/terminal_structure.png)
 
 ## 2. Configure build.gradle file
 - Navigate to `/build.gradle` in your project root
