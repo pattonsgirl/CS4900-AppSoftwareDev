@@ -1,4 +1,4 @@
-# @Get Endpoints using StudentController
+# GET Requests and Architecture Flow
 
 Outlined below is the complete flow of GET requests in the StudentController, from the Controller layer down to the Entity layer, including all intermediate layers. This is similar to last week's reading, but while last week was more conceptual, this breaks down each method in the controller, complete with path variables and request parameters, to get a better understanding of how the layers connect.
 

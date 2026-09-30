@@ -4,11 +4,11 @@
 
 You have some data in your database:
 
-![student-db-example.png](assets/student-db-example.png)
+![student-db-example.png](assets/class-0/student-db-example.png)
 
 And you decide you want to display some of the student information on a website, like this:
 
-![student-fe-example.png](assets/student-fe-example.png)
+![student-fe-example.png](assets/class-0/student-fe-example.png)
 
 ### But how does this information _get there_ on the website?
 
@@ -266,7 +266,7 @@ We won't be doing a lot with headers in this course, but you should know they ex
 #### Request
 Remember that Bruno is our client today. Here is how we will set up a request in Bruno to get all students:
 
-![request-example.png](assets/request-example.png)
+![request-example.png](assets/class-0/request-example.png)
 
 Bruno is providing a URL, an empty request body, no additional headers, and has the request method set to GET. When this request is sent, it goes to the address in the URL with all the extra information we provided. 
 The client doesn't really care _how_ the server processes this request, so we don't really care right now either. We just care that we're going to get all the students back. If we sent the request correctly, we can expect a response back from the server.
@@ -274,11 +274,13 @@ The client doesn't really care _how_ the server processes this request, so we do
 #### Response
 The server responds with an array of students, just like you saw earlier:
 
-![response-example.png](assets/response-example.png)
+![response-example.png](assets/class-0/response-example.png)
 
 If you were a front end application instead of Bruno, you would get the same response. You'd have access to all of these students in this same structure, and be able to create objects in Typescript representing each student. You can then display them.
 The Web Dev class will go over this part in more depth, but it's important to understand an overview of this now. You aren't creating APIs just for the fun of it - a client wants to use your API - so you need to understand the flow.
 
+### Java and Visual Studio Code Setup
+See the [Java and VS Code Setup](0_java-and-vscode-setup.md) markdown file for instructions. If you are unable to get this working, please reach out via Slack or by attending the in-person session immediately following lecture. A working setup is critical for future coursework and team collaboration.
 
 ### Next Steps & Further Reading
 

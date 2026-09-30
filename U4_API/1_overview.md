@@ -1,8 +1,8 @@
-# Spring Boot Application Architecture Layers
+# Spring Boot Architecture and Design Patterns
 
-## 1. Controller Layer
+## 1. Controllers (aka Presentation Layer)
 
-The Controller Layer is responsible for handling HTTP requests and returning HTTP responses. This is where the application interacts with the outside world—typically via REST APIs.
+Controllers are responsible for handling HTTP requests and returning HTTP responses. This is where the application interacts with the outside world—typically via REST APIs.
 
 ### Key Responsibilities:
 
@@ -46,9 +46,9 @@ public class WorkOrderController {
 
 Here, the controller handles the GET `/work_order/{id}` request and delegates business logic to the service layer. It converts the object returned from the service layer to a DTO before returning it in the response.
 
-## 2. Service Layer
+## 2. Services (aka Business Layer)
 
-The Service Layer contains the business logic of the application. It acts as a bridge between the controller and the data access layers. The service layer handles the core application operations and orchestrates data manipulation.
+Services contain the business logic of the application. They acts as a bridge between the controller and the data access layers. Services handle the core application operations and orchestrates data manipulation.
 
 ### Key Responsibilities:
 
@@ -81,9 +81,9 @@ public class WorkOrderService {
 
 Here, the service is calling the repository to fetch the data, applying necessary business logic.
 
-## 3. Data Transfer Object (DTO) Layer
+## 3. Data Transfer Object (DTO) Pattern
 
-The DTO Layer is used to transfer data between layers (e.g., from the service layer to the controller) in a structured way. DTOs are simple objects that contain only the necessary data and no business logic. They provide an abstraction over complex models, which can improve security, readability, and maintainability.
+The DTO pattern is used to transfer data between layers (e.g., from a service layer to a controller) in a structured way. DTOs are simple objects that contain only necessary fields and methods. They provide an abstraction over complex models, which can improve security, readability, and maintainability. The conversion of classes is usually handled by a mapper, and for this course we will be using a library (MapStruct) to help with creating the mapper.
 
 ### Key Responsibilities:
 
@@ -122,9 +122,9 @@ public class WorkOrderDto {
 
 Here, the `WorkOrderDto` represents a simplified view of a Work Order entity that is returned to the client, containing only the fields that need to be exposed. In this case, we are returning every column in the Work Order table, but if new columns are ever added to the table (an audit column for example), they will not inherently be returned as part of the Work Order. You don't necessarily want to expose that to the client.
 
-## 4. Model (or Entity) Layer
+## 4. Models and Repository Pattern (aka Persistence Layer)
 
-The Model Layer (also referred to as the Entity Layer) represents the database entities and their relationships. This layer is where the actual data structures are defined, and it interacts with the Repository Layer to perform CRUD operations on the database.
+The Persistence Layer includes classes representing database entities (models) and their relationships as well as the interactions with the database. There are several ways to implement a Persistence Layer, but for this class we will be using JPA (Java Persistence API) with repositories. Another approach is to use the Data Access Object (DAO) Pattern, which is a lower-level implementation.
 
 ### Key Responsibilities:
 
@@ -139,7 +139,7 @@ The Model Layer (also referred to as the Entity Layer) represents the database e
 - `@Id`: Specifies the primary key of the entity
 - `@Column`: Maps fields to columns in the table
 - `@ManyToOne, @ManyToMany, @OneToOne, @OneToMany`: Maps the relationships between tables
-- `@JoinColum`: Indicates the foreign key column 
+- `@JoinColumn`: Indicates the foreign key column 
 
 ### Example:
 
