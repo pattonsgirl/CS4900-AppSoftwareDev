@@ -42,9 +42,9 @@ This outline is a proposed ordering.
 | 4 - Sept 14    | UX/UI - Brand Guidelines <br> HANDOFF UX/UI to DB   | DB Design - Conceptual Models |
 | 5 - Sept 21    | DB Design - Logical Models         | DB Design - Physical Models   |
 | 6 - Sept 28    | DB Design - Initialization Scripts <br> DevOps - DB Container w/ Maria | DB Design - SQL Business Queries <br> HANDOFF DB to API |
-| 7 - Oct 5      | APIs - Spring Boot Architecture and Design Patterns <br> DevOps - Coding in Teams | APIs - GET Requests and Architecture Flow |
-| 8 - Oct 12     | APIs - MapStruct & Code Style | APIs - Additional HTTP Methods |
-| 9 - Oct 19     | APIs - API Specifications, Environments & CORS | APIs - AI Tools & Best Practices? |
+| 7 - Oct 5      | DevOps - Coding in Teams <br> APIs - Intro to APIs | APIs - Spring Boot Architecture and Design Patterns |
+| 8 - Oct 12     | APIs - GET Requests and Architecture Flow | APIs - MapStruct & Code Style |
+| 9 - Oct 19     | APIs - Additional HTTP Methods | APIs - API Specifications, Environments & CORS |
 | 10 - Oct 26    | APIs - Project Work, <br>Review, and Troubleshooting    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
 | 11 - Nov 2     | Web Design - Foundations: <br>Standalone Components & Modern Templates  | Web Design - Behavior & <br>State Management with Signals   |
 | 12 - Nov 9     | Web Design - HTTP Requests &<br> Async Programming     | Web Design - Data Round Trip &<br> Full-Stack Display |

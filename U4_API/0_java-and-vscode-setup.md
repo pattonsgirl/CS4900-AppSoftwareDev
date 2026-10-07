@@ -40,15 +40,15 @@
 
     - `sudo apt install -y openjdk-17-jdk-headless`
 
-    - Verify that JAVA_HOME (which is set in bashrc) is set to the displayed path (minus the bin/javac)
+    - Verify that your JAVA_HOME environment variable is set to the location of your java install (minus the bin/javac)
         - `echo $JAVA_HOME`
 
-    > The JAVA_HOME environment variable should look similar to `JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64`
+    - If the output from the command above is blank, you can manually set your JAVA_HOME variable by appending `JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64` (or to you install location) to your <b>.bashrc</b> file in your home directory using `nano ~/.bashrc`.
 
 ## Mac
 
 - Install [Homebrew](https://brew.sh/)
-    - Ensure that the recommended environment configurations are set for terminal use. The following should be defined in your .zshrc and .zprofile (both are located in your home directory): `eval "$(/opt/homebrew/bin/brew shellenv)"`
+    - Ensure that the recommended environment configurations are set for terminal use. The following should be defined in your <b>.zshrc</b> and <b>.zprofile</b> (both are located in your home directory): `eval "$(/opt/homebrew/bin/brew shellenv)"`
 
 - Install necessary tools using: `brew install git jq openjdk@17 wget`
 
@@ -56,7 +56,7 @@
 
 Since MacOS comes with Java installed by default, you will need to either manually change your Java version or use a tool to help. jEnv is the recommended tool for handling it for you.
 
-- Install the tool using: `brew install jenv` and verify that the following is defined in your .zshrc anc .zprofile.
+- Install the tool using: `brew install jenv` and verify that the following is defined in your <b>.zshrc</b> anc <b>.zprofile</b>.
 
 ```sh
 export PATH="${HOME}/.jenv/bin:${PATH}"
@@ -74,6 +74,8 @@ jenv enable-plugin export
 This will set your default java version to 17 and configure the JAVA_HOME environment variable for you. If you need to switch it in the future you can use the jenv global command with a known version.
 
 - Verify that the setup has completed successfully by using the `jenv doctor` command and checking the java version using `java -version`.
+
+> The typical install location for openjdk@17 is: /opt/homebrew/Cellar/openjdk@17/JDK_VERSION/libexec/openjdk.jdk/Contents/Home
 
 ## Visual Studio Code configurations
 
