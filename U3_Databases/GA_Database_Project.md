@@ -1,6 +1,6 @@
 # Group Assignment - Database
 
-In your GROUP database repository, assert all of the following requirements on your `main` branch. You may create sub-folders to further organize information / files
+In your GROUP database repository, assert all of the following requirements on your `main` branch. You may create sub-folders to further organize information / files.
 
 All documents must be updated to address feedback given for submissions. Ex - if you received physical model feedback that effects the conceptual model, redraw it.  If it effected the table initialization script, make sure the script reflects those changes.
 
