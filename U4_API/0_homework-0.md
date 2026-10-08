@@ -12,9 +12,9 @@ Make sure you have cloned the Mr. Fix It Service repo: [mr-fix-it repo](https://
 
 Perform the following tasks in the demo [mr-fix-it repo](https://github.com/WSU-kduncan/mr-fixit-service):
 
-### 1. Create a branch off of `put-work-order` and name the branch your last name
+### 1. Create a branch off of `develop` and name the branch your last name. If multiple people have the same last name, append your first name with a hyphen in-between.
 
-### 2. Start and run the demo app (don't forget to also have the DB running with `docker compose <up or start>`)
+### 2. Start and run the demo app (verify that the MariaDB launch configuration is selected, don't forget to also have the DB running with `docker compose <up or start>`)
 
 ### 3. Open Bruno and open the `mr-fixit-service` collection
 - `/mr-fix-it-service/bruno/mr-fix-it-service`
@@ -44,7 +44,7 @@ Perform the following tasks in the demo [mr-fix-it repo](https://github.com/WSU-
     
 
 Here is an example of the required components in the screenshot:
-![homework-screenshot-example.png](assets/homework-screenshot-example.png)
+![homework-screenshot-example.png](assets/class-0/homework-screenshot-example.png)
 
 
 # Rubric

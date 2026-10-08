@@ -4,13 +4,13 @@
 
 ## 1. Use spring initializr
 - Normally you would go to [Spring Initializr](https://start.spring.io/) and then set the appropriate selections for the project you are trying to create. Then you would generate and download the zip file, then extract to an appropriate location and you'd be done, however there is a known issue with WSL copying files from Windows, so instead we are providing a wget command for to download a base project
-- `wget "https://start.spring.io/starter.zip?javaVersion=17&name=API_NAME" -O API_NAME.zip` will download the zip file to the current directory. Change API_NAME to the name for your service
+- `wget "https://start.spring.io/starter.zip?javaVersion=17&name=API_NAME" -O API_NAME.zip` will download the zip file to the current directory. <b>Change API_NAME to the name for your service<b>.
 - Use the unzip command `unzip API_NAME.zip -d API_NAME` to get the contents in a usable format. If you are getting an error stating that the unzip command is not found, install it using `apt install unzip` or the appropriate package manager for your environment
 - After you have unzipped, move the folder (the contents should be similar to the root directory for mr-fixit-service) to where you would prefer to keep it located 
 > It is recommended to put your service folder in a development folder in your home directory, `mv API_NAME ~/development`. If there is a sub-folder named the same as the service, move that folder instead.
 
 ### Example of expected structure
-![spring-initializr.png](assets/terminal_structure.png)
+![spring-initializr.png](assets/class-1/terminal_structure.png)
 
 ## 2. Configure build.gradle file
 - Navigate to `/build.gradle` in your project root
@@ -18,21 +18,18 @@
 - Paste this in the `plugins` body
 ```
 id 'com.diffplug.spotless' version '8.0.0'
+id 'io.freefair.lombok' version '9.8.0'
 ```
 - Add these to the existing `dependencies` body (leave the existing lines there!)
 ```
-annotationProcessor 'org.projectlombok:lombok:1.18.38'
 annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
-compileOnly 'org.projectlombok:lombok:1.18.38'
-implementation 'com.h2database:h2:2.3.232'
-implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+implementation 'com.h2database:h2:2.5.252'
+implementation 'me.paulschwarz:spring-dotenv:5.1.0'
 implementation 'org.mapstruct:mapstruct:1.6.3'
-implementation 'org.mariadb.jdbc:mariadb-java-client:3.5.5'
+implementation 'org.mariadb.jdbc:mariadb-java-client:3.5.10'
 implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 implementation 'org.springframework.boot:spring-boot-starter-validation'
 implementation 'org.springframework.boot:spring-boot-starter-web'
-testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
-testCompileOnly 'org.projectlombok:lombok:1.18.38'
 ```
 - Paste this below the `dependencies` body to configure code formatting:
 ```java  
@@ -83,7 +80,7 @@ spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.Ph
 ```server.servlet.context-path=/your-service-name```
 
 ## 4. Add Visual Studio Code settings
-- Copy the .vscode folder from mr-fixit-service to your repository. This will ensure that spotless and java are configured correctly for you.
+- Copy the .vscode folder from mr-fixit-service to your repository, then adjust the launch.json file in that folder as needed for your project (name and mainClass). This will ensure that spotless and java are configured correctly for you.
 
 ## 5. Verify the project builds and runs
 - Right click on `src/main/java/{your-path}{YourServiceNameApplication.java}`

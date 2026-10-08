@@ -9,7 +9,22 @@
   - `up` will start a container per your instructions in the docker compose file including intializing the DB with your script
   - You may Ctrl+C out of this - it will stop the container
   - `docker compose start` will start the container running again
-5. `docker compose down` will end AND remove the container process.  You don't want to run this unless you are ready to blow away your DB and all it's data.
+5. `docker compose down` will end AND remove the container process.  You don't want to run this unless you are ready to blow away your DB and all its data.
+
+## Troubleshooting
+
+If `docker` does not recognize `compose` or if `docker-compose` is not found, you may need to install the `docker-compose` tool.
+```
+sudo apt install docker-compose
+```
+Then:
+```
+#as required
+docker-compose up
+docker-compose down
+```
+
+If you installed MariaDB - uninstall it. Something odd is happening with a Windows conflict with MariaDB as an application and MariaDB as a container. You likely only need it for CS 3700 / CS 3800.
 
 ## Updating the docker compose file (What to change)
 
