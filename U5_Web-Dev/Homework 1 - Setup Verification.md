@@ -1,4 +1,4 @@
-# Homework 0 - Setup Verification
+# Homework 1 - Setup Verification
 
 ## Purpose / Objectives
 > The purpose of this assignment is to ensure your development environment is working correctly by cloning, installing, and running an existing Angular project.
@@ -27,8 +27,8 @@ Perform the following tasks.
 ### 4. Apply a Filter and Take Screenshot
 1.  In the running application, navigate to the page that displays the work orders.
 2.  Use the application's built-in UI to apply a filter to the list of work orders.
-3.  Create a new branch in your GROUP UI repository named: `yourlastname-homework-0`.
-4.  Create a folder named `homework0` on your branch, and then save a screenshot named `yourlastname-hw0.png` (any image format is allowed) of your browser running the Mr. Fix It UI application, showing the applied filter and the resulting filtered list of work orders.
+3.  Create a new branch in your GROUP UI repository named: `yourlastname-homework-1`.
+4.  Create a folder named `homework1` on your branch, and then save a screenshot named `yourlastname-hw1.png` (any image format is allowed) of your browser running the Mr. Fix It UI application, showing the applied filter and the resulting filtered list of work orders.
 
 ### 5. Setup GROUP UI Repository
 
@@ -46,7 +46,7 @@ Assignment score: X / 5 points
 - `[ ]` Project is successfully cloned from the correct repository.
 - `[ ]` Project dependencies are installed and the app runs successfully using `ng serve`.
 - `[ ]` Screenshot clearly shows a filter has been applied to the work orders.
-- `[ ]` Screenshot is saved in the correct `yourlastname-homework-0` branch in the `homework0` directory.
+- `[ ]` Screenshot is saved in the correct `yourlastname-homework-1` branch in the `homework1` directory.
 - `[ ]` The screenshot is pushed to the repository with a clear commit message.
 
 **Feedback:**

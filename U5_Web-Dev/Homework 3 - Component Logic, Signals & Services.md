@@ -1,4 +1,4 @@
-# Assignment 2 - Component Logic, Signals & Services
+# Homework 3 - Component Logic, Signals & Services
 
 ## Purpose / Objectives
 > The purpose of this assignment is to manage state and user events using signals, pass data between components, and properly encapsulate shared logic in a service. The skills being reinforced are:
@@ -11,7 +11,7 @@
 Determine an appropriate merging strategy among your teammates. Are you going to have all team members make a PR for approval after each homework - going the style of the API homeworks? 
 Wait til the CRUD flow is complete? Decisions decisions...
 
-Make a **branch** off of your GROUP UI repository OR off of `lastname-homework1` named `lastname-homework2`.  Perform the following tasks on this branch.
+Make a **branch** off of your GROUP UI repository OR off of `lastname-homework2` named `lastname-homework3`.  Perform the following tasks on this branch.
 
 ### 1. Refactor Logic to a Service
 1.  Generate a new service for your data model (e.g., `UserService`, `ProductService`).
@@ -32,7 +32,7 @@ Make a **branch** off of your GROUP UI repository OR off of `lastname-homework1`
 1.  In your parent list component's `@for` loop, render the new child component for each item, passing the item object to the child's input.
 
 ### 5. git add, commit, and push
-1.  Push your commits, including the new service file, new child component files, and updated parent component files, to your `lastname-homework2` branch in your GROUP UI repository.
+1.  Push your commits, including the new service file, new child component files, and updated parent component files, to your `lastname-homework3` branch in your GROUP UI repository.
 
 # Rubric
 
