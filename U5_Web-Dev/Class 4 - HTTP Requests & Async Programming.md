@@ -1,6 +1,6 @@
 # Class 4 — HTTP Requests & Async Programming
 
-> 💡 **Reference Application Grounding (`wsu-test`)**:
+> **Reference Application Grounding (`wsu-test`)**:
 > All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
 > Specific reference files:
 > - `src/environments/environment.ts` (API base URL configuration)
@@ -94,7 +94,7 @@ export class OrderListComponent {
 }
 ```
 
-#### ⚠️ Student Survival Pitfall: Forgetting `initialValue`
+#### Student Survival Pitfall: Forgetting `initialValue`
 If you omit `initialValue: []`, the signal's initial value is `undefined`. When your template attempts to render `@for (order of orders(); track order.id)`, the template evaluates immediately and crashes with:
 ```
 TypeError: Cannot read properties of undefined (reading 'track')
@@ -138,7 +138,7 @@ export class WorkOrderService {
 }
 ```
 
-#### ⚠️ Student Survival Pitfall: Leaked Subscriptions
+#### Student Survival Pitfall: Leaked Subscriptions
 If you subscribe manually in a component without `takeUntilDestroyed`, the subscription continues running in the background even if the user navigates to another page. Always attach `.pipe(takeUntilDestroyed(this.destroyRef))`!
 
 ## Section 1. The HTTP Protocol and REST Fundamentals
@@ -150,7 +150,7 @@ RESTful APIs map resources to standard HTTP verbs:
 
 In `wsu-test`, the demo API (`mr-fixit-service`) provides `GET` and `POST` routes. It does not expose `PUT` or `DELETE`.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see Angular's modern signal-native `httpResource` API where loading, error, and value signals are created with zero subscription boilerplate? Open `http://localhost:4200/labs/http-resource` (Lab 10) in `wsu-test` (`src/app/features/labs/http-resource-lab/`).
 
 ## Section 2. Configuring HttpClient and the ApiService Gateway
@@ -173,7 +173,7 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-#### ⚠️ Student Survival Pitfall: Missing Provider
+#### Student Survival Pitfall: Missing Provider
 If you inject `HttpClient` without calling `provideHttpClient()` in `app.config.ts`, your app will crash with:
 ```
 NullInjectorError: No provider for _HttpClient!
@@ -206,7 +206,7 @@ export class ApiService {
 }
 ```
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to test retry interceptors with exponential backoff on 500/503 server errors in an interactive simulator? Open `http://localhost:4200/labs/http-resilience` (Lab 11) in `wsu-test` (`src/app/features/labs/http-resilience-lab/`).
 
 ## Section 3. Robust UI States: Loading, Empty, Success, and Error

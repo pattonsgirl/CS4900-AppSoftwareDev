@@ -3,7 +3,7 @@
 > **Working Day 1 — No New Material Presented.**
 > This session is a dedicated project work and troubleshooting workshop. We do not introduce new framework features today. Instead, students focus on digesting the HTTP concepts from Class 4, fixing live connection errors with their Spring Boot backends, and completing Homework 4.
 
-> 💡 **Reference Application Grounding (`wsu-test`)**:
+> **Reference Application Grounding (`wsu-test`)**:
 > All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
 > Specific reference files:
 > - `src/app/services/api.service.ts` (the low-level HTTP gateway)
@@ -74,7 +74,7 @@ The browser's Same-Origin Policy is a fundamental security safeguard. It restric
 
 **Critical Principle**: CORS is enforced by the **browser**, not by Angular. The browser sends an `Origin: http://localhost:4200` request header. If the response from `localhost:8080` lacks a matching `Access-Control-Allow-Origin` header, the browser blocks the JavaScript runtime from reading the response.
 
-#### ⚠️ Student Survival Pitfall: Trying to Fix CORS in Angular
+#### Student Survival Pitfall: Trying to Fix CORS in Angular
 Never attempt to fix CORS by adding `Access-Control-Allow-Origin` headers inside your Angular `HttpClient` calls! That response header must come from the **server** (Spring Boot). Setting it in the Angular request will have zero effect.
 
 ### How to Fix CORS on the Backend (Spring Boot)
@@ -139,7 +139,7 @@ When a network request fails, open Developer Tools (`F12`), switch to the **Netw
    - *Cause*: Field name mismatch between JSON payload and TypeScript interface (for example, Spring serialized `first_name` while Angular expects `firstName`).
    - *Fix*: Inspect the **Response** tab in DevTools. Compare the exact property names with your TypeScript interface.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see how route parameters and query parameters bind directly to component `input()` signals without subscribing to `ActivatedRoute`? Open `http://localhost:4200/labs/route-inputs/1042` (Lab 12) in `wsu-test` (`src/app/features/labs/route-inputs-lab/`).
 > For preloading route data with functional resolvers, open `http://localhost:4200/labs/resolved-work-order/1` (Lab 13).
 

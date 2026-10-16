@@ -1,6 +1,6 @@
 # Class 6 — Data Round Trip & Full-Stack Display
 
-> 💡 **Reference Application Grounding (`wsu-test`)**:
+> **Reference Application Grounding (`wsu-test`)**:
 > All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
 > Specific reference files:
 > - `src/app/features/work-orders/components/work-order-form/` (complete reactive form with validation and submission)
@@ -84,7 +84,7 @@ Angular provides two primary approaches for handling user input:
    - Modern signal-native form handling emerging in Angular 22+.
    - Offers fine-grained reactive validation directly driven by signals (demonstrated in Lab 14).
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see next-generation Signal Forms contrasted directly beside Reactive Forms on a clean feedback form? Open `http://localhost:4200/labs/signal-forms` (Lab 14) in `wsu-test` (`src/app/features/labs/signal-forms-lab/`).
 > For custom synchronous, cross-field, and asynchronous validators, open `http://localhost:4200/labs/form-validators` (Lab 15).
 
@@ -147,7 +147,7 @@ export class WorkOrderFormComponent {
 }
 ```
 
-#### ⚠️ Student Survival Pitfalls: Forms
+#### Student Survival Pitfalls: Forms
 
 1. **Forgetting `markAllAsTouched()`**: If a student clicks submit without touching any inputs, `form.invalid` is true, but without calling `this.form.markAllAsTouched()`, no error messages appear! The user sees a dead button with no visual explanation.
 2. **Double Submissions**: Never leave the submit button clickable while an HTTP request is in flight. Always manage an `isSubmitting = signal(false)` flag and disable the button: `[disabled]="form.invalid || isSubmitting()"`.
@@ -196,7 +196,7 @@ A clean form provides immediate, accessible validation feedback:
 </form>
 ```
 
-#### ⚠️ Student Survival Principle: Why We Check `touched`
+#### Student Survival Principle: Why We Check `touched`
 Always check `&& form.get('title')?.touched` before rendering error messages. If you only check `invalid`, required fields will glow red the instant the user opens the page before they even touch the keyboard!
 
 ## Section 3. Client Navigation Guards vs. Server Security
@@ -222,7 +222,7 @@ export const demoAuthGuard: CanActivateFn = () => {
 };
 ```
 
-### ⚠️ The Golden Rule of Route Guards
+### The Golden Rule of Route Guards
 
 > **A route guard is a browser navigation check. It is NOT API security.**
 > 
@@ -230,7 +230,7 @@ export const demoAuthGuard: CanActivateFn = () => {
 > Route guards exist exclusively to enhance user experience by preventing users from navigating to screens they are not ready to use. 
 > Real security must be enforced on the backend using Spring Security or token validation.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see how `canDeactivate` prevents accidental loss of unsaved form drafts? Open `http://localhost:4200/labs/unsaved-changes` (Lab 16) in `wsu-test` (`src/app/features/labs/unsaved-changes-lab/`).
 > For role-based client guards (`student`, `technician`, `admin`), open `http://localhost:4200/labs/role-guard` (Lab 17).
 

@@ -3,7 +3,7 @@
 > **Wildcard Session — In-Class Demo & Practice (No New Homework Assigned).**
 > Automated testing and client-side pagination are covered today as essential production engineering practices. Writing unit tests is optional and not graded for student projects. There is no new homework assigned for this session.
 
-> 💡 **Reference Application Grounding (`wsu-test`)**:
+> **Reference Application Grounding (`wsu-test`)**:
 > All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
 > Specific reference files:
 > - `src/app/shared/components/status-badge/status-badge.component.spec.ts` (isolated component test spec)
@@ -137,14 +137,14 @@ describe('LabsReadService', () => {
 });
 ```
 
-#### ⚠️ Student Survival Pitfall: Pending Requests
+#### Student Survival Pitfall: Pending Requests
 Always place `httpMock.verify()` inside `afterEach()`. If your service accidentally fires two requests when it should only fire one, `verify()` will immediately catch the unexpected network call and fail the test.
 
 ## Section 3. Client-Side Pagination Architecture and Signal Math
 
 Rendering hundreds of DOM nodes degrades scroll performance and increases browser memory usage. Client-side pagination slices an in-memory array into manageable chunks.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to visually interact with pagination math, see slice boundary markers update live, and explore dynamic sliding-window buttons in an isolated sandbox? Open `http://localhost:4200/labs/pagination-explorer` (Lab 18) in `wsu-test` (`src/app/features/labs/pagination-explorer-lab/`).
 
 ### The Mathematical Foundation
@@ -252,7 +252,7 @@ export class WorkOrderListComponent {
 | **Virtual Scrolling (`@angular/cdk`)** | 1,000 to 50,000 items (e.g. log streams, audit trails) | DOM nodes recycle inside viewport; scrollbar calculation requires fixed row heights |
 | **Deferred Loading (`@defer`)** | Heavy below-the-fold components (charts, comment threads) | Renders placeholders until triggered by viewport entry or idle time |
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see CDK Virtual Scrolling render 8,000 items smoothly in the DOM? Open `http://localhost:4200/labs/virtual-scroll` (Lab 19) in `wsu-test` (`src/app/features/labs/virtual-scroll-lab/`).
 > To see off-screen components lazily loaded using `@defer (on viewport)`, open `http://localhost:4200/labs/defer-analytics` (Lab 20).
 

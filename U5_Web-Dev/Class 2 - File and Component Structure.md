@@ -1,6 +1,6 @@
 # Class 2 — File and Component Structure
 
-> 💡 **Reference Application Grounding (`wsu-test`)**:
+> **Reference Application Grounding (`wsu-test`)**:
 > All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
 > Specific reference files:
 > - `src/app/shared/components/status-badge/status-badge.component.ts` (small reusable presentational component)
@@ -79,7 +79,7 @@ In an Angular project, a component lives inside its own folder and consists of u
 
 Modern Angular applications are standalone by default. When a parent component wants to render a child component in its template, it must explicitly declare that child in its `@Component` `imports` array.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see how child components can accept custom HTML slots using `<ng-content>`? Open `http://localhost:4200/labs/content-projection` (Lab 02) in `wsu-test` (`src/app/features/labs/content-projection-lab/`).
 
 ### Step 1: Define the Child Component
@@ -162,7 +162,7 @@ export class WorkOrderListComponent {
 </section>
 ```
 
-#### ⚠️ Student Survival Pitfall: Missing Imports
+#### Student Survival Pitfall: Missing Imports
 If you use `<app-status-badge>` in your template without including `StatusBadgeComponent` in the `imports: [...]` array of `@Component`, the Angular compiler will fail with an error:
 ```
 NG8001: 'app-status-badge' is not a known element.
@@ -174,7 +174,7 @@ Whenever you see `'X' is not a known element`, immediately check the `imports` a
 
 Angular connects TypeScript properties with HTML markup using declarative binding syntax:
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see how Angular formats data on screen using pipes like `date`, `currency`, or custom pure pipes? Open `http://localhost:4200/labs/pipes` (Lab 03) in `wsu-test` (`src/app/features/labs/pipes-lab/`).
 
 ### 1. Interpolation `{{ expression }}`
@@ -209,7 +209,7 @@ Conditionally applies CSS classes or inline style rules based on component state
 
 Modern Angular introduces native control flow blocks directly into the template engine. They eliminate structural directives like `*ngIf` and `*ngFor` and require zero module imports.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to test `@if`, `@for`, `$index`, `$even`, `@empty`, `@switch`, and `@let` in a single isolated sandbox without any multi-file overhead? Open `http://localhost:4200/labs/control-flow` (Lab 01) in `wsu-test` (`src/app/features/labs/control-flow-lab/`).
 
 ### Conditional Rendering with `@if`
@@ -243,7 +243,7 @@ The `@for` block renders a template repeatedly for each element in an iterable c
 </ul>
 ```
 
-#### ⚠️ Student Survival Principle: Why `track` is Mandatory
+#### Student Survival Principle: Why `track` is Mandatory
 
 When an array updates, Angular needs to know which elements were added, removed, or moved:
 - **Without tracking**: Angular would destroy and recreate every DOM node in the list on any array modification, causing scroll jumps, lost input focus, and expensive browser layout recalculations.

@@ -4,7 +4,7 @@
 > This is our final session of the Web Development module before Thanksgiving break. We do not introduce new framework features today. This class is dedicated to consolidating the full-stack slice from Homework 1 through Homework 5, auditing accessibility and keyboard navigation, verifying clean-install instructions in your project README, and 1-on-1 instructor troubleshooting.
 > *(Thursday, November 26 is Thanksgiving — no class).*
 
-> 💡 **Reference Application Grounding (`wsu-test`)**:
+> **Reference Application Grounding (`wsu-test`)**:
 > All architectural standards and best practices reviewed today are demonstrated in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
 > Specific reference files:
 > - `src/app/features/work-orders/` (complete master-detail flow: list, detail, and form)
@@ -82,7 +82,7 @@ Front-end engineering is not just about moving data; it is about delivering an a
 - When an HTTP request fails, does the error message appear on the page inside an element with `role="alert"`?
 - Logging errors exclusively to `console.error()` leaves users confused when requests fail.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see Angular CDK `LiveAnnouncer` announce screen-reader messages and `FocusMonitor` manage keyboard focus rings cleanly? Open `http://localhost:4200/labs/cdk-a11y` (Lab 21) in `wsu-test` (`src/app/features/labs/cdk-a11y-lab/`).
 > For accessible modal dialogs with focus trapping, open `http://localhost:4200/labs/cdk-dialog` (Lab 22).
 > For the comprehensive clean code engineering checklist, open `http://localhost:4200/labs/angular-standards` (Lab 23).

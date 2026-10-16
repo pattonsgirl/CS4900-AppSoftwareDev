@@ -1,6 +1,6 @@
 # Class 3 — Behavior & State Management with Signals
 
-> 💡 **Reference Application Grounding (`wsu-test`)**:
+> **Reference Application Grounding (`wsu-test`)**:
 > All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
 > Specific reference files:
 > - `src/app/services/work-order.service.ts` (shared signal store and computed metrics summary)
@@ -44,14 +44,14 @@ count.update(current => current + 1);
 console.log(count()); // 6
 ```
 
-#### ⚠️ Student Survival Pitfall: The Direct Mutation Trap
+#### Student Survival Pitfall: The Direct Mutation Trap
 A common beginner bug when working with arrays or objects in signals:
 ```typescript
-// ❌ BROKEN: Direct mutation does NOT notify Angular!
+// Broken: Direct mutation does NOT notify Angular!
 this.workOrders().push(newOrder); 
 // Angular will NOT detect this change, and the UI will NOT update!
 
-// ✅ CORRECT: Always produce a new array reference with .update()
+// Correct: Always produce a new array reference with .update()
 this.workOrders.update(orders => [...orders, newOrder]);
 ```
 **Golden Rule**: Never mutate data inside a signal directly. Always use `.set(newValue)` or `.update(prev => ...)` to supply a new reference!
@@ -83,7 +83,7 @@ An `effect()` runs side-effect logic whenever the signals it reads change. Use e
 
 **Critical Rule**: Do not use `effect()` to update other signals. Use `computed()` instead to derive state. Setting signals inside an effect easily introduces infinite cycles and runtime errors.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see `effect()` safely synchronize a note to `localStorage`? Open `http://localhost:4200/labs/signal-effects` (Lab 09) in `wsu-test` (`src/app/features/labs/signal-effects-lab/`).
 
 ## The "Why" of Services and Dependency Injection
@@ -161,7 +161,7 @@ In the template, read these signals using function-call syntax:
 </div>
 ```
 
-#### ⚠️ Student Survival Pitfall: Forgetting Parentheses in Templates
+#### Student Survival Pitfall: Forgetting Parentheses in Templates
 In template interpolation, you must write `{{ totalOrders() }}` with parentheses. If you write `{{ totalOrders }}`, Angular will output the raw TypeScript function reference (`function() { ... }`) or throw a compilation error.
 
 ## Section 2. Event Binding and User Interaction
@@ -183,14 +183,14 @@ toggleFilters(): void {
 }
 ```
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see how a debounced search input handles real-time user typing cleanly? Open `http://localhost:4200/labs/rx-search` (Lab 08) in `wsu-test` (`src/app/features/labs/rx-search-lab/`).
 
 ## Section 3. Component Communication: Signal Inputs and Outputs
 
 Components communicate across parent-child boundaries using reactive inputs and outputs.
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see parent-child priority chips with `input()` down and `output()` up in an isolated sandbox? Open `http://localhost:4200/labs/parent-child` (Lab 04) in `wsu-test` (`src/app/features/labs/parent-child-lab/`).
 > For two-way signal binding with `model()`, see `http://localhost:4200/labs/model-binding` (Lab 05).
 
@@ -322,7 +322,7 @@ export class WorkOrderListComponent {
 }
 ```
 
-> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> **Simpler Lab Reference in `wsu-test`**:
 > Want to see how dependent state (like a room dropdown resetting when a building changes) works cleanly without manual event juggling? Open `http://localhost:4200/labs/linked-signal` (Lab 06) in `wsu-test` (`src/app/features/labs/linked-signal-lab/`).
 > To see how to eliminate impossible UI states with a discriminated union `{ status: 'loading' | 'error' | 'success' }`, open `http://localhost:4200/labs/ui-state` (Lab 07).
 
