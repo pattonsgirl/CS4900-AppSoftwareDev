@@ -4,6 +4,13 @@
 > This is our final session of the Web Development module before Thanksgiving break. We do not introduce new framework features today. This class is dedicated to consolidating the full-stack slice from Homework 1 through Homework 5, auditing accessibility and keyboard navigation, verifying clean-install instructions in your project README, and 1-on-1 instructor troubleshooting.
 > *(Thursday, November 26 is Thanksgiving — no class).*
 
+> 💡 **Reference Application Grounding (`wsu-test`)**:
+> All architectural standards and best practices reviewed today are demonstrated in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
+> Specific reference files:
+> - `src/app/features/work-orders/` (complete master-detail flow: list, detail, and form)
+> - `src/app/services/work-order.service.ts` (central domain service)
+> - `src/app/shared/components/` (accessible status badges and loading indicators)
+
 ## Setting the Stage: Consolidating the Full-Stack Slice
 
 Over the past seven classes, you built a modern, standalone Angular application:
@@ -75,6 +82,11 @@ Front-end engineering is not just about moving data; it is about delivering an a
 - When an HTTP request fails, does the error message appear on the page inside an element with `role="alert"`?
 - Logging errors exclusively to `console.error()` leaves users confused when requests fail.
 
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see Angular CDK `LiveAnnouncer` announce screen-reader messages and `FocusMonitor` manage keyboard focus rings cleanly? Open `http://localhost:4200/labs/cdk-a11y` (Lab 21) in `wsu-test` (`src/app/features/labs/cdk-a11y-lab/`).
+> For accessible modal dialogs with focus trapping, open `http://localhost:4200/labs/cdk-dialog` (Lab 22).
+> For the comprehensive clean code engineering checklist, open `http://localhost:4200/labs/angular-standards` (Lab 23).
+
 ## Section 4. Route Guards Reality Check
 
 In Class 6, we examined `canActivate` route guards:
@@ -111,8 +123,24 @@ Use the remainder of the session to repair gaps in your application slice. Instr
 | **Memory leaks on unsubscribe** | Long-lived observables | Ensure component subscriptions use `takeUntilDestroyed(this.destroyRef)`. |
 | **Route parameter not updating** | Missing input binding | Verify `provideRouter(routes, withComponentInputBinding())` is in `app.config.ts`. |
 
-## After Class (Ungraded Resources)
+## Lab References: Simpler Isolated Examples in `wsu-test`
 
-- `/labs/cdk-a11y` (Lab 21): Exploring Angular CDK `LiveAnnouncer` and `FocusMonitor` for screen reader accessibility.
-- `/labs/cdk-dialog` (Lab 22): Implementing accessible, focus-trapped modal dialogs.
-- `/labs/angular-standards` (Lab 23): Reference engineering checklist for modern Angular clean code practices.
+In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
+
+- **Lab 21 — CDK Accessibility (`/labs/cdk-a11y`)**:
+  - **Route**: `http://localhost:4200/labs/cdk-a11y`
+  - **Source Code**: `src/app/features/labs/cdk-a11y-lab/`
+  - **What it demonstrates**: Using Angular CDK `LiveAnnouncer` to read debounced search result counts to screen readers, and `FocusMonitor` for keyboard focus state.
+  - **Why consult this lab**: Best practice guide for production accessibility compliance.
+
+- **Lab 22 — CDK Dialog (`/labs/cdk-dialog`)**:
+  - **Route**: `http://localhost:4200/labs/cdk-dialog`
+  - **Source Code**: `src/app/features/labs/cdk-dialog-lab/`
+  - **What it demonstrates**: Accessible modal dialogs with focus trapping, `Escape` key listeners, and background scroll blocking.
+  - **Why consult this lab**: Shows how to implement confirmation modals cleanly without third-party component libraries.
+
+- **Lab 23 — Angular Standards Checklist (`/labs/angular-standards`)**:
+  - **Route**: `http://localhost:4200/labs/angular-standards`
+  - **Source Code**: `src/app/features/labs/angular-standards-lab/`
+  - **What it demonstrates**: A comprehensive, interactive engineering standards checklist covering folder architecture, signal immutability, SRP, DRY, testing standards, and accessibility.
+  - **Why consult this lab**: The ultimate pre-submission rubric review before turning in your final application.

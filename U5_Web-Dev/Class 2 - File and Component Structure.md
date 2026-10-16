@@ -1,5 +1,12 @@
 # Class 2 — File and Component Structure
 
+> 💡 **Reference Application Grounding (`wsu-test`)**:
+> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
+> Specific reference files:
+> - `src/app/shared/components/status-badge/status-badge.component.ts` (small reusable presentational component)
+> - `src/app/features/work-orders/components/work-order-list/` (feature container demonstrating template control flow)
+> - `src/app/shared/models/work-order.model.ts` (domain TypeScript contracts)
+
 ## Setting the Stage: From Monolithic Pages to Component Architecture
 
 In traditional web development, a webpage was often authored as a single HTML document with sprawling CSS stylesheets and global JavaScript scripts attached. As applications scaled in complexity, this monolithic model became fragile. Changing a CSS rule in one file would unintentionally break button styling across three other pages. Modifying a JavaScript function could crash unrelated widgets sharing the same global scope.
@@ -44,7 +51,7 @@ wsu-test/
 │       ├── features/               # Screen-level feature modules
 │       │   ├── dashboard/          # Metrics summary screen
 │       │   ├── work-orders/        # Work orders list, detail, and form screens
-│       │   └── labs/               # Supplemental educational topic labs
+│       │   └── labs/               # Supplemental educational topic labs (Labs 00-23)
 │       ├── shared/                 # Reusable cross-feature assets
 │       │   ├── components/         # Reusable UI widgets (status-badge, loading-spinner)
 │       │   ├── models/             # Domain TypeScript interfaces and types
@@ -72,7 +79,12 @@ In an Angular project, a component lives inside its own folder and consists of u
 
 Modern Angular applications are standalone by default. When a parent component wants to render a child component in its template, it must explicitly declare that child in its `@Component` `imports` array.
 
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see how child components can accept custom HTML slots using `<ng-content>`? Open `http://localhost:4200/labs/content-projection` (Lab 02) in `wsu-test` (`src/app/features/labs/content-projection-lab/`).
+
 ### Step 1: Define the Child Component
+
+Here is `StatusBadgeComponent` directly from `wsu-test` (`src/app/shared/components/status-badge/status-badge.component.ts`):
 
 ```typescript
 // src/app/shared/components/status-badge/status-badge.component.ts
@@ -115,7 +127,7 @@ import { StatusBadgeComponent } from '../../../../shared/components/status-badge
 
 @Component({
   selector: 'app-work-order-list',
-  imports: [StatusBadgeComponent],
+  imports: [StatusBadgeComponent], // Must be listed here!
   templateUrl: './work-order-list.component.html',
   styleUrl: './work-order-list.component.scss'
 })
@@ -150,13 +162,20 @@ export class WorkOrderListComponent {
 </section>
 ```
 
-Checkpoint:
-> "What happens if you use `<app-status-badge>` in your template without adding `StatusBadgeComponent` to `imports`?"
-> The Angular compiler throws a template error stating that `app-status-badge` is not a known element.
+#### ⚠️ Student Survival Pitfall: Missing Imports
+If you use `<app-status-badge>` in your template without including `StatusBadgeComponent` in the `imports: [...]` array of `@Component`, the Angular compiler will fail with an error:
+```
+NG8001: 'app-status-badge' is not a known element.
+1. If 'app-status-badge' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+```
+Whenever you see `'X' is not a known element`, immediately check the `imports` array in your `*.component.ts` file!
 
 ## Section 2. Template Syntax and Data Binding
 
 Angular connects TypeScript properties with HTML markup using declarative binding syntax:
+
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see how Angular formats data on screen using pipes like `date`, `currency`, or custom pure pipes? Open `http://localhost:4200/labs/pipes` (Lab 03) in `wsu-test` (`src/app/features/labs/pipes-lab/`).
 
 ### 1. Interpolation `{{ expression }}`
 Interpolation evaluates an expression, converts the result to a string, and renders it into the text node:
@@ -190,6 +209,9 @@ Conditionally applies CSS classes or inline style rules based on component state
 
 Modern Angular introduces native control flow blocks directly into the template engine. They eliminate structural directives like `*ngIf` and `*ngFor` and require zero module imports.
 
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to test `@if`, `@for`, `$index`, `$even`, `@empty`, `@switch`, and `@let` in a single isolated sandbox without any multi-file overhead? Open `http://localhost:4200/labs/control-flow` (Lab 01) in `wsu-test` (`src/app/features/labs/control-flow-lab/`).
+
 ### Conditional Rendering with `@if`
 
 `@if` evaluates a boolean expression and inserts or removes elements from the DOM:
@@ -221,12 +243,12 @@ The `@for` block renders a template repeatedly for each element in an iterable c
 </ul>
 ```
 
-#### Why `track` is Mandatory
+#### ⚠️ Student Survival Principle: Why `track` is Mandatory
 
 When an array updates, Angular needs to know which elements were added, removed, or moved:
 - **Without tracking**: Angular would destroy and recreate every DOM node in the list on any array modification, causing scroll jumps, lost input focus, and expensive browser layout recalculations.
 - **With tracking**: Angular uses the unique identifier from the `track` expression (such as `order.id`) to reuse existing DOM elements, updating only the specific nodes that changed.
-- **Golden rule**: Always track by a unique primary key (`track order.id`). Only track by index (`track $index`) if the collection is static and will never be sorted, filtered, or prepended.
+- **Golden Rule**: Always track by a unique primary key (`track order.id`). Only track by index (`track $index`) if the collection is static and will never be sorted, filtered, or prepended. If you track by `$index` on a dynamic list, deleting item 0 causes item 1 to re-use item 0's DOM node, leaving text-box focus in the wrong element!
 
 #### Contextual Variables in `@for`
 
@@ -313,8 +335,24 @@ Students build on the repository verified in Homework 1:
 6. **Scoped Styles**: Write clean SCSS rules in the component stylesheet using Flexbox or Grid.
 7. **Git Commit & Push**: Commit the changes with a clear message and push to GitHub.
 
-## After Class (Ungraded Resources)
+## Lab References: Simpler Isolated Examples in `wsu-test`
 
-- `/labs/control-flow` (Lab 01): Interactive playground for `@if`, `@for`, `@switch`, and `@let`.
-- `/labs/content-projection` (Lab 02): Building reusable shell components with multi-slot `<ng-content>`.
-- `/labs/pipes` (Lab 03): Built-in formatting pipes (`DatePipe`, `CurrencyPipe`) and custom pure pipes.
+In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
+
+- **Lab 01 — Template Control Flow & `@let` (`/labs/control-flow`)**:
+  - **Route**: `http://localhost:4200/labs/control-flow`
+  - **Source Code**: `src/app/features/labs/control-flow-lab/`
+  - **What it demonstrates**: An interactive task manager exploring `@if`, `@for` with context variables (`$index`, `$first`, `$last`, `track`), `@empty`, `@switch`, and `@let` template variables in a single isolated sandbox.
+  - **Why consult this lab**: Best place to see how `@for` and `@let` behave without any multi-file or HTTP distractions.
+
+- **Lab 02 — Content Projection (`/labs/content-projection`)**:
+  - **Route**: `http://localhost:4200/labs/content-projection`
+  - **Source Code**: `src/app/features/labs/content-projection-lab/`
+  - **What it demonstrates**: A reusable card shell component featuring header, default, and footer slots using `<ng-content>`.
+  - **Why consult this lab**: Shows how to build composable shell components where the parent supplies the interior HTML.
+
+- **Lab 03 — Built-in and Custom Pipes (`/labs/pipes`)**:
+  - **Route**: `http://localhost:4200/labs/pipes`
+  - **Source Code**: `src/app/features/labs/pipes-lab/`
+  - **What it demonstrates**: Built-in Angular pipes (`DatePipe`, `CurrencyPipe`, `TitleCasePipe`) alongside a custom pure `campusPhone` pipe.
+  - **Why consult this lab**: Demonstrates why pure pipes outperform template method calls in performance and change detection efficiency.

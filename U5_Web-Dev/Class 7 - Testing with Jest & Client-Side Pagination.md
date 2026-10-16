@@ -3,6 +3,13 @@
 > **Wildcard Session — In-Class Demo & Practice (No New Homework Assigned).**
 > Automated testing and client-side pagination are covered today as essential production engineering practices. Writing unit tests is optional and not graded for student projects. There is no new homework assigned for this session.
 
+> 💡 **Reference Application Grounding (`wsu-test`)**:
+> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
+> Specific reference files:
+> - `src/app/shared/components/status-badge/status-badge.component.spec.ts` (isolated component test spec)
+> - `src/app/features/labs/services/labs-read.service.spec.ts` (HTTP contract test spec)
+> - `src/app/features/work-orders/components/work-order-list/work-order-list.component.ts` (client-side pagination math and dynamic sliding window)
+
 ## Setting the Stage: Production Quality and Scalability
 
 In production software development, two concerns quickly emerge as an application matures:
@@ -24,7 +31,7 @@ Historically, Angular projects relied on Karma and Jasmine, which launched a ful
 
 Presentational components receive inputs and render DOM elements. In `wsu-test`, `StatusBadgeComponent` maps status codes to labels and styles.
 
-Here is the complete unit test specification:
+Here is the complete unit test specification (`src/app/shared/components/status-badge/status-badge.component.spec.ts`):
 
 ```typescript
 // src/app/shared/components/status-badge/status-badge.component.spec.ts
@@ -56,7 +63,7 @@ describe('StatusBadgeComponent', () => {
 
     expect(badge).toBeTruthy();
     expect(badge?.textContent?.trim()).toBe('Open');
-    expect(badge?.classList.contains('badge--status-open')).toBe(true);
+    expect(badge?.classList.contains('badge--opn')).toBe(true);
   });
 
   it('should render "Unknown" label for unmapped status code', () => {
@@ -67,7 +74,6 @@ describe('StatusBadgeComponent', () => {
     const badge = element.querySelector('.badge');
 
     expect(badge?.textContent?.trim()).toBe('Unknown');
-    expect(badge?.classList.contains('badge--status-unknown')).toBe(true);
   });
 });
 ```
@@ -77,7 +83,7 @@ describe('StatusBadgeComponent', () => {
 - `TestBed.createComponent()`: Creates an isolated component sandbox.
 - `fixture.componentRef.setInput(key, value)`: Modern Angular API for setting signal inputs in unit tests.
 - `fixture.detectChanges()`: Forces change detection so DOM nodes reflect the latest signal state.
-- Asserting the DOM rather than private class fields verifies the user experience directly.
+- **Assert the DOM**: Always assert what the user sees in the rendered HTML rather than checking private component fields!
 
 ## Section 2. HTTP Contract Testing with `HttpTestingController`
 
@@ -105,8 +111,8 @@ describe('LabsReadService', () => {
       ]
     });
 
-    service = inject(LabsReadService);
-    httpMock = inject(HttpTestingController);
+    service = TestBed.inject(LabsReadService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
@@ -131,13 +137,15 @@ describe('LabsReadService', () => {
 });
 ```
 
-Checkpoint:
-> "Why is `httpMock.verify()` placed in `afterEach()`?"
-> To ensure that every request emitted by the service was explicitly acknowledged and flushed, detecting accidental duplicate calls or missing expectations.
+#### ⚠️ Student Survival Pitfall: Pending Requests
+Always place `httpMock.verify()` inside `afterEach()`. If your service accidentally fires two requests when it should only fire one, `verify()` will immediately catch the unexpected network call and fail the test.
 
 ## Section 3. Client-Side Pagination Architecture and Signal Math
 
 Rendering hundreds of DOM nodes degrades scroll performance and increases browser memory usage. Client-side pagination slices an in-memory array into manageable chunks.
+
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to visually interact with pagination math, see slice boundary markers update live, and explore dynamic sliding-window buttons in an isolated sandbox? Open `http://localhost:4200/labs/pagination-explorer` (Lab 18) in `wsu-test` (`src/app/features/labs/pagination-explorer-lab/`).
 
 ### The Mathematical Foundation
 
@@ -147,9 +155,9 @@ Given:
 - $P$: Active page index (`currentPage`, 1-based)
 
 Calculations:
-$$	ext{totalPages} = \lceil N / S ceil = 	ext{Math.ceil}(N / S)$$
-$$	ext{startIndex} = (P - 1) 	imes S$$
-$$	ext{endIndex} = \min(	ext{startIndex} + S, N)$$
+- $\text{totalPages} = \lceil N / S \rceil = \text{Math.ceil}(N / S)$
+- $\text{startIndex} = (P - 1) \times S$
+- $\text{endIndex} = \min(\text{startIndex} + S, N)$
 
 ### Signals Implementation in `WorkOrderListComponent`
 
@@ -244,6 +252,10 @@ export class WorkOrderListComponent {
 | **Virtual Scrolling (`@angular/cdk`)** | 1,000 to 50,000 items (e.g. log streams, audit trails) | DOM nodes recycle inside viewport; scrollbar calculation requires fixed row heights |
 | **Deferred Loading (`@defer`)** | Heavy below-the-fold components (charts, comment threads) | Renders placeholders until triggered by viewport entry or idle time |
 
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see CDK Virtual Scrolling render 8,000 items smoothly in the DOM? Open `http://localhost:4200/labs/virtual-scroll` (Lab 19) in `wsu-test` (`src/app/features/labs/virtual-scroll-lab/`).
+> To see off-screen components lazily loaded using `@defer (on viewport)`, open `http://localhost:4200/labs/defer-analytics` (Lab 20).
+
 ## Section 5. In-Class Practice and Testing Exercises
 
 Spend the remaining class time working through these exercises:
@@ -251,8 +263,24 @@ Spend the remaining class time working through these exercises:
 2. **Examine Edge Cases**: Review `status-badge.component.spec.ts` to see how missing or invalid inputs are handled.
 3. **Optional Project Practice**: If your team's application renders large collections, consider incorporating client-side pagination into your list view.
 
-## After Class (Ungraded Resources)
+## Lab References: Simpler Isolated Examples in `wsu-test`
 
-- `/labs/pagination-explorer` (Lab 18): Interactive playground visualizing pagination slices and sliding window math.
-- `/labs/virtual-scroll` (Lab 19): Rendering an 8,000-item array using CDK virtual scrolling.
-- `/labs/defer-analytics` (Lab 20): Deferring off-screen components using `@defer (on viewport)`.
+In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
+
+- **Lab 18 — Pagination & Array Slicing Explorer (`/labs/pagination-explorer`)**:
+  - **Route**: `http://localhost:4200/labs/pagination-explorer`
+  - **Source Code**: `src/app/features/labs/pagination-explorer-lab/`
+  - **What it demonstrates**: Interactive visualization of pagination math (`totalPages`, `startIndex`, `endIndex`), live memory array slice inspection, and sliding window page buttons.
+  - **Why consult this lab**: Visualizes the exact slicing mathematics without needing an active backend.
+
+- **Lab 19 — CDK Virtual Scroll (`/labs/virtual-scroll`)**:
+  - **Route**: `http://localhost:4200/labs/virtual-scroll`
+  - **Source Code**: `src/app/features/labs/virtual-scroll-lab/`
+  - **What it demonstrates**: A fixed-size scrolling viewport over 8,000 generated work-order records using `@angular/cdk/scrolling`. Only the visible rows exist in the DOM.
+  - **Why consult this lab**: Best pattern when dealing with massive datasets where pagination is not preferred.
+
+- **Lab 20 — Deferred Rendering (`@defer`) (`/labs/defer-analytics`)**:
+  - **Route**: `http://localhost:4200/labs/defer-analytics`
+  - **Source Code**: `src/app/features/labs/defer-analytics-lab/`
+  - **What it demonstrates**: Lazy loading heavy components with `@defer (on viewport)`, with accessible `@placeholder`, `@loading`, and `@error` template blocks.
+  - **Why consult this lab**: Demonstrates modern bundle optimization for below-the-fold content.

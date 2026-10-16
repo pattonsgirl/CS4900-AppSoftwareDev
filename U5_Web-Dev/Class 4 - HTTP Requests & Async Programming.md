@@ -1,5 +1,13 @@
 # Class 4 — HTTP Requests & Async Programming
 
+> 💡 **Reference Application Grounding (`wsu-test`)**:
+> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
+> Specific reference files:
+> - `src/environments/environment.ts` (API base URL configuration)
+> - `src/app/services/api.service.ts` (centralized HTTP gateway wrapping GET and POST)
+> - `src/app/services/work-order.service.ts` (domain service fetching and mapping work order entities)
+> - `src/app/features/work-orders/components/work-order-list/` (reactive UI handling loading, error, and data states)
+
 ## Setting the Stage: The Anatomy of an HTTP Request
 
 Up to this point, our components have consumed mock in-memory arrays. In production systems, client applications communicate with server APIs over HTTP (HyperText Transfer Protocol) to fetch and persist data.
@@ -26,13 +34,13 @@ In the reference application `wsu-test`, HTTP communication is organized into di
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│ Component Layer (e.g. WorkOrderListComponent)           │
+│ Component Layer (WorkOrderListComponent)               │
 │ - Triggers reload requests                             │
 │ - Reads reactive signals for rendering                 │
 └───────────────────────────┬────────────────────────────┘
                             │
 ┌───────────────────────────▼────────────────────────────┐
-│ Domain Service (e.g. WorkOrderService)                 │
+│ Domain Service (WorkOrderService)                      │
 │ - Manages business models (WorkOrder[])               │
 │ - Maintains signal store                               │
 │ - Coordinates endpoint paths                           │
@@ -81,11 +89,17 @@ export class OrderListComponent {
 
   // Automatically subscribes and unpacks the observable into a read-only signal
   readonly orders = toSignal(this.orderService.getWorkOrders(), {
-    initialValue: []
+    initialValue: [] // CRITICAL: Prevents undefined crashes before response arrives!
   });
 }
 ```
-*Note*: The `initialValue: []` is mandatory. Without it, the signal initially holds `undefined`, which crashes template `@for` loops before the network request resolves.
+
+#### ⚠️ Student Survival Pitfall: Forgetting `initialValue`
+If you omit `initialValue: []`, the signal's initial value is `undefined`. When your template attempts to render `@for (order of orders(); track order.id)`, the template evaluates immediately and crashes with:
+```
+TypeError: Cannot read properties of undefined (reading 'track')
+```
+Always provide an empty array (`initialValue: []`) so the template renders an empty state while the network request is in flight!
 
 #### Pattern 2: Controlled Subscription with `takeUntilDestroyed`
 Best for reloadable services and user-triggered fetches:
@@ -109,7 +123,7 @@ export class WorkOrderService {
     this.errorMessage.set(null);
 
     this.api.get<WorkOrder[]>('/work_order').pipe(
-      takeUntilDestroyed(this.destroyRef) // Cancels in-flight request if destroyed
+      takeUntilDestroyed(this.destroyRef) // Automatically cancels on component destruction!
     ).subscribe({
       next: (data) => {
         this._orders.set(data);
@@ -124,6 +138,9 @@ export class WorkOrderService {
 }
 ```
 
+#### ⚠️ Student Survival Pitfall: Leaked Subscriptions
+If you subscribe manually in a component without `takeUntilDestroyed`, the subscription continues running in the background even if the user navigates to another page. Always attach `.pipe(takeUntilDestroyed(this.destroyRef))`!
+
 ## Section 1. The HTTP Protocol and REST Fundamentals
 
 RESTful APIs map resources to standard HTTP verbs:
@@ -131,11 +148,10 @@ RESTful APIs map resources to standard HTTP verbs:
 - `GET /work_order/101`: Fetches details for work order #101.
 - `POST /work_order`: Creates a new work order.
 
-In `wsu-test`, the demo API (`mr-fixit-service`) provides `GET` and `POST` routes. It does not provide `PUT` or `DELETE`.
+In `wsu-test`, the demo API (`mr-fixit-service`) provides `GET` and `POST` routes. It does not expose `PUT` or `DELETE`.
 
-Checkpoint:
-> "If your Spring Boot backend returns HTTP 404, what does that mean?"
-> The requested endpoint URL does not match any `@GetMapping` or `@RequestMapping` path on your Spring controller.
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see Angular's modern signal-native `httpResource` API where loading, error, and value signals are created with zero subscription boilerplate? Open `http://localhost:4200/labs/http-resource` (Lab 10) in `wsu-test` (`src/app/features/labs/http-resource-lab/`).
 
 ## Section 2. Configuring HttpClient and the ApiService Gateway
 
@@ -157,7 +173,14 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-### The `ApiService` Gateway
+#### ⚠️ Student Survival Pitfall: Missing Provider
+If you inject `HttpClient` without calling `provideHttpClient()` in `app.config.ts`, your app will crash with:
+```
+NullInjectorError: No provider for _HttpClient!
+```
+Whenever you see this error, check `src/app/app.config.ts` and ensure `provideHttpClient()` is included in the `providers` array.
+
+### The `ApiService` Gateway in `wsu-test`
 
 `ApiService` encapsulates the server host URL:
 
@@ -174,14 +197,17 @@ export class ApiService {
   private readonly baseUrl = environment.apiUrl; // e.g., 'http://localhost:8080/mr-fixit-service'
 
   get<T>(endpoint: string): Observable<T> {
-    return this.http.get<T>(`${this.baseUrl}${endpoint}`);
+    return this.http.get<T>(`${this.baseUrl}/${endpoint}`);
   }
 
   post<T>(endpoint: string, body: unknown): Observable<T> {
-    return this.http.post<T>(`${this.baseUrl}${endpoint}`, body);
+    return this.http.post<T>(`${this.baseUrl}/${endpoint}`, body);
   }
 }
 ```
+
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to test retry interceptors with exponential backoff on 500/503 server errors in an interactive simulator? Open `http://localhost:4200/labs/http-resilience` (Lab 11) in `wsu-test` (`src/app/features/labs/http-resilience-lab/`).
 
 ## Section 3. Robust UI States: Loading, Empty, Success, and Error
 
@@ -226,7 +252,7 @@ A complete network interaction must handle all four UI states explicitly:
 
 ## Section 4. Live Demo in `wsu-test`
 
-1. Open http://localhost:4200/dashboard.
+1. Open `http://localhost:4200/dashboard`.
 2. Open DevTools (`F12` or `Cmd+Option+I`) and navigate to the **Network** tab.
 3. Filter requests by **Fetch/XHR**.
 4. Reload the page and locate the request to `http://localhost:8080/mr-fixit-service/work_order`.
@@ -246,7 +272,7 @@ The last 20 minutes are dedicated to connecting each student's frontend to **the
 1. **Configure HttpClient**: Add `provideHttpClient()` to your `app.config.ts`.
 2. **Environment URL**: Define your backend API base URL in `src/environments/environment.ts`.
 3. **Build the Gateway or Service**: Inject `HttpClient` into your data service and write a typed `GET` method returning an Observable.
-4. **Bridge to Signals**: Unpack the HTTP response into a component signal using `toSignal()` or `.subscribe()` with a signal `.set()`.
+4. **Bridge to Signals**: Unpack the HTTP response into a component signal using `toSignal()` (with `initialValue: []`) or `.subscribe()` with a signal `.set()`.
 5. **Implement 4 UI States**: Your template must display:
    - Loading indicator while the request is in flight.
    - Error banner with retry option if the call fails.
@@ -254,7 +280,18 @@ The last 20 minutes are dedicated to connecting each student's frontend to **the
    - Empty state when the server returns an empty list.
 6. **Live Backend Requirement**: Connect directly to your Spring Boot API. Do not use fake timeout arrays. If your request fails, ask the instructor for help.
 
-## After Class (Ungraded Resources)
+## Lab References: Simpler Isolated Examples in `wsu-test`
 
-- `/labs/http-resource` (Lab 10): Exploring Angular's signal-driven `httpResource` API with built-in loading and error signals.
-- `/labs/http-resilience` (Lab 11): Simulating network latency, transient 503 drops, and centralized error boundary interception.
+In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
+
+- **Lab 10 — `httpResource` API (`/labs/http-resource`)**:
+  - **Route**: `http://localhost:4200/labs/http-resource`
+  - **Source Code**: `src/app/features/labs/http-resource-lab/`
+  - **What it demonstrates**: Single-file component using Angular's modern `httpResource` API. An editable order-number signal drives the HTTP request, automatically producing `value`, `isLoading`, and `error` signals without manual subscriptions.
+  - **Why consult this lab**: Shows the future of Angular HTTP data fetching in a clean, self-contained view.
+
+- **Lab 11 — HTTP Interceptors & Resilience (`/labs/http-resilience`)**:
+  - **Route**: `http://localhost:4200/labs/http-resilience`
+  - **Source Code**: `src/app/features/labs/http-resilience-lab/`
+  - **What it demonstrates**: Interactive request simulator demonstrating `retryInterceptor` (exponential backoff on transient 500/503 errors), `errorInterceptor` logging, and centralized error boundary toasts.
+  - **Why consult this lab**: Helps you visualize what happens under the hood when a server endpoint fails or drops a connection.

@@ -1,5 +1,12 @@
 # Class 3 — Behavior & State Management with Signals
 
+> 💡 **Reference Application Grounding (`wsu-test`)**:
+> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
+> Specific reference files:
+> - `src/app/services/work-order.service.ts` (shared signal store and computed metrics summary)
+> - `src/app/features/dashboard/dashboard.component.ts` (consuming service signals and deriving dashboard statistics)
+> - `src/app/shared/components/status-badge/status-badge.component.ts` (signal inputs with `input.required<string>()`)
+
 ## Setting the Stage: The Evolution of Reactivity in Angular
 
 To understand modern Angular state management, it helps to understand how change detection evolved across framework generations:
@@ -37,6 +44,18 @@ count.update(current => current + 1);
 console.log(count()); // 6
 ```
 
+#### ⚠️ Student Survival Pitfall: The Direct Mutation Trap
+A common beginner bug when working with arrays or objects in signals:
+```typescript
+// ❌ BROKEN: Direct mutation does NOT notify Angular!
+this.workOrders().push(newOrder); 
+// Angular will NOT detect this change, and the UI will NOT update!
+
+// ✅ CORRECT: Always produce a new array reference with .update()
+this.workOrders.update(orders => [...orders, newOrder]);
+```
+**Golden Rule**: Never mutate data inside a signal directly. Always use `.set(newValue)` or `.update(prev => ...)` to supply a new reference!
+
 ### 2. Computed Signals (Derived State)
 
 Computed signals derive their value from other signals. They are read-only, lazily evaluated, and memoized:
@@ -53,7 +72,7 @@ const total = computed(() => price() * (1 + taxRate()));
 
 **Why `computed()` matters:**
 - **Memoization**: If dependent signals have not changed, `computed()` returns the cached result without recalculating.
-- **Pure Expressions**: Keeps templates clean by replacing complex calculation methods with derived reactive state.
+- **Performance**: In templates, binding to a `computed()` signal is vastly superior to binding to a class method (e.g. `{{ calculateTotal() }}`), which executes on every single change detection cycle.
 
 ### 3. Side Effects with `effect()`
 
@@ -62,7 +81,10 @@ An `effect()` runs side-effect logic whenever the signals it reads change. Use e
 - Logging analytics events.
 - Interfacing with third-party charting libraries.
 
-**Rule**: Do not use `effect()` to update other signals. Use `computed()` instead to derive state.
+**Critical Rule**: Do not use `effect()` to update other signals. Use `computed()` instead to derive state. Setting signals inside an effect easily introduces infinite cycles and runtime errors.
+
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see `effect()` safely synchronize a note to `localStorage`? Open `http://localhost:4200/labs/signal-effects` (Lab 09) in `wsu-test` (`src/app/features/labs/signal-effects-lab/`).
 
 ## The "Why" of Services and Dependency Injection
 
@@ -80,7 +102,7 @@ Dependency Injection is an architectural pattern implementing **Inversion of Con
 - **Without DI**: You enter a restaurant kitchen, hunt down ingredients, light the grill, and cook your own meal. You are tightly coupled to the kitchen layout.
 - **With DI**: You sit at the table and tell the waiter what you need. The waiter delivers the prepared meal. You do not need to know how the kitchen is organized; you only interact with the contract.
 
-## Section 1. Reactivity with Angular Signals
+## Section 1. Reactivity with Angular Signals in `wsu-test`
 
 Open `src/app/features/dashboard/dashboard.component.ts` in `wsu-test`.
 
@@ -139,23 +161,21 @@ In the template, read these signals using function-call syntax:
 </div>
 ```
 
-Checkpoint:
-> "Why do we read `totalOrders()` with parentheses in the template?"
-> Because `totalOrders` is a signal function. Calling `totalOrders()` subscribes the template node to updates from that signal.
+#### ⚠️ Student Survival Pitfall: Forgetting Parentheses in Templates
+In template interpolation, you must write `{{ totalOrders() }}` with parentheses. If you write `{{ totalOrders }}`, Angular will output the raw TypeScript function reference (`function() { ... }`) or throw a compilation error.
 
 ## Section 2. Event Binding and User Interaction
 
 Event binding syntax `(event)="handler($event)"` sends user actions from the HTML DOM to TypeScript component methods:
 
 ```html
-<button type="button" (click)="refreshList()">Refresh</button>
+<button type="button" (click)="toggleFilters()">Toggle Filters</button>
 <input type="text" (input)="onSearchInput($event)" placeholder="Search orders..." />
 ```
 
 In the component class, event handlers update signals:
 
 ```typescript
-// Handling button click to toggle a filter
 filtersCollapsed = signal(false);
 
 toggleFilters(): void {
@@ -163,13 +183,20 @@ toggleFilters(): void {
 }
 ```
 
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see how a debounced search input handles real-time user typing cleanly? Open `http://localhost:4200/labs/rx-search` (Lab 08) in `wsu-test` (`src/app/features/labs/rx-search-lab/`).
+
 ## Section 3. Component Communication: Signal Inputs and Outputs
 
 Components communicate across parent-child boundaries using reactive inputs and outputs.
 
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see parent-child priority chips with `input()` down and `output()` up in an isolated sandbox? Open `http://localhost:4200/labs/parent-child` (Lab 04) in `wsu-test` (`src/app/features/labs/parent-child-lab/`).
+> For two-way signal binding with `model()`, see `http://localhost:4200/labs/model-binding` (Lab 05).
+
 ### Signal Inputs: `input()` and `input.required()`
 
-Modern Angular replaces the `@Input()` decorator with signal inputs:
+Modern Angular replaces the legacy `@Input()` decorator with signal inputs:
 
 ```typescript
 // src/app/shared/components/status-badge/status-badge.component.ts
@@ -236,17 +263,14 @@ Parent template listens to the output:
 
 ## Section 4. Centralized State with Injectable Services and `inject()`
 
-In modern Angular, services declare `@Injectable({ providedIn: 'root' })` so a single application-wide singleton is shared across all components:
+In modern Angular, services declare `@Injectable({ providedIn: 'root' })` so a single application-wide singleton is shared across all components.
+
+Here is the store pattern from `wsu-test` (`src/app/services/work-order.service.ts`):
 
 ```typescript
 // src/app/services/work-order.service.ts
-import { Injectable, signal } from '@angular/core';
-
-export interface WorkOrder {
-  id: number;
-  title: string;
-  statusCode: string;
-}
+import { Injectable, signal, computed } from '@angular/core';
+import { WorkOrder, WorkOrderSummary, WorkOrderStatusCode } from '@shared/models';
 
 @Injectable({
   providedIn: 'root'
@@ -254,12 +278,30 @@ export interface WorkOrder {
 export class WorkOrderService {
   // Private writable signal holding source-of-truth state
   private readonly _workOrders = signal<WorkOrder[]>([
-    { id: 1, title: 'Fix broken lock', statusCode: 'OPN' },
-    { id: 2, title: 'Replace HVAC filter', statusCode: 'NPRGRS' }
+    {
+      id: 1,
+      orderNumber: 101,
+      title: 'Fix broken lock in Dorm 102',
+      status: { code: WorkOrderStatusCode.OPEN, label: 'Open' }
+    } as WorkOrder
   ]);
 
   // Public read-only exposure
   readonly workOrders = this._workOrders.asReadonly();
+
+  // Computed summary metrics
+  readonly summary = computed<WorkOrderSummary>(() => {
+    const orders = this._workOrders();
+    return {
+      totalOrders: orders.length,
+      openOrders: orders.filter(o => o.status.code === WorkOrderStatusCode.OPEN).length,
+      inProgressOrders: orders.filter(o => o.status.code === WorkOrderStatusCode.IN_PROGRESS).length,
+      completedOrders: orders.filter(o => o.status.code === WorkOrderStatusCode.COMPLETED).length,
+      cancelledOrders: 0,
+      highPriorityOrders: 0,
+      overdueOrders: 0
+    };
+  });
 
   addWorkOrder(newOrder: WorkOrder): void {
     this._workOrders.update(orders => [...orders, newOrder]);
@@ -279,6 +321,10 @@ export class WorkOrderListComponent {
   readonly orders = this.workOrderService.workOrders;
 }
 ```
+
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see how dependent state (like a room dropdown resetting when a building changes) works cleanly without manual event juggling? Open `http://localhost:4200/labs/linked-signal` (Lab 06) in `wsu-test` (`src/app/features/labs/linked-signal-lab/`).
+> To see how to eliminate impossible UI states with a discriminated union `{ status: 'loading' | 'error' | 'success' }`, open `http://localhost:4200/labs/ui-state` (Lab 07).
 
 ### Routing Between Views
 
@@ -313,11 +359,42 @@ The last 20 minutes are dedicated to implementing Homework 3 in each student's p
 5. **Add User Interaction**: Add a button or event listener that mutates signal state with `.update()`.
 6. **Configure Navigation**: Add a second route in `app.routes.ts` and verify navigation with `routerLink`.
 
-## After Class (Ungraded Resources)
+## Lab References: Simpler Isolated Examples in `wsu-test`
 
-- `/labs/parent-child` (Lab 04): Exploring `input()` down and `output()` up before two-way binding.
-- `/labs/model-binding` (Lab 05): Two-way binding with `model()`.
-- `/labs/linked-signal` (Lab 06): Managing dependent dropdown selections that reset automatically.
-- `/labs/ui-state` (Lab 07): Modeling explicit `{ status: 'loading' | 'error' | 'success' }` discriminated unions.
-- `/labs/rx-search` (Lab 08): Debounced search inputs bridging RxJS streams into signals.
-- `/labs/signal-effects` (Lab 09): Synchronizing signal state to `localStorage` using `effect()`.
+In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
+
+- **Lab 04 — Parent and Child Communication (`/labs/parent-child`)**:
+  - **Route**: `http://localhost:4200/labs/parent-child`
+  - **Source Code**: `src/app/features/labs/parent-child-lab/`
+  - **What it demonstrates**: Priority chips receiving values via `input()` and emitting updates back to the parent through `output()`.
+  - **Why consult this lab**: The cleanest, simplest example of unidirectional component data flow without any service or HTTP code.
+
+- **Lab 05 — `model()` Two-Way Binding (`/labs/model-binding`)**:
+  - **Route**: `http://localhost:4200/labs/model-binding`
+  - **Source Code**: `src/app/features/labs/model-binding-lab/`
+  - **What it demonstrates**: Two-way signal binding between parent and child components using the `model()` API and `[(value)]` syntax.
+  - **Why consult this lab**: Compare modern `model()` with separate `input()` / `output()` pairs.
+
+- **Lab 06 — `linkedSignal` Dependent State (`/labs/linked-signal`)**:
+  - **Route**: `http://localhost:4200/labs/linked-signal`
+  - **Source Code**: `src/app/features/labs/linked-signal-lab/`
+  - **What it demonstrates**: Building and room picker where the selected room automatically resets to a valid default when the selected building changes.
+  - **Why consult this lab**: Solves the classic problem of stale child selections in dependent dropdowns.
+
+- **Lab 07 — Discriminated UI State (`/labs/ui-state`)**:
+  - **Route**: `http://localhost:4200/labs/ui-state`
+  - **Source Code**: `src/app/features/labs/ui-state-lab/`
+  - **What it demonstrates**: Modeling UI state as a single discriminated union signal `{ status: 'loading' | 'error' | 'success' }` handled via `@switch`.
+  - **Why consult this lab**: Eliminates buggy combinations like `isLoading === true && hasError === true`.
+
+- **Lab 08 — Debounced Search & RxJS Interop (`/labs/rx-search`)**:
+  - **Route**: `http://localhost:4200/labs/rx-search`
+  - **Source Code**: `src/app/features/labs/rx-search-lab/`
+  - **What it demonstrates**: Real-time typeahead search comparing raw signal binding (which spams requests) with a debounced RxJS pipeline converted to a signal via `toSignal()`.
+  - **Why consult this lab**: Shows how to bridge RxJS streams into signals for user typing inputs.
+
+- **Lab 09 — `effect()` and `afterNextRender` (`/labs/signal-effects`)**:
+  - **Route**: `http://localhost:4200/labs/signal-effects`
+  - **Source Code**: `src/app/features/labs/signal-effects-lab/`
+  - **What it demonstrates**: Using `effect()` safely to synchronize component state to browser `localStorage`.
+  - **Why consult this lab**: Explains when `effect()` is appropriate and why it must not be used to compute dependent state.

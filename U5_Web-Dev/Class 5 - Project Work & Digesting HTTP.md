@@ -3,13 +3,20 @@
 > **Working Day 1 — No New Material Presented.**
 > This session is a dedicated project work and troubleshooting workshop. We do not introduce new framework features today. Instead, students focus on digesting the HTTP concepts from Class 4, fixing live connection errors with their Spring Boot backends, and completing Homework 4.
 
+> 💡 **Reference Application Grounding (`wsu-test`)**:
+> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
+> Specific reference files:
+> - `src/app/services/api.service.ts` (the low-level HTTP gateway)
+> - `src/app/services/work-order.service.ts` (the domain service mapping API responses to models)
+> - `src/environments/environment.ts` (specifying backend port 8080)
+
 ## Setting the Stage: The Reality of Full-Stack Integration
 
 Connecting an Angular client running on `http://localhost:4200` to a Spring Boot backend running on `http://localhost:8080` introduces friction that never occurs with mock data:
 - **CORS blocks**: The browser silently intercepts and drops responses before your TypeScript code can read them.
 - **Timing glitches**: Components attempt to read properties of objects that have not arrived yet.
-- **Data shape mismatches**: Spring Boot serializes fields with one naming convention while TypeScript interfaces expect another, resulting in blank screens with HTTP 200 OK statuses.
-- **Offline servers**: Forgetting to launch the backend leads to confusing network errors.
+- **Data shape mismatches**: Spring Boot serializes fields with one naming convention (e.g. `snake_case`) while TypeScript interfaces expect another (`camelCase`), resulting in blank screens with HTTP 200 OK statuses.
+- **Offline servers**: Forgetting to launch the backend leads to confusing network errors (`Status 0`).
 
 Today is designed to unblock every student team and master browser forensic debugging.
 
@@ -67,9 +74,12 @@ The browser's Same-Origin Policy is a fundamental security safeguard. It restric
 
 **Critical Principle**: CORS is enforced by the **browser**, not by Angular. The browser sends an `Origin: http://localhost:4200` request header. If the response from `localhost:8080` lacks a matching `Access-Control-Allow-Origin` header, the browser blocks the JavaScript runtime from reading the response.
 
+#### ⚠️ Student Survival Pitfall: Trying to Fix CORS in Angular
+Never attempt to fix CORS by adding `Access-Control-Allow-Origin` headers inside your Angular `HttpClient` calls! That response header must come from the **server** (Spring Boot). Setting it in the Angular request will have zero effect.
+
 ### How to Fix CORS on the Backend (Spring Boot)
 
-**Never attempt to fix CORS in the Angular client.** CORS must be configured on the Spring Boot server.
+CORS must be configured on your Spring Boot application using one of two methods:
 
 #### Method 1: Global WebMvcConfigurer (Recommended for Teams)
 
@@ -129,6 +139,10 @@ When a network request fails, open Developer Tools (`F12`), switch to the **Netw
    - *Cause*: Field name mismatch between JSON payload and TypeScript interface (for example, Spring serialized `first_name` while Angular expects `firstName`).
    - *Fix*: Inspect the **Response** tab in DevTools. Compare the exact property names with your TypeScript interface.
 
+> 🧪 **Simpler Lab Reference in `wsu-test`**:
+> Want to see how route parameters and query parameters bind directly to component `input()` signals without subscribing to `ActivatedRoute`? Open `http://localhost:4200/labs/route-inputs/1042` (Lab 12) in `wsu-test` (`src/app/features/labs/route-inputs-lab/`).
+> For preloading route data with functional resolvers, open `http://localhost:4200/labs/resolved-work-order/1` (Lab 13).
+
 ## Section 4. Comprehensive HTTP Troubleshooting Matrix
 
 | Symptom | Root Cause | Immediate Action |
@@ -153,7 +167,18 @@ Use the remaining class time to work directly on your team's frontend applicatio
 - [ ] Template handles all 4 states: Loading spinner, Error alert, Data list, and Empty list.
 - [ ] DevTools Network tab displays a successful `200 OK` request when the view loads.
 
-## After Class (Ungraded Resources)
+## Lab References: Simpler Isolated Examples in `wsu-test`
 
-- `/labs/route-inputs/1042` (Lab 12): Reading route parameters directly into component signals using `withComponentInputBinding()`.
-- `/labs/resolved-work-order/1` (Lab 13): Preloading required route data before component activation using route resolvers.
+In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
+
+- **Lab 12 — Route Params as Inputs (`/labs/route-inputs/1042`)**:
+  - **Route**: `http://localhost:4200/labs/route-inputs/1042`
+  - **Source Code**: `src/app/features/labs/route-inputs-lab/`
+  - **What it demonstrates**: Binding the `:orderId` route parameter and `?status` query parameter directly to component `input()` signals using `withComponentInputBinding()`.
+  - **Why consult this lab**: Shows how to read URL parameters without injecting `ActivatedRoute` or managing subscriptions.
+
+- **Lab 13 — Resolver + Route-Scoped State (`/labs/resolved-work-order/1`)**:
+  - **Route**: `http://localhost:4200/labs/resolved-work-order/1`
+  - **Source Code**: `src/app/features/labs/resolved-work-order/`
+  - **What it demonstrates**: Functional router resolver preloading work-order data before component activation, and providing a route-scoped context service.
+  - **Why consult this lab**: Demonstrates how to prevent UI flashes by ensuring data is resolved before navigating to a detail view.
