@@ -1,4 +1,4 @@
-# **🔁 Class 4 — Data Round Trip & Full-Stack Display**
+# **🔁 Class 6 — Data Round Trip & Full-Stack Display**
 
 ## **Goal**
 
@@ -1263,17 +1263,16 @@ export class WorkOrderFormComponent implements OnInit {
   styleUrl: './work-order-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WorkOrderDetailComponent extends BaseComponent {
+export class WorkOrderDetailComponent {
   id = input.required<string>(); // Route parameter
 
   private readonly workOrderService = inject(WorkOrderService);
   private readonly router = inject(Router);
+  readonly ui = createComponentUiState();
 
   workOrder = signal<WorkOrder | null>(null);
 
   constructor() {
-    super();
-
     // Effect to load work order when id changes
     effect(() => {
       const workOrderId = this.id();
@@ -1286,8 +1285,8 @@ export class WorkOrderDetailComponent extends BaseComponent {
   }
 
   private async loadWorkOrder(id: string): Promise<void> {
-    const workOrder = await this.handleAsync(
-      () => firstValueFrom(this.workOrderService.getWorkOrderById(parseInt(id))),
+    const workOrder = await this.ui.handleAsync(
+      () => firstValueFrom(this.workOrderService.getWorkOrderById(parseInt(id, 10))),
       'Failed to load work order'
     );
 
@@ -1315,55 +1314,51 @@ export class WorkOrderDetailComponent extends BaseComponent {
 }
 ```
 
-### **Using the BaseComponent for Common Functionality**
+### **Using Composable UI State for Common Functionality**
 
-Our WSU project uses a `BaseComponent` class that provides common functionality like loading states and error handling:
+Rather than creating an abstract `BaseComponent` superclass that couples unrelated screens and obscures lifecycle methods, modern Angular favors composition over inheritance. In `wsu-test`, loading states and error handling are provided by a composable utility function:
 
 ```ts
-// src/app/shared/utils/base-component.ts
-@Injectable()
-export abstract class BaseComponent {
-  protected readonly destroyRef = inject(DestroyRef);
-  protected readonly errorBoundary = inject(ErrorBoundaryService);
+// src/app/shared/utils/component-ui-state.ts
+import { computed, inject, signal } from '@angular/core';
+import { ErrorBoundaryService } from '@app/services/error-boundary.service';
 
-  // Common loading and error states using Angular signals
-  protected readonly isLoading = signal(false);
-  protected readonly error = signal<string | null>(null);
-  protected readonly hasError = computed(() => this.error() !== null);
+export function createComponentUiState() {
+  const errorBoundary = inject(ErrorBoundaryService);
+  const isLoading = signal(false);
+  const error = signal<string | null>(null);
+  const hasError = computed(() => error() !== null);
 
-  /**
-   * Set loading state
-   */
-  protected setLoading(loading: boolean): void {
-    this.isLoading.set(loading);
-  }
-
-  /**
-   * Handle async operations with automatic loading and error handling
-   */
-  protected async handleAsync<T>(
-    operation: () => Promise<T>,
-    errorMessage = 'An error occurred'
-  ): Promise<T | null> {
-    try {
-      this.setLoading(true);
-      this.clearError();
-      return await operation();
-    } catch (error) {
-      this.errorBoundary.handleAsyncError(error);
-      this.setError(errorMessage);
-      return null;
-    } finally {
-      this.setLoading(false);
+  return {
+    isLoading: isLoading.asReadonly(),
+    error: error.asReadonly(),
+    hasError,
+    setLoading(loading: boolean): void {
+      isLoading.set(loading);
+    },
+    setError(message: string | null): void {
+      error.set(message);
+    },
+    clearError(): void {
+      error.set(null);
+    },
+    async handleAsync<T>(
+      operation: () => Promise<T>,
+      errorMessage = 'An error occurred'
+    ): Promise<T | null> {
+      try {
+        isLoading.set(true);
+        error.set(null);
+        return await operation();
+      } catch (err) {
+        errorBoundary.handleAsyncError(err);
+        error.set(errorMessage);
+        return null;
+      } finally {
+        isLoading.set(false);
+      }
     }
-  }
-
-  /**
-   * Show success message
-   */
-  protected showSuccess(message: string, autoRemove: boolean = true): void {
-    this.errorBoundary.showSuccess(message, autoRemove);
-  }
+  };
 }
 ```
 
