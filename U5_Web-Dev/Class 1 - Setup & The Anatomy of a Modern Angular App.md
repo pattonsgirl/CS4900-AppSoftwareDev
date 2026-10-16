@@ -1,32 +1,80 @@
 # Class 1
 
-## What students should be able to do
+## Setting the Stage: From AngularJS to Modern, Standalone Angular
 
-- Name three processes: browser, Angular app, backend
-- Run the demo with `npm ci` and `npm start`
-- Open `main.ts`, `app.config.ts`, `app.routes.ts`, and `app.ts` without hunting
-- Change visible text, save, and see live reload
+A brief historical overview is crucial for appreciating the design decisions in the latest versions of Angular. The journey began with AngularJS (often referred to as Angular 1.x), a framework that revolutionized front-end development by introducing concepts like two-way data binding and dependency injection to a wide audience. However, its design presented challenges in performance and scalability. This led to a complete, ground-up rewrite, resulting in Angular (version 2 and beyond). This new iteration was built on a component-based architecture, prioritizing performance, modularity, and the capabilities of modern JavaScript.
 
-## Before class
+The evolution did not stop there. The most recent and significant shift in the framework's philosophy is the move towards simplification and an enhanced developer experience, a trend that gained significant momentum from Angular version 14 through 17 and beyond. This modern approach is characterized by three key pillars:
 
-Open these and keep them ready:
+1. **Standalone Components**: A move away from the mandatory `NgModule` system, reducing boilerplate and simplifying the mental model.
 
-- Demo repo: `Documents/GitHub/WSU/2025/wsu-test`
-- Browser at http://localhost:4200
-- Terminal in the demo root
-- `mr-fixit-service` on http://localhost:8080 if you can. If you cannot, that is still a teaching moment.
+2. **Signals**: A new, fine-grained reactivity system that offers a more intuitive and performant way to manage state changes compared to the traditional Zone.js-based change detection.6
 
-### Pre-class checklist
+3. **New Template Syntax**: Built-in control flow blocks like `@if` and `@for` that are more ergonomic and no longer require module imports.
 
-1. Node 22+ on the projector machine. `node -v`.
-2. From the demo root: `npm ci`, then `npm start`. Confirm http://localhost:4200 loads `/dashboard`.
-3. Confirm `src/environments/environment.ts` still says `http://localhost:8080/mr-fixit-service`.
-4. Click `/dashboard`, `/work-orders/list`, `/work-orders/create` once so you know whether the API is up.
-5. Have one tiny text change in mind. I use the dashboard subtitle in `dashboard.component.html`.
 
+This curriculum is firmly rooted in this modern paradigm. The focus is on building applications the way the Angular team now recommends, an approach that is not only simpler and more powerful but also aligns Angular more closely with the broader JavaScript ecosystem, making it more approachable for developers coming from other frameworks.
+
+This evolution is not merely a collection of new features; it represents a strategic response to the web development landscape. Early versions of Angular (v2-v13), while powerful, were often criticized for a steep learning curve and the cognitive overhead associated with `NgModules`. Competing frameworks like React and Vue gained traction partly due to their component-centric models, which were perceived as simpler. The introduction of Standalone Components, Signals, and simplified control flow is a direct and deliberate effort by the Angular team to address these criticisms. It is a strategic initiative to lower the barrier to entry, enhance day-to-day developer productivity, and shift the narrative around Angular from being "heavy and corporate" to "modern and efficient." This demonstrates that the framework is actively shedding legacy complexities to maintain its competitive edge and appeal to a broader developer audience.
+
+## Core Philosophy: Opinionated, Structured, and Scalable
+
+Angular is often described as an "opinionated" framework. This means it provides a clear, built-in, and well-defined structure for building applications. It has its own solutions for critical aspects like routing, dependency injection, and data management, which are integrated directly into the framework.
+
+This contrasts sharply with less opinionated libraries such as React, where the developer is responsible for selecting and integrating these fundamental pieces from a vast third-party ecosystem. The trade-off is clear:
+
+- **Advantage of Angular's approach**: Reduced decision fatigue for developers. Teams can get started faster without debating which routing or state management library to use. This leads to a highly consistent architecture across different projects and teams, which is a significant advantage in large, enterprise-scale applications where maintainability and developer onboarding are paramount.
+
+- **Disadvantage**: Less flexibility. If a developer disagrees with Angular's "opinion" on a certain architectural aspect, overriding it can be more complex than choosing an alternative in a less structured ecosystem.
+
+This inherent structure is a core strength, making Angular a premier choice for complex applications that require long-term maintenance and collaboration among large development teams.
+
+## Installing Node.js and npm
+
+The foundation of any modern web development environment is Node.js. It serves as a JavaScript runtime environment, allowing developers to execute JavaScript code outside of a web browser. Bundled with Node.js is npm (Node Package Manager), the world's largest software registry. Npm is an essential tool for managing project dependencies—the external libraries and tools an application relies on.
+
+Students must install the latest Long-Term Support (LTS) version of Node.js from the official website:
+
+- **Node.js Downloads:** [https://nodejs.org/](https://nodejs.org/)
+
+## What is a Package Manager?
+
+A package manager like npm automates the process of installing, updating, and managing the libraries (packages) a project needs. It reads a configuration file, `package.json`, which lists all dependencies. When a command like `npm install` is run, npm downloads the correct versions of these packages from its registry and places them in a `node_modules` folder within the project. This ensures that every developer working on the project has the exact same set of tools, creating a consistent and reproducible development environment.
+
+## Setting up the IDE (VSCode Recommended)
+
+A capable Integrated Development Environment (IDE) is crucial for productivity. Visual Studio Code (VSCode) is highly recommended for Angular development due to its excellent TypeScript support and a rich ecosystem of extensions.
+
+- **VSCode Download:** [https://code.visualstudio.com/](https://code.visualstudio.com/)
+
+- **Recommended Extension:** The official **Angular Language Service** extension provides code completion, navigation, and real-time error checking within templates, significantly improving the development experience.
+
+## Installing the Angular CLI
+
+The Angular Command Line Interface (CLI) is a powerful tool for initializing, developing, scaffolding, and maintaining Angular applications. It handles complex configuration and build processes, allowing developers to focus on writing code.
+
+To install the CLI globally on a machine, students should open their terminal or command prompt and run:
+
+```bash
+npm install -g @angular/cli
+```
+
+The `-g` flag signifies a global installation, making the `ng` command available anywhere on the system. As of Angular version 7, the major versions of the Angular core framework and the CLI are aligned, ensuring compatibility.
+
+## Generating the First Angular Project
+
+With the CLI installed, creating a new Angular application is a single command. Since Angular version 17, the CLI defaults to creating projects with the modern standalone architecture. You can also declare this by using the `--standalone` flag.
+
+In the terminal, navigate to a desired directory and run:
+
+```bash
+ng new test-app
+```
+
+## The Modern Project Structure
+
+The project structure generated by the CLI is organized for clarity and scalability. The previous reliance on a monolithic `app.module.ts` has been replaced by a more decoupled and logical file structure that better separates concerns. This architectural improvement isolates responsibilities, making the application easier to understand and maintain.
 ## Section 1. Three processes
-
-Do this on the board before anyone opens a file.
 
 A web app in this class is three programs that talk over the network:
 
@@ -41,9 +89,9 @@ Ask the class if anyone can define these terms:
 - **Port.** A number on a machine that identifies which program should receive a connection. 4200 is Angular. 8080 is Spring. Mixing them up is the most common Class 1 confusion.
 - **Origin.** Scheme + host + port. `http://localhost:4200` and `http://localhost:8080` are different origins. 
 - **JSON.** JavaScript Object Notation or text shaped like JavaScript objects. The backend sends JSON. Angular turns it into TypeScript objects later (Class 3).
-- DOM. Document Object Model. A cross-platform and language-independent API that represents an HTML or XML document as a hierarchical tree of objects and nodes. It allows scripting languages like JavaScript to read, change, add, or delete elements, styles, and content on a web page dynamically.
+- **DOM.** Document Object Model. A cross-platform and language-independent API that represents an HTML or XML document as a hierarchical tree of objects and nodes. It allows scripting languages like JavaScript to read, change, add, or delete elements, styles, and content on a web page dynamically.
 
-## Section 2. Terminal, npm, and Git at survival level
+## Section 2. Terminal and npm
 
 Stay in the demo root. Do not jump into `src/` yet.
 
@@ -82,8 +130,6 @@ Checkpoint:
  >`npm start` or `ng serve`
 
 ## Section 3. How the app boots
-
-Open the running app first. Then open files. That is teaching rule 1.
 
 > The browser loaded some HTML. That HTML has a tag called `app-root`. Angular replaces that tag with our application. I want you to see the chain from that tag to the dashboard.
 
@@ -284,13 +330,11 @@ to something obviously wrong, like `Here's the Class 1 live-reload check.` Save.
 
 If live reload does not fire: they saved a file the app is not using, or `ng serve` died.
 
-## Section 5. Transfer into their repo
+## Section 5. Transfer into students repo
 
-Last 20 minutes. Homework 1 starts here.
+They use **their** project and will be creating a new Angular 22 app.
 
-They use **their** project. A new Angular 22 app is fine. An existing frontend is fine. They do not copy `wsu-test`.
-
-Coach this sequence:
+Sequence:
 
 1. Node 22+. `ng new` with routing and SCSS if they are starting fresh. Angular CLI 22.
 2. `npm ci` or `npm install`, then `npm start`. Browser shows their app, usually http://localhost:4200.
@@ -298,14 +342,6 @@ Coach this sequence:
 4. Change a heading or a line of copy. Save. Confirm live reload.
 5. README: one sentence, what a user does in this app.
 6. Commit. Push. Pilot link is the deliverable.
-
-## If they get stuck
-
-- Wrong folder: no `package.json` after `ls`. `cd` into the app root.
-- Old Node: install current LTS, reopen the terminal.
-- Port in use: read the `ng serve` output. Use the URL it prints.
-- Blank page: check the browser console. Startup errors from `bootstrapApplication` land there.
-- Windows path pain: they can use the IDE terminal with the same commands.
 
 ## After class (ungraded)
 
