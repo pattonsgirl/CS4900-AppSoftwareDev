@@ -1,37 +1,43 @@
-# Class 7 — Testing with Jest & Client-Side Pagination
+# Class 7: Testing with Jest & Client-Side Pagination
 
-> **Wildcard Session — In-Class Demo & Practice (No New Homework Assigned).**
-> Automated testing and client-side pagination are covered today as essential production engineering practices. Writing unit tests is optional and not graded for student projects. There is no new homework assigned for this session.
+> **Wildcard Session: In-Class Exploration & Practice (No New Homework Assigned)**
+> Automated testing and client-side pagination are covered today as essential production practices. Writing automated tests is optional and not graded for student project submissions. Use today to learn these techniques, experiment in the reference repo, and polish your team deliverables.
 
-> **Reference Application Grounding (`wsu-test`)**:
-> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
-> Specific reference files:
+> **Reference Application Grounding**:
+> All practical demonstrations and code samples in this session are grounded in the reference repository [Mr Fix It UI](https://github.com/WSU-kduncan/mr-fixit-ui):
 > - `src/app/shared/components/status-badge/status-badge.component.spec.ts` (isolated component test spec)
-> - `src/app/features/labs/services/labs-read.service.spec.ts` (HTTP contract test spec)
+> - `src/app/services/api.service.spec.ts` (HTTP contract test spec)
 > - `src/app/features/work-orders/components/work-order-list/work-order-list.component.ts` (client-side pagination math and dynamic sliding window)
 
-## Setting the Stage: Production Quality and Scalability
+---
 
-In production software development, two concerns quickly emerge as an application matures:
-1. **Regression Prevention**: How do we verify that adding a new feature does not silently break existing code without manually clicking through every screen in a browser?
-2. **Scalability and Performance**: How does the UI perform when a database returns 500 or 5,000 records instead of 5?
+## Production Quality and Scalability
 
-Today's session explores the answers implemented in `wsu-test`: automated testing with Jest and client-side reactive pagination.
+In production applications, two engineering questions quickly emerge:
 
-## The Jest Testing Environment in Angular
+1. **Regression Prevention**: How do you verify that adding a new feature does not break existing code without clicking through every screen by hand?
+2. **Scalability and Performance**: How does your UI behave when an API returns 200 or 2,000 records instead of 4?
 
-Historically, Angular projects relied on Karma and Jasmine, which launched a full headless Chrome browser for every test execution. In `wsu-test`, we use **Jest**:
+Today we look at how production apps solve both: automated unit testing with Jest and client-side reactive pagination with Angular signals.
 
-- **Fast Execution**: Tests execute directly inside Node.js using `jsdom` (an in-memory virtual DOM), skipping the startup overhead of a browser process.
-- **Built-in Mocking**: Provides `jest.fn()` and `jest.spyOn()` without requiring auxiliary libraries.
-- **Parallel Execution**: Tests execute across multiple worker threads simultaneously.
-- **Standard CLI**: Run the entire suite with `npm test`, or test a single component with `npm test -- status-badge.component.spec.ts`.
+---
 
-## Section 1. Testing Presentational Components with Signal Inputs
+## Section 1: The Jest Testing Environment
 
-Presentational components receive inputs and render DOM elements. In `wsu-test`, `StatusBadgeComponent` maps status codes to labels and styles.
+Historically, Angular relied on Karma and Jasmine, which launched a full headless Chrome browser for every test run. In `mr-fixit-ui`, we use **Jest**:
 
-Here is the complete unit test specification (`src/app/shared/components/status-badge/status-badge.component.spec.ts`):
+- **Fast In-Memory Execution**: Tests run in Node.js using `jsdom` (an in-memory virtual DOM) rather than waiting for a real browser to boot.
+- **Built-in Mocking and Spies**: Native utilities like `jest.fn()` and `jest.spyOn()` handle function mocking out of the box.
+- **Parallel Runs**: Tests run across worker threads in parallel.
+- **Convenient CLI**: Run tests across the project with `npm test`, or target a single file with `npm test -- status-badge.component.spec.ts`.
+
+---
+
+## Section 2: Testing Presentational Components with Signal Inputs
+
+Presentational components take inputs and render markup. In `mr-fixit-ui`, `StatusBadgeComponent` maps status codes to human-readable labels and badge styles.
+
+Here is the complete unit test from `src/app/shared/components/status-badge/status-badge.component.spec.ts`:
 
 ```typescript
 // src/app/shared/components/status-badge/status-badge.component.spec.ts
@@ -42,7 +48,7 @@ describe('StatusBadgeComponent', () => {
   let fixture: ComponentFixture<StatusBadgeComponent>;
 
   beforeEach(async () => {
-    // 1. Configure the isolated testing module
+    // 1. Configure the isolated test environment
     await TestBed.configureTestingModule({
       imports: [StatusBadgeComponent]
     }).compileComponents();
@@ -57,7 +63,7 @@ describe('StatusBadgeComponent', () => {
     // 3. Trigger change detection to update the DOM
     fixture.detectChanges();
 
-    // 4. Assert against the rendered DOM text and classes
+    // 4. Assert against the rendered DOM text and CSS classes
     const element: HTMLElement = fixture.nativeElement;
     const badge = element.querySelector('.badge');
 
@@ -78,40 +84,50 @@ describe('StatusBadgeComponent', () => {
 });
 ```
 
-### Key Testing Patterns Demonstrated
+### Key Testing Principles
 
-- `TestBed.createComponent()`: Creates an isolated component sandbox.
-- `fixture.componentRef.setInput(key, value)`: Modern Angular API for setting signal inputs in unit tests.
-- `fixture.detectChanges()`: Forces change detection so DOM nodes reflect the latest signal state.
-- **Assert the DOM**: Always assert what the user sees in the rendered HTML rather than checking private component fields!
+- `TestBed.createComponent()`: Creates an isolated instance of the component in a test harness.
+- `fixture.componentRef.setInput(key, value)`: The modern Angular API for updating signal inputs in tests.
+- `fixture.detectChanges()`: Manually triggers change detection so the rendered HTML reflects the new input state.
+- **Test What the User Sees**: Assert against `fixture.nativeElement` (the rendered DOM) rather than querying private TypeScript class properties. If the HTML text is right, the user experience is right.
 
-## Section 2. HTTP Contract Testing with `HttpTestingController`
+---
 
-Unit testing HTTP services requires verifying request URLs, methods, and payload mapping without making real network calls.
+### Checkpoint: Testing Components
 
-Angular provides `provideHttpClientTesting()` and `HttpTestingController`:
+> **Question**: Why do we call `fixture.detectChanges()` immediately after calling `fixture.componentRef.setInput()`?
+>
+> **Answer**: Setting a signal input marks the component as dirty, but does not synchronously redraw the DOM in the test runner. `fixture.detectChanges()` tells Angular to execute change detection and update the rendered HTML so you can assert against it.
+
+---
+
+## Section 3: HTTP Contract Testing with `HttpTestingController`
+
+Unit testing HTTP services requires verifying request URLs, HTTP methods, and payload deserialization without making real network calls to a running backend.
+
+Angular provides `provideHttpClientTesting()` and `HttpTestingController` for this:
 
 ```typescript
-// src/app/features/labs/services/labs-read.service.spec.ts
+// src/app/services/api.service.spec.ts
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
-import { LabsReadService } from './labs-read.service';
+import { ApiService } from './api.service';
 
-describe('LabsReadService', () => {
-  let service: LabsReadService;
+describe('ApiService', () => {
+  let service: ApiService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        LabsReadService,
+        ApiService,
         provideHttpClient(),
         provideHttpClientTesting()
       ]
     });
 
-    service = TestBed.inject(LabsReadService);
+    service = TestBed.inject(ApiService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -123,12 +139,12 @@ describe('LabsReadService', () => {
   it('should issue a GET request to the correct endpoint and unpack data', () => {
     const mockData = [{ id: 1, name: 'Sample Item' }];
 
-    service.getItems().subscribe(items => {
+    service.get('items').subscribe(items => {
       expect(items).toEqual(mockData);
     });
 
     // 1. Expect exactly one HTTP request to the designated URL
-    const req = httpMock.expectOne('http://localhost:8080/api/items');
+    const req = httpMock.expectOne('http://localhost:8080/mr-fixit-service/items');
     expect(req.request.method).toBe('GET');
 
     // 2. Flush mock JSON payload to satisfy the observable
@@ -137,29 +153,31 @@ describe('LabsReadService', () => {
 });
 ```
 
-#### Student Survival Pitfall: Pending Requests
-Always place `httpMock.verify()` inside `afterEach()`. If your service accidentally fires two requests when it should only fire one, `verify()` will immediately catch the unexpected network call and fail the test.
+### Why `httpMock.verify()` Matters
 
-## Section 3. Client-Side Pagination Architecture and Signal Math
+Always place `httpMock.verify()` inside `afterEach()`. If your service accidentally fires two HTTP calls when it should only fire one, or if an unexpected call was triggered by a side effect, `verify()` flags the unhandled request immediately and fails the test.
 
-Rendering hundreds of DOM nodes degrades scroll performance and increases browser memory usage. Client-side pagination slices an in-memory array into manageable chunks.
+---
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to visually interact with pagination math, see slice boundary markers update live, and explore dynamic sliding-window buttons in an isolated sandbox? Open `http://localhost:4200/labs/pagination-explorer` (Lab 18) in `wsu-test` (`src/app/features/labs/pagination-explorer-lab/`).
+## Section 4: Client-Side Pagination Architecture and Signal Math
 
-### The Mathematical Foundation
+Rendering hundreds of DOM nodes at once slows down page scrolling and increases memory use. When a backend returns a full list, client-side pagination slices the array into manageable pages.
+
+### The Underlying Math
 
 Given:
-- $N$: Total number of records (`totalCount`)
-- $S$: Page size (`pageSize`, e.g. 10 items per page)
-- $P$: Active page index (`currentPage`, 1-based)
+- \(N\): Total number of items (`totalCount`)
+- \(S\): Page size (`pageSize`, e.g. 10 items per page)
+- \(P\): Current page index (`currentPage`, 1-based)
 
-Calculations:
-- $\text{totalPages} = \lceil N / S \rceil = \text{Math.ceil}(N / S)$
-- $\text{startIndex} = (P - 1) \times S$
-- $\text{endIndex} = \min(\text{startIndex} + S, N)$
+The calculations:
+- \(\text{totalPages} = \lceil N / S \rceil = \text{Math.ceil}(N / S)\)
+- \(\text{startIndex} = (P - 1) \times S\)
+- \(\text{endIndex} = \min(\text{startIndex} + S, N)\)
 
-### Signals Implementation in `WorkOrderListComponent`
+### Reactive Signals Implementation
+
+In `mr-fixit-ui`, `WorkOrderListComponent` uses `computed()` signals so the active slice updates automatically whenever the page or underlying list changes:
 
 ```typescript
 // src/app/features/work-orders/components/work-order-list/work-order-list.component.ts
@@ -188,7 +206,7 @@ export class WorkOrderListComponent {
     }
   }
 
-  // Dynamic sliding window of 5 visible page buttons
+  // Dynamic sliding window of 5 visible page numbers
   getPaginationPages(): number[] {
     const total = this.totalPages();
     const current = this.currentPage();
@@ -206,7 +224,7 @@ export class WorkOrderListComponent {
 }
 ```
 
-### Accessible Pagination Controls in the Template
+### Accessible Pagination Template
 
 ```html
 <!-- src/app/features/work-orders/components/work-order-list/work-order-list.component.html -->
@@ -244,43 +262,23 @@ export class WorkOrderListComponent {
 }
 ```
 
-## Section 4. Architectural Comparison: Pagination vs. Virtual Scroll vs. Defer
+---
+
+## Section 5: Pagination vs. Virtual Scrolling vs. `@defer`
 
 | Technique | When to Use | Tradeoff |
 | --- | --- | --- |
-| **Client-Side Pagination** | 10 to 500 items; user needs explicit page navigation and page URLs | Requires discrete page clicks; does not provide infinite scroll feel |
-| **Virtual Scrolling (`@angular/cdk`)** | 1,000 to 50,000 items (e.g. log streams, audit trails) | DOM nodes recycle inside viewport; scrollbar calculation requires fixed row heights |
-| **Deferred Loading (`@defer`)** | Heavy below-the-fold components (charts, comment threads) | Renders placeholders until triggered by viewport entry or idle time |
+| **Client-Side Pagination** | 10 to 500 items; users need clear page numbers and bookmarkable pages | Requires clicking through discrete pages |
+| **Virtual Scrolling (`@angular/cdk`)** | 1,000 to 50,000 items (e.g., event logs or audit streams) | Reuses DOM nodes in a scrollable window; requires fixed item heights |
+| **Deferred Loading (`@defer`)** | Heavy below-the-fold components (charts, review threads) | Content loads only when triggered by viewport entry or idle time |
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see CDK Virtual Scrolling render 8,000 items smoothly in the DOM? Open `http://localhost:4200/labs/virtual-scroll` (Lab 19) in `wsu-test` (`src/app/features/labs/virtual-scroll-lab/`).
-> To see off-screen components lazily loaded using `@defer (on viewport)`, open `http://localhost:4200/labs/defer-analytics` (Lab 20).
+---
 
-## Section 5. In-Class Practice and Testing Exercises
+## Section 6: In-Class Exploration & Practice
 
-Spend the remaining class time working through these exercises:
-1. **Run the Test Suite**: Open your terminal in `wsu-test` and execute `npm test`. Observe how Jest executes 30+ test suites in seconds.
-2. **Examine Edge Cases**: Review `status-badge.component.spec.ts` to see how missing or invalid inputs are handled.
-3. **Optional Project Practice**: If your team's application renders large collections, consider incorporating client-side pagination into your list view.
+Use today's workshop time to try these exercises:
 
-## Lab References: Simpler Isolated Examples in `wsu-test`
-
-In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
-
-- **Lab 18 — Pagination & Array Slicing Explorer (`/labs/pagination-explorer`)**:
-  - **Route**: `http://localhost:4200/labs/pagination-explorer`
-  - **Source Code**: `src/app/features/labs/pagination-explorer-lab/`
-  - **What it demonstrates**: Interactive visualization of pagination math (`totalPages`, `startIndex`, `endIndex`), live memory array slice inspection, and sliding window page buttons.
-  - **Why consult this lab**: Visualizes the exact slicing mathematics without needing an active backend.
-
-- **Lab 19 — CDK Virtual Scroll (`/labs/virtual-scroll`)**:
-  - **Route**: `http://localhost:4200/labs/virtual-scroll`
-  - **Source Code**: `src/app/features/labs/virtual-scroll-lab/`
-  - **What it demonstrates**: A fixed-size scrolling viewport over 8,000 generated work-order records using `@angular/cdk/scrolling`. Only the visible rows exist in the DOM.
-  - **Why consult this lab**: Best pattern when dealing with massive datasets where pagination is not preferred.
-
-- **Lab 20 — Deferred Rendering (`@defer`) (`/labs/defer-analytics`)**:
-  - **Route**: `http://localhost:4200/labs/defer-analytics`
-  - **Source Code**: `src/app/features/labs/defer-analytics-lab/`
-  - **What it demonstrates**: Lazy loading heavy components with `@defer (on viewport)`, with accessible `@placeholder`, `@loading`, and `@error` template blocks.
-  - **Why consult this lab**: Demonstrates modern bundle optimization for below-the-fold content.
+1. **Run the Jest Suite**: In `mr-fixit-ui`, run `npm test` in your terminal. Notice how quickly tests execute compared to opening a browser.
+2. **Inspect Edge Cases**: Open `status-badge.component.spec.ts` to see how unexpected status inputs are tested.
+3. **Optional Project Feature**: If your application returns large lists, try adding client-side pagination to your list view.
+4. **Project Work Time**: Complete Homework 5 or Homework 6 with your team.

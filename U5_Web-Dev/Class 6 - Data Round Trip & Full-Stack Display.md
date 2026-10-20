@@ -1,30 +1,34 @@
-# Class 6 — Data Round Trip & Full-Stack Display
+# Class 6: Data Round Trip & Full-Stack Display
 
-> **Reference Application Grounding (`wsu-test`)**:
-> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
-> Specific reference files:
+> **Reference Application Grounding**:
+> All practical demonstrations and code samples in this session are grounded in the reference repository [Mr Fix It UI](https://github.com/WSU-kduncan/mr-fixit-ui):
 > - `src/app/features/work-orders/components/work-order-form/` (complete reactive form with validation and submission)
 > - `src/app/services/work-order.service.ts` (`createWorkOrder()` method delegating to `ApiService`)
 > - `src/app/shared/guards/demo-auth.guard.ts` (functional navigation guard)
 
-## Setting the Stage: The Complete Write Lifecycle
+---
 
-In Class 4, we connected the read path of our application: the browser requested data, the server queried the database, and the UI displayed the returned collection.
+## The Write Lifecycle: From Form Input to Database Record
+
+In Class 4, we connected the read path of our application: the browser requested data, Spring Boot queried the database, and the Angular template displayed the collection.
 
 Today, we complete the full-stack circle by building the **write path**:
-1. The user navigates to a routed create view.
-2. The user enters data into a form.
-3. The client validates user input in real time and provides immediate visual feedback.
-4. On submit, the application serializes the form values into a typed JSON payload.
-5. An HTTP `POST` request sends the payload to the backend API.
-6. The server persists the new record to the database and returns a response.
-7. The client updates application state and either navigates to the new record or refreshes the active list.
 
-This complete interaction is the cornerstone of full-stack web applications.
+1. The user navigates to a creation screen.
+2. The user inputs data into form fields.
+3. The client validates input locally and gives immediate visual feedback.
+4. On submit, the component serializes form controls into a typed payload.
+5. An HTTP `POST` request transmits the payload to Spring Boot.
+6. The backend validates and persists the new record in the database.
+7. The client updates application state and redirects to the new record or refreshes the list.
 
-## Master-Detail Navigation and Route Parameters
+Mastering this end-to-end loop turns static dashboards into full CRUD applications.
 
-Enterprise applications organize data into master-detail flows. In `wsu-test`, our route table connects list, create, and detail views:
+---
+
+## Section 1: Master-Detail Navigation and Route Parameters
+
+Real-world applications organize data into master-detail flows. In `mr-fixit-ui`, the route configuration connects list, creation, and detail views:
 
 ```typescript
 // src/app/app.routes.ts
@@ -59,36 +63,28 @@ export const routes: Routes = [
 
 ### Route Parameter Input Binding
 
-With `withComponentInputBinding()` enabled in `app.config.ts`, route parameters bind directly to component `input()` signals without requiring `ActivatedRoute` subscriptions:
+When `withComponentInputBinding()` is configured in `src/app/app.config.ts`, route parameters bind directly to component `input()` signals without needing manual `ActivatedRoute` subscriptions:
 
 ```typescript
 // src/app/features/work-orders/components/work-order-detail/work-order-detail.component.ts
 import { Component, input } from '@angular/core';
 
-@Component({ ... })
+@Component({
+  selector: 'app-work-order-detail',
+  standalone: true,
+  templateUrl: './work-order-detail.component.html'
+})
 export class WorkOrderDetailComponent {
   // Automatically populated from the ':id' URL path segment
   readonly id = input.required<string>();
 }
 ```
 
-## Form Architectures: Reactive Forms vs. Signal Forms
+---
 
-Angular provides two primary approaches for handling user input:
+## Section 2: Building a Reactive Form with Validation
 
-1. **Reactive Forms (`FormGroup`, `FormControl`, `Validators`)**:
-   - The established standard in Angular enterprise applications.
-   - Provides explicit, programmatic control over validation, pristine/dirty tracking, and value serialization.
-   - Recommended for complex data-entry screens with dynamic rules.
-2. **Signal Forms**:
-   - Modern signal-native form handling emerging in Angular 22+.
-   - Offers fine-grained reactive validation directly driven by signals (demonstrated in Lab 14).
-
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see next-generation Signal Forms contrasted directly beside Reactive Forms on a clean feedback form? Open `http://localhost:4200/labs/signal-forms` (Lab 14) in `wsu-test` (`src/app/features/labs/signal-forms-lab/`).
-> For custom synchronous, cross-field, and asynchronous validators, open `http://localhost:4200/labs/form-validators` (Lab 15).
-
-## Section 1. Building a Reactive Form with Validation
+Angular provides **Reactive Forms** (`FormGroup`, `FormControl`, `Validators`) for programmatic control over validation, touch tracking, and value serialization.
 
 In `WorkOrderFormComponent`, a typed `FormGroup` models user input:
 
@@ -101,7 +97,8 @@ import { WorkOrderService } from '../../../../services/work-order.service';
 
 @Component({
   selector: 'app-work-order-form',
-  imports: [ReactiveFormsModule], // Mandatory import for reactive forms!
+  standalone: true,
+  imports: [ReactiveFormsModule], // Mandatory import for reactive forms
   templateUrl: './work-order-form.component.html',
   styleUrl: './work-order-form.component.scss'
 })
@@ -122,7 +119,7 @@ export class WorkOrderFormComponent {
 
   onSubmit(): void {
     if (this.form.invalid || this.isSubmitting()) {
-      // Highlight all unvisited fields with error borders
+      // Reveal validation errors for untouched fields
       this.form.markAllAsTouched();
       return;
     }
@@ -135,7 +132,6 @@ export class WorkOrderFormComponent {
     this.workOrderService.createWorkOrder(payload).subscribe({
       next: (createdOrder) => {
         this.isSubmitting.set(false);
-        // Navigate to the detail view or list on success
         this.router.navigate(['/work-orders', createdOrder.id]);
       },
       error: (err) => {
@@ -144,17 +140,23 @@ export class WorkOrderFormComponent {
       }
     });
   }
+
+  onCancel(): void {
+    this.router.navigate(['/work-orders']);
+  }
 }
 ```
 
-#### Student Survival Pitfalls: Forms
+### Essential Form Mechanics
 
-1. **Forgetting `markAllAsTouched()`**: If a student clicks submit without touching any inputs, `form.invalid` is true, but without calling `this.form.markAllAsTouched()`, no error messages appear! The user sees a dead button with no visual explanation.
-2. **Double Submissions**: Never leave the submit button clickable while an HTTP request is in flight. Always manage an `isSubmitting = signal(false)` flag and disable the button: `[disabled]="form.invalid || isSubmitting()"`.
+1. **Why we call `markAllAsTouched()`**: If a user immediately clicks the Submit button without clicking into any inputs, the form is invalid, but none of the controls have been touched yet. Calling `markAllAsTouched()` forces error messages to render so the user understands what needs fixing.
+2. **Preventing Double Submissions**: Never leave the submit button clickable while an HTTP request is in progress. Managing an `isSubmitting = signal(false)` flag and binding `[disabled]="form.invalid || isSubmitting()"` prevents users from triggering duplicate POST requests.
 
-## Section 2. Form Template and Accessible Validation Feedback
+---
 
-A clean form provides immediate, accessible validation feedback:
+## Section 3: Template Layout and Accessible Validation Feedback
+
+A clean form gives immediate feedback without overwhelming the user:
 
 ```html
 <!-- src/app/features/work-orders/components/work-order-form/work-order-form.component.html -->
@@ -184,7 +186,7 @@ A clean form provides immediate, accessible validation feedback:
   </div>
 
   <div class="form-actions">
-    <button type="button" (click)="router.navigate(['/work-orders'])">Cancel</button>
+    <button type="button" (click)="onCancel()">Cancel</button>
     <button type="submit" [disabled]="form.invalid || isSubmitting()">
       @if (isSubmitting()) {
         Saving...
@@ -196,12 +198,23 @@ A clean form provides immediate, accessible validation feedback:
 </form>
 ```
 
-#### Student Survival Principle: Why We Check `touched`
-Always check `&& form.get('title')?.touched` before rendering error messages. If you only check `invalid`, required fields will glow red the instant the user opens the page before they even touch the keyboard!
+### Why We Check `touched` Before Showing Errors
 
-## Section 3. Client Navigation Guards vs. Server Security
+Always guard error messages with `&& form.get('controlName')?.touched`. If you only check `control.invalid`, required fields will glow red the instant the page opens before the student has touched the keyboard. Checking `touched` keeps the initial screen clean until the user focuses and leaves the field.
 
-In `wsu-test`, `/work-orders/create` is protected by `canActivate: [demoAuthGuard]`:
+---
+
+### Checkpoint: Form State & Validation
+
+> **Question**: Why does Angular track `touched` and `dirty` separately on form controls?
+>
+> **Answer**: `touched` becomes true when a control loses focus (blur), indicating the user visited it. `dirty` becomes true when the user actually changes the control's value. This lets you decide whether to show an error on blur or only after an edit.
+
+---
+
+## Section 4: Client Navigation Guards vs. Backend Security
+
+In `mr-fixit-ui`, `/work-orders/create` is protected by `canActivate: [demoAuthGuard]`:
 
 ```typescript
 // src/app/shared/guards/demo-auth.guard.ts
@@ -222,70 +235,52 @@ export const demoAuthGuard: CanActivateFn = () => {
 };
 ```
 
-### The Golden Rule of Route Guards
+### Client Guards vs. Backend Authorization
 
-> **A route guard is a browser navigation check. It is NOT API security.**
-> 
-> Anyone with curl, Postman, or browser DevTools can issue an HTTP `POST` directly to `http://localhost:8080/mr-fixit-service/work_order`. 
-> Route guards exist exclusively to enhance user experience by preventing users from navigating to screens they are not ready to use. 
-> Real security must be enforced on the backend using Spring Security or token validation.
+Keep this distinction clear:
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see how `canDeactivate` prevents accidental loss of unsaved form drafts? Open `http://localhost:4200/labs/unsaved-changes` (Lab 16) in `wsu-test` (`src/app/features/labs/unsaved-changes-lab/`).
-> For role-based client guards (`student`, `technician`, `admin`), open `http://localhost:4200/labs/role-guard` (Lab 17).
+- **Route Guards are UI navigation checks**: They prevent an unauthenticated user from stumbling into an incomplete or privileged view in the browser. They exist to provide a good user experience.
+- **Route Guards are NOT API security**: Any client can bypass Angular completely and send an HTTP `POST` to `http://localhost:8080/api/work_orders` using curl or Postman.
+- **Real security must live on the server**: Spring Security, JWT validation, and database access controls protect your data regardless of what the frontend does.
 
-## Section 4. Live Demo in `wsu-test`
+---
+
+### Checkpoint: Security Boundaries
+
+> **Question**: If an Angular route guard blocks an unauthorized user from viewing the create page, can that user still create a record in the database?
+>
+> **Answer**: Yes, if the Spring Boot API is not secured. A client guard only prevents browser navigation to that component; it does not protect the HTTP API endpoints.
+
+---
+
+## Section 5: Live Walkthrough in Mr Fix It UI
+
+Let's observe this write path in action:
 
 1. Navigate to `http://localhost:4200/work-orders/create`.
-2. Inspect the form: note required fields and dropdown lookups.
-3. Open DevTools Network tab.
-4. Click **Submit** with an empty form:
-   - Notice that no HTTP request leaves the browser because client validation blocks invalid submissions.
-   - Notice the touched input fields highlight with validation error messages.
-5. Fill in valid data and click **Submit**:
+2. Inspect the form: identify the required fields and initial states.
+3. Open the DevTools Network tab.
+4. Click **Submit** while the form is empty:
+   - Notice that no HTTP request leaves the browser because client validation halts the submit handler.
+   - Notice that untouched fields now highlight with clear validation messages because `markAllAsTouched()` was called.
+5. Enter valid data and click **Submit**:
    - Observe the `POST` request in the Network tab.
-   - Inspect the Request Payload JSON.
-   - Observe the `201 Created` or `200 OK` response.
-   - Verify that Angular automatically routes to the new record or updates the list.
+   - Inspect the request payload to see how the form values were serialized.
+   - Observe the `201 Created` or `200 OK` response status.
+   - Verify that Angular navigates to the new record and the updated list displays the new data.
 
-## Section 5. Transfer into Students Repo
+---
 
-The last 20 minutes are dedicated to implementing Homework 5 in each student's project:
+## Section 6: In-Class Application: Homework 6
 
-### Homework 5: Full CRUD Interaction
+Use the remaining class time to implement Homework 6 in your team's project:
 
-1. **Create View & Navigation**: Add a dedicated route for creating resources (such as `/items/create`) and wire up `<a routerLink="...">` from your list view.
-2. **Reactive Form**: Build a typed `FormGroup` with at least two input fields, applying `Validators.required` and at least one secondary validation rule (minlength, pattern, or range).
-3. **Validation Errors**: Display clear error messages next to controls when fields are invalid and touched.
+### Homework 6: Full CRUD Interaction
+
+1. **Create View & Navigation**: Add a route for creating resources (e.g., `/items/create`) and add a navigation link from your list view.
+2. **Reactive Form**: Build a typed `FormGroup` with at least two input fields. Apply `Validators.required` and at least one secondary rule (`minLength`, `maxLength`, or pattern).
+3. **Validation Feedback**: Display inline error messages when fields are both invalid and touched.
 4. **Service POST Method**: Implement a `POST` method in your data service that sends the form payload to your Spring Boot API.
 5. **State Synchronization**: On successful submit, navigate back to the list view or detail view, and ensure the newly created item appears in the UI.
-6. **Error Handling**: Display a visible server error banner on the page if the HTTP `POST` request fails.
-7. **Scope Note**: Full CRUD update (`PUT`) and delete (`DELETE`) operations are optional stretch extensions if your backend API already supports them. Do not force PUT/DELETE against endpoints that do not exist in your Spring Boot backend!
-
-## Lab References: Simpler Isolated Examples in `wsu-test`
-
-In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
-
-- **Lab 14 — Signal Forms vs Reactive Forms (`/labs/signal-forms`)**:
-  - **Route**: `http://localhost:4200/labs/signal-forms`
-  - **Source Code**: `src/app/features/labs/signal-forms-lab/`
-  - **What it demonstrates**: An isolated feedback form demonstrating modern Signal Forms side-by-side with Reactive Forms.
-  - **Why consult this lab**: Shows how signal-based form bindings eliminate FormGroup boilerplate for lightweight forms.
-
-- **Lab 15 — Custom Form Validators (`/labs/form-validators`)**:
-  - **Route**: `http://localhost:4200/labs/form-validators`
-  - **Source Code**: `src/app/features/labs/form-validators-lab/`
-  - **What it demonstrates**: Custom synchronous regex pattern validation, cross-field start/end date validation, and asynchronous uniqueness check on a single reactive form.
-  - **Why consult this lab**: Best reference for writing reusable `ValidatorFn` functions.
-
-- **Lab 16 — Unsaved Changes Guard (`/labs/unsaved-changes`)**:
-  - **Route**: `http://localhost:4200/labs/unsaved-changes`
-  - **Source Code**: `src/app/features/labs/unsaved-changes-lab/`
-  - **What it demonstrates**: A draft form using a `canDeactivate` route guard to warn the user if they try to navigate away from an unsaved form.
-  - **Why consult this lab**: Shows how to prevent accidental user data loss in web applications.
-
-- **Lab 17 — `canActivate` Role Guard (`/labs/role-guard`)**:
-  - **Route**: `http://localhost:4200/labs/role-guard`
-  - **Source Code**: `src/app/features/labs/role-guard-lab/`
-  - **What it demonstrates**: Role-based client navigation guard allowing students, technicians, or admins while blocking guests and redirecting with query parameters.
-  - **Why consult this lab**: Clear demonstration of how client-side permission checks function.
+6. **Error Alert**: Display a visible server error banner on the page if the HTTP `POST` request fails.
+7. **Scope Note on DELETE vs. Status Updates**: Not all applications make use of deletion. If your domain model does not support hard deletes (e.g., maintenance work orders, medical logs, or financial audit records), status changes or edits via `PUT`/`PATCH` satisfy the second mutation requirement. Confirm your endpoint support with the instructional team on handoff day.

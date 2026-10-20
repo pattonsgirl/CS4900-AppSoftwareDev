@@ -65,7 +65,7 @@ This outline is a proposed ordering.
 | UI / UX Module | 16% | Individual Assignments x 4 <br> Group Project Compilation | 70% <br> 30%  |
 | Database Design Module | 16% | Individual Assignments x 5 <br> Group Assignments x 5 <br> Group Project Compilation | 70% <br> 15% <br> 15%  |
 | API Module | 16% | Individual Assignments x 5 <br> Group Project Assignments x 2 <br> Group Project Compilation | 70% <br> 20% <br> 10%  |
-| Web Design Module | 16% | Individual Assignments x 5 <br> Group Project Compilation | 70% <br> 30%  |
+| Web Design Module | 16% | Individual Assignments x 6 <br> Group Project Compilation | 70% <br> 30%  |
 | Project Final Grade  | 10%  |   |  |
 | Project Presentation  | 5%  |   |  |
 | Retrospective <br>& Resume Review  | 5%  |   |  |

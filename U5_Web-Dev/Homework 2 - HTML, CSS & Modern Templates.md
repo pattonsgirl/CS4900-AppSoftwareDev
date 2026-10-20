@@ -15,7 +15,7 @@ Make a **branch** off of your GROUP UI repository named `lastname-homework2`.  P
 ### 1. Generate New Component
 1.  Use the Angular CLI to generate a new standalone component relevant to your project's theme (e.g., `user-list`, `product-card`).
 
-> As a group, much like with the API section, determine if you would rather each work on a different component, all work on one or two members pair up on one to compare methods. The Web Dev series of homeworks will have you work up to making a full CRUD interaction - connect a frontend form to a backend service to perform a full set of data manipulations (Create, Read, Update, Delete).
+> In this assignment, you will build an initial standalone practice component with mock data to learn template rendering and styling. In Homework 3, your team will formally break down your application wireframes into components and distribute tasks across teammates so each developer has dedicated views to build for the rest of the unit.
 
 ### 2. Display the Component
 1.  Add the new component's selector to an existing component's template (like `app.component.html`) to make it visible on the page.

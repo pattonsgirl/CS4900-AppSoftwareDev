@@ -1,52 +1,56 @@
 # Homework 1 - Setup Verification
 
 ## Purpose / Objectives
-> The purpose of this assignment is to ensure your development environment is working correctly by cloning, installing, and running an existing Angular project.
-> You will also demonstrate basic interaction with the application by applying a filter to its data.
+> This assignment creates the Angular project your team will build for the rest of the unit.
+> [Mr Fix It UI](https://github.com/WSU-kduncan/mr-fixit-ui) is the reference. Run it so you can see a finished app and confirm your machine can install and serve Angular. Do not put your project code in that repository.
 
 ## Description
 
-Perform the following tasks.
+### 1. Run the reference app
 
-### 1. Clone the Mr Fix It UI Repository
-1.  Clone the repository using the following command:
-    `git clone https://github.com/WSU-kduncan/mr-fixit-ui.git`
-2.  Open the cloned Mr Fix It UI project folder in your code editor (e.g., VS Code).
+Use [Mr Fix It UI](https://github.com/WSU-kduncan/mr-fixit-ui) as the example of a working Angular app. You will look at it in class. You will not keep building inside it.
 
-### 2. Install Dependencies
-1.  Open an integrated terminal within your code editor (inside the project's root folder).
-2.  Run the command `npm install` to download all necessary project dependencies.
-    - [Reference the Clone the Course Repository OR Create New Project of Overview 0](https://github.com/pattonsgirl/CS4900-AppSoftwareDev/blob/main/Web_Dev/Class%200%20-%20Overview.md#two-paths-clone-the-course-repository-or-create-new-project)
+1. Clone the reference repository:
+   `git clone https://github.com/WSU-kduncan/mr-fixit-ui.git`
+2. Open that folder in your editor.
+3. In a terminal at the project root, run `npm ci` (or `npm install`).
+   - [Class 1, terminal and npm](Class%201%20-%20Setup%20%26%20The%20Anatomy%20of%20a%20Modern%20Angular%20App.md#section-2-terminal-and-npm)
+4. Start the UI with `npm start`.
+5. Confirm it loads in the browser, usually at `http://localhost:4200`.
+6. Start the Mr Fix It database and the Mr Fix It service so the work-order list has data.
 
-### 3. Run the Application
-1.  In the same terminal, run the command `ng serve` to compile the application and start the development server.
-    - [Reference the Clone the Course Repository OR Create New Project of Overview 0](https://github.com/pattonsgirl/CS4900-AppSoftwareDev/blob/main/Web_Dev/Class%200%20-%20Overview.md#two-paths-clone-the-course-repository-or-create-new-project)
-2.  Verify that the application is running in your web browser, typically at `http://localhost:4200`.
-3.  Make sure you are running the Mr Fix It DB && the Mr Fix It service.
+While it is running, open these files and notice the same kinds of files you will have in your own app: `package.json`, `src/main.ts`, `src/app/app.config.ts`, `src/app/app.routes.ts`, and `src/app/app.ts`.
 
-### 4. Apply a Filter and Take Screenshot
-1.  In the running application, navigate to the page that displays the work orders.
-2.  Use the application's built-in UI to apply a filter to the list of work orders.
-3.  Create a new branch in your GROUP UI repository named: `yourlastname-homework-1`.
-4.  Create a folder named `homework1` on your branch, and then save a screenshot named `yourlastname-hw1.png` (any image format is allowed) of your browser running the Mr. Fix It UI application, showing the applied filter and the resulting filtered list of work orders.
+### 2. Prove the reference app runs
 
-### 5. Setup GROUP UI Repository
+1. In Mr Fix It UI, open the work-order list.
+2. Use the built-in filter so the list on screen is a subset of the full list.
+3. In your group UI repository, create a branch named `yourlastname-homework-1`.
+4. On that branch, add a `homework1` folder and save a screenshot named `yourlastname-hw1.png` (any image format). The screenshot must show the browser on Mr Fix It UI with the filter applied and the filtered list visible.
+5. Commit and push that branch. The commit message should say what the screenshot shows.
 
-1.  Create & clone your GROUP UI repository (see link in Pilot -> Course Info)
-2.  Have **one** group member initialize the Angular project for UI development with `ng new app-name` and push it to the default branch of your GROUP UI repository
-    - [Reference the Clone the Course Repository OR Create New Project of Overview 0](https://github.com/pattonsgirl/CS4900-AppSoftwareDev/blob/main/Web_Dev/Class%200%20-%20Overview.md#two-paths-clone-the-course-repository-or-create-new-project)
-3. Have all group members pull the change and confirm they can run the default Angular app.  Your group will now be ready for the coming homeworks!
+### 3. Create the project you will keep working on
 
-> As with your API / service we recommend having your app be in the root directory of the repsository (not a subdirectory) to simplify the need to remember pathing tricks.
+This is the app for Homework 2 through Homework 6. One teammate does the scaffold. Everyone else pulls it and runs it.
+
+1. Clone your group UI repository. The link is in Pilot, under Course Info.
+2. One group member creates a new Angular 22 app and pushes it to the default branch.
+   - Node.js 22 or newer.
+   - Angular CLI 22.
+   - `ng new` with routing and SCSS.
+   - Put the app in the root of the repository, not in a subdirectory. Same layout as the API repository, so nobody has to remember an extra path.
+   - [Class 1, transfer into your repo](Class%201%20-%20Setup%20%26%20The%20Anatomy%20of%20a%20Modern%20Angular%20App.md#section-5-transfer-into-students-repo)
+3. Every other group member pulls that commit, runs `npm ci` (or `npm install`), then `npm start`, and confirms the default app loads.
+4. Change a heading in your new app, save, and confirm the browser updates. Then you know live reload works on the project you will actually edit.
 
 # Rubric
 
 Assignment score: X / 5 points
 
-- `[ ]` Project is successfully cloned from the correct repository.
-- `[ ]` Project dependencies are installed and the app runs successfully using `ng serve`.
-- `[ ]` Screenshot clearly shows a filter has been applied to the work orders.
-- `[ ]` Screenshot is saved in the correct `yourlastname-homework-1` branch in the `homework1` directory.
-- `[ ]` The screenshot is pushed to the repository with a clear commit message.
+- `[ ]` Mr Fix It UI runs locally, with the database and service running.
+- `[ ]` Screenshot shows a filter applied to the work-order list.
+- `[ ]` Screenshot is on the `yourlastname-homework-1` branch, in `homework1/`, and the commit message is clear.
+- `[ ]` The group UI repository contains a new Angular app at the repository root, with routing and SCSS, pushed to the default branch.
+- `[ ]` Teammates can pull that app and run it with `npm start`.
 
 **Feedback:**

@@ -1,27 +1,28 @@
-# Class 3 — Behavior & State Management with Signals
+# Class 3: Behavior & State Management with Signals
 
-> **Reference Application Grounding (`wsu-test`)**:
-> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
+> **Reference Application Grounding**:
+> All practical demonstrations and code samples in this session are grounded in the reference repository [Mr Fix It UI](https://github.com/WSU-kduncan/mr-fixit-ui).
 > Specific reference files:
+>
 > - `src/app/services/work-order.service.ts` (shared signal store and computed metrics summary)
 > - `src/app/features/dashboard/dashboard.component.ts` (consuming service signals and deriving dashboard statistics)
 > - `src/app/shared/components/status-badge/status-badge.component.ts` (signal inputs with `input.required<string>()`)
 
-## Setting the Stage: The Evolution of Reactivity in Angular
+## How Angular Tracks Changes
 
-To understand modern Angular state management, it helps to understand how change detection evolved across framework generations:
+How does a frontend framework know when your data changes so it can update what the user sees? This process is called **change detection**. Angular has handled this in three distinct phases across its history:
 
-1. **AngularJS (1.x)**: Used dirty-checking cycles across a global `$scope` tree. Every user interaction triggered an evaluation of every watcher in the application. As views grew, performance deteriorated.
-2. **Angular 2 through 15**: Relied on **Zone.js**, a library that monkey-patches browser asynchronous APIs (such as `setTimeout`, `fetch`, and click handlers). When an asynchronous event resolved, Zone.js alerted Angular to check every component tree from top to bottom. While effective, it added runtime overhead and made debugging change detection timing notoriously difficult.
-3. **Modern Angular (16+)**: Introduced **Signals**, a fine-grained reactive primitive. Instead of guessing when to re-render entire components, Angular now knows the exact DOM nodes that depend on a specific value. When that signal changes, only the dependent DOM updates.
+1. **AngularJS (1.x) — Periodic Scans**: The framework periodically scanned every tracked variable in memory, comparing old values against new values in loops. Because every user click or keystroke triggered a scan of every watcher on the page, applications slowed down as views grew larger.
+2. **Angular 2 through 15 — Event Interception (Zone.js)**: Angular switched to an internal library called **Zone.js**. Zone.js wrapped browser asynchronous APIs (such as `setTimeout`, HTTP responses, and DOM event listeners) to intercept when events completed. Whenever an asynchronous operation finished, Zone.js alerted Angular to re-evaluate the entire component tree from top to bottom. While automatic, checking full component trees introduced performance overhead and made tracking down unexpected render timings difficult.
+3. **Modern Angular (16+) — Direct Reactivity (Signals)**: Instead of guessing or re-checking entire component trees, modern Angular introduces **Signals**. A signal is a direct reactive connection between a value and the specific place in the template that renders it. When a signal changes, Angular updates only the exact DOM node that depends on that value, avoiding unnecessary re-renders.
 
 ## Core Concepts: Angular Signals
 
 A signal is a reactive wrapper around a value that notifies consumers when that value changes:
 
-- **Predictable**: State transitions occur synchronously and explicitly.
-- **Glitch-Free**: Computed dependencies resolve in topological order, avoiding intermediate inconsistent states.
-- **Zoneless-Ready**: Signals enable Angular to run completely without Zone.js, yielding faster startup times and smaller bundles.
+- **Predictable**: State transitions happen immediately and synchronously when updated.
+- **Efficient**: Derived calculations only recompute when their source values change.
+- **Targeted Updates**: Angular updates only the specific elements connected to the signal, rather than re-evaluating entire component trees.
 
 ### 1. Writable Signals
 
@@ -33,7 +34,7 @@ import { signal } from '@angular/core';
 // Declare a signal with an initial value
 const count = signal(0);
 
-// Read the value by executing the signal as a function
+// Read the value by calling the signal as a function
 console.log(count()); // 0
 
 // Replace the value with .set()
@@ -44,21 +45,29 @@ count.update(current => current + 1);
 console.log(count()); // 6
 ```
 
-#### Student Survival Pitfall: The Direct Mutation Trap
-A common beginner bug when working with arrays or objects in signals:
-```typescript
-// Broken: Direct mutation does NOT notify Angular!
-this.workOrders().push(newOrder); 
-// Angular will NOT detect this change, and the UI will NOT update!
+#### Student Survival Pitfall: Direct Mutation
 
-// Correct: Always produce a new array reference with .update()
+A common bug when working with arrays or objects in signals is mutating the existing reference:
+
+```typescript
+// Broken: Mutating the array does NOT notify Angular
+this.workOrders().push(newOrder); 
+// Angular will not detect this change, and the UI will not update.
+
+// Correct: Always supply a new array reference with .update()
 this.workOrders.update(orders => [...orders, newOrder]);
 ```
-**Golden Rule**: Never mutate data inside a signal directly. Always use `.set(newValue)` or `.update(prev => ...)` to supply a new reference!
+
+**Golden Rule**: Never mutate data inside a signal directly. Always use `.set(newValue)` or `.update(prev => ...)` to supply a new reference.
+
+Checkpoint:
+
+> "Why should you never write `this.items().push(newItem)` on an array signal?"  
+> Mutating the existing array does not create a new reference, so Angular will not know to update the UI. Always use `.update()`.
 
 ### 2. Computed Signals (Derived State)
 
-Computed signals derive their value from other signals. They are read-only, lazily evaluated, and memoized:
+Computed signals derive their value from other signals. They are read-only, lazily evaluated, and cached:
 
 ```typescript
 import { signal, computed } from '@angular/core';
@@ -70,41 +79,42 @@ const taxRate = signal(0.08);
 const total = computed(() => price() * (1 + taxRate()));
 ```
 
-**Why `computed()` matters:**
-- **Memoization**: If dependent signals have not changed, `computed()` returns the cached result without recalculating.
-- **Performance**: In templates, binding to a `computed()` signal is vastly superior to binding to a class method (e.g. `{{ calculateTotal() }}`), which executes on every single change detection cycle.
+**Why** `computed()` **matters:**
+
+- **Caching**: If dependent signals have not changed, `computed()` returns the cached result without recalculating.
+- **Performance**: In templates, binding to a `computed()` signal is much cleaner than binding to a class method (such as `{{ calculateTotal() }}`), which executes on every single change detection cycle.
 
 ### 3. Side Effects with `effect()`
 
 An `effect()` runs side-effect logic whenever the signals it reads change. Use effects only for external system synchronization:
+
 - Writing to `localStorage`.
 - Logging analytics events.
 - Interfacing with third-party charting libraries.
 
-**Critical Rule**: Do not use `effect()` to update other signals. Use `computed()` instead to derive state. Setting signals inside an effect easily introduces infinite cycles and runtime errors.
+**Critical Rule**: Do not use `effect()` to update other signals. Use `computed()` instead to derive state. Setting signals inside an effect easily introduces infinite loops and runtime errors.
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see `effect()` safely synchronize a note to `localStorage`? Open `http://localhost:4200/labs/signal-effects` (Lab 09) in `wsu-test` (`src/app/features/labs/signal-effects-lab/`).
-
-## The "Why" of Services and Dependency Injection
+## Services and Dependency Injection
 
 As applications grow, multiple components need access to the same business data. If each component managed its own independent copy of an array, changes made on one screen would never reflect on another.
 
 **Separation of Concerns**:
+
 - **Components** should be lightweight presentation layers responsible only for displaying UI and capturing user interactions.
 - **Services** are singleton classes that encapsulate domain models, business operations, and shared state.
 
 ### Understanding Dependency Injection (DI)
 
-Dependency Injection is an architectural pattern implementing **Inversion of Control**. Instead of a component instantiating its own dependencies using `new WorkOrderService()`, it declares its dependency requirements, and Angular's Injector provides the singleton instance.
+Dependency Injection is an architectural pattern implementing **Inversion of Control**. Instead of a component instantiating its own dependencies using `new WorkOrderService()`, it declares its dependency requirements, and Angular provides the shared singleton instance.
 
 #### Analogy: Ordering at a Restaurant
+
 - **Without DI**: You enter a restaurant kitchen, hunt down ingredients, light the grill, and cook your own meal. You are tightly coupled to the kitchen layout.
-- **With DI**: You sit at the table and tell the waiter what you need. The waiter delivers the prepared meal. You do not need to know how the kitchen is organized; you only interact with the contract.
+- **With DI**: You sit at the table and tell the server what you need. The server delivers the prepared meal. You do not need to know how the kitchen is organized; you only interact with the contract.
 
-## Section 1. Reactivity with Angular Signals in `wsu-test`
+## Section 1. Reactivity with Angular Signals in Mr Fix It UI
 
-Open `src/app/features/dashboard/dashboard.component.ts` in `wsu-test`.
+Open `src/app/features/dashboard/dashboard.component.ts` in `mr-fixit-ui`.
 
 Observe how signals and computed values model business metrics:
 
@@ -162,7 +172,13 @@ In the template, read these signals using function-call syntax:
 ```
 
 #### Student Survival Pitfall: Forgetting Parentheses in Templates
+
 In template interpolation, you must write `{{ totalOrders() }}` with parentheses. If you write `{{ totalOrders }}`, Angular will output the raw TypeScript function reference (`function() { ... }`) or throw a compilation error.
+
+Checkpoint:
+
+> "In a template, what happens if you write `{{ totalOrders }}` instead of `{{ totalOrders() }}`?"  
+> You display the function reference itself rather than calling the signal to get its current value.
 
 ## Section 2. Event Binding and User Interaction
 
@@ -183,20 +199,13 @@ toggleFilters(): void {
 }
 ```
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see how a debounced search input handles real-time user typing cleanly? Open `http://localhost:4200/labs/rx-search` (Lab 08) in `wsu-test` (`src/app/features/labs/rx-search-lab/`).
-
 ## Section 3. Component Communication: Signal Inputs and Outputs
 
 Components communicate across parent-child boundaries using reactive inputs and outputs.
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see parent-child priority chips with `input()` down and `output()` up in an isolated sandbox? Open `http://localhost:4200/labs/parent-child` (Lab 04) in `wsu-test` (`src/app/features/labs/parent-child-lab/`).
-> For two-way signal binding with `model()`, see `http://localhost:4200/labs/model-binding` (Lab 05).
-
 ### Signal Inputs: `input()` and `input.required()`
 
-Modern Angular replaces the legacy `@Input()` decorator with signal inputs:
+Modern Angular uses signal inputs instead of the legacy `@Input()` decorator:
 
 ```typescript
 // src/app/shared/components/status-badge/status-badge.component.ts
@@ -257,6 +266,7 @@ export class ItemRowComponent {
 ```
 
 Parent template listens to the output:
+
 ```html
 <app-item-row (selected)="onItemSelected($event)" />
 ```
@@ -265,7 +275,7 @@ Parent template listens to the output:
 
 In modern Angular, services declare `@Injectable({ providedIn: 'root' })` so a single application-wide singleton is shared across all components.
 
-Here is the store pattern from `wsu-test` (`src/app/services/work-order.service.ts`):
+Here is the store pattern from `mr-fixit-ui` (`src/app/services/work-order.service.ts`):
 
 ```typescript
 // src/app/services/work-order.service.ts
@@ -322,9 +332,10 @@ export class WorkOrderListComponent {
 }
 ```
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see how dependent state (like a room dropdown resetting when a building changes) works cleanly without manual event juggling? Open `http://localhost:4200/labs/linked-signal` (Lab 06) in `wsu-test` (`src/app/features/labs/linked-signal-lab/`).
-> To see how to eliminate impossible UI states with a discriminated union `{ status: 'loading' | 'error' | 'success' }`, open `http://localhost:4200/labs/ui-state` (Lab 07).
+Checkpoint:
+
+> "Why do we put shared data in an `@Injectable({ providedIn: 'root' })` service instead of storing it directly in a component?"  
+> Services are application-wide singletons, so multiple components can share and update the same state without losing data when navigating.
 
 ### Routing Between Views
 
@@ -348,53 +359,12 @@ In templates, navigate using `<a routerLink="/dashboard">` rather than `href`. T
 
 ## Section 5. Transfer into Students Repo
 
-The last 20 minutes are dedicated to implementing Homework 3 in each student's project:
+The last 20 minutes are for working with your team on Homework 3:
 
-### Homework 3: Component Logic, Signals & Services
+### Homework 3: Component Decomposition & Task Distribution
 
-1. **Create a Domain Service**: Generate a service (`ng g s services/item`) marked with `providedIn: 'root'`. Move the mock data array out of the component and into a writable signal in the service.
-2. **Inject the Service**: In your list component, inject the service using `inject(ItemService)` and read the signal collection.
-3. **Add Computed State**: Implement at least one `computed()` signal (such as filtered items count, completed percentage, or active summary).
-4. **Build a Child Component**: Create a reusable presentational child component with `input()` or `input.required()` signals. Render it inside your list template.
-5. **Add User Interaction**: Add a button or event listener that mutates signal state with `.update()`.
-6. **Configure Navigation**: Add a second route in `app.routes.ts` and verify navigation with `routerLink`.
-
-## Lab References: Simpler Isolated Examples in `wsu-test`
-
-In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
-
-- **Lab 04 — Parent and Child Communication (`/labs/parent-child`)**:
-  - **Route**: `http://localhost:4200/labs/parent-child`
-  - **Source Code**: `src/app/features/labs/parent-child-lab/`
-  - **What it demonstrates**: Priority chips receiving values via `input()` and emitting updates back to the parent through `output()`.
-  - **Why consult this lab**: The cleanest, simplest example of unidirectional component data flow without any service or HTTP code.
-
-- **Lab 05 — `model()` Two-Way Binding (`/labs/model-binding`)**:
-  - **Route**: `http://localhost:4200/labs/model-binding`
-  - **Source Code**: `src/app/features/labs/model-binding-lab/`
-  - **What it demonstrates**: Two-way signal binding between parent and child components using the `model()` API and `[(value)]` syntax.
-  - **Why consult this lab**: Compare modern `model()` with separate `input()` / `output()` pairs.
-
-- **Lab 06 — `linkedSignal` Dependent State (`/labs/linked-signal`)**:
-  - **Route**: `http://localhost:4200/labs/linked-signal`
-  - **Source Code**: `src/app/features/labs/linked-signal-lab/`
-  - **What it demonstrates**: Building and room picker where the selected room automatically resets to a valid default when the selected building changes.
-  - **Why consult this lab**: Solves the classic problem of stale child selections in dependent dropdowns.
-
-- **Lab 07 — Discriminated UI State (`/labs/ui-state`)**:
-  - **Route**: `http://localhost:4200/labs/ui-state`
-  - **Source Code**: `src/app/features/labs/ui-state-lab/`
-  - **What it demonstrates**: Modeling UI state as a single discriminated union signal `{ status: 'loading' | 'error' | 'success' }` handled via `@switch`.
-  - **Why consult this lab**: Eliminates buggy combinations like `isLoading === true && hasError === true`.
-
-- **Lab 08 — Debounced Search & RxJS Interop (`/labs/rx-search`)**:
-  - **Route**: `http://localhost:4200/labs/rx-search`
-  - **Source Code**: `src/app/features/labs/rx-search-lab/`
-  - **What it demonstrates**: Real-time typeahead search comparing raw signal binding (which spams requests) with a debounced RxJS pipeline converted to a signal via `toSignal()`.
-  - **Why consult this lab**: Shows how to bridge RxJS streams into signals for user typing inputs.
-
-- **Lab 09 — `effect()` and `afterNextRender` (`/labs/signal-effects`)**:
-  - **Route**: `http://localhost:4200/labs/signal-effects`
-  - **Source Code**: `src/app/features/labs/signal-effects-lab/`
-  - **What it demonstrates**: Using `effect()` safely to synchronize component state to browser `localStorage`.
-  - **Why consult this lab**: Explains when `effect()` is appropriate and why it must not be used to compute dependent state.
+1. **Decompose Wireframes**: Review team wireframes from Unit 2 and identify all top-level feature containers and reusable presentational child components.
+2. **Document Task Delegation**: Create `COMPONENT_PLAN.md` dividing component ownership across all 3 or 4 team members so work can proceed in parallel.
+3. **Scaffold Component Shells**: Each member uses the Angular CLI to generate their assigned components in `features/` or `shared/components/`.
+4. **Configure Base Routes**: Connect top-level feature components in `src/app/app.routes.ts` and test URL navigation.
+5. **Git Commit & Push**: Commit work to `lastname-homework3` and submit a Pull Request for team review.

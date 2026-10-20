@@ -1,35 +1,39 @@
-# Class 5 — Project Work & Digesting HTTP
+# Class 5: Project Work & Digesting HTTP
 
-> **Working Day 1 — No New Material Presented.**
-> This session is a dedicated project work and troubleshooting workshop. We do not introduce new framework features today. Instead, students focus on digesting the HTTP concepts from Class 4, fixing live connection errors with their Spring Boot backends, and completing Homework 4.
+> **Working Day 1: Troubleshooting & Integration Workshop**
+> This session is dedicated project work. We do not introduce new framework syntax today. Instead, we focus on connecting Angular to your Spring Boot backend, resolving real-world HTTP errors, and making steady progress on Homework 5.
 
-> **Reference Application Grounding (`wsu-test`)**:
-> All practical demonstrations and code samples in this session are grounded in `/Users/edjenkins/Documents/GitHub/WSU/2025/wsu-test`.
-> Specific reference files:
-> - `src/app/services/api.service.ts` (the low-level HTTP gateway)
-> - `src/app/services/work-order.service.ts` (the domain service mapping API responses to models)
-> - `src/environments/environment.ts` (specifying backend port 8080)
+> **Reference Application Grounding**:
+> Practical examples and architectural patterns in this session align with the reference repository [Mr Fix It UI](https://github.com/WSU-kduncan/mr-fixit-ui):
+> - `src/app/services/api.service.ts` (generic HTTP communication gateway)
+> - `src/app/services/work-order.service.ts` (domain service transforming API data into signals)
+> - `src/environments/environment.ts` (API base URL pointing to port 8080)
 
-## Setting the Stage: The Reality of Full-Stack Integration
+---
 
-Connecting an Angular client running on `http://localhost:4200` to a Spring Boot backend running on `http://localhost:8080` introduces friction that never occurs with mock data:
-- **CORS blocks**: The browser silently intercepts and drops responses before your TypeScript code can read them.
-- **Timing glitches**: Components attempt to read properties of objects that have not arrived yet.
-- **Data shape mismatches**: Spring Boot serializes fields with one naming convention (e.g. `snake_case`) while TypeScript interfaces expect another (`camelCase`), resulting in blank screens with HTTP 200 OK statuses.
-- **Offline servers**: Forgetting to launch the backend leads to confusing network errors (`Status 0`).
+## The Reality of Full-Stack Integration
 
-Today is designed to unblock every student team and master browser forensic debugging.
+Switching from static mock arrays in memory to dynamic network calls introduces failure modes that never happen in isolation:
 
-## Section 1. Full-Stack HTTP Architecture Review
+1. **CORS blocks**: The browser receives a response from Spring Boot, but refuses to let your Angular TypeScript code read it.
+2. **Timing glitches**: A component tries to render an object property before the async HTTP response has returned from the server.
+3. **Data shape mismatches**: Spring Boot serializes a field as `first_name` or `customer_id`, while your TypeScript interface expects `firstName` or `customerId`, leaving table rows blank despite a `200 OK` status.
+4. **Offline backends**: Forgetting to launch your Spring Boot server leads to immediate `net::ERR_CONNECTION_REFUSED` (Status `0`) errors.
 
-To debug effectively, trace the complete path an HTTP transaction travels from the browser UI down to the database:
+Our goal today is to walk through these failure modes, learn how browser DevTools reveal the root cause, and resolve any connection hurdles across student teams.
+
+---
+
+## Section 1: Full-Stack HTTP Architecture Review
+
+When debugging a broken screen, trace the entire route an HTTP transaction travels from the browser down to the database:
 
 ```
 ┌────────────────────────────────────────────────────────┐
 │ Browser (Frontend - localhost:4200)                    │
 │                                                        │
 │  [ Component Template ]                                │
-│       │ reads signal state                             │
+│       │ reads signal state (e.g. workOrders())         │
 │       ▼                                                │
 │  [ Domain Service ] (WorkOrderService)                 │
 │       │ calls apiService.get<T>()                      │
@@ -58,32 +62,42 @@ To debug effectively, trace the complete path an HTTP transaction travels from t
 └────────────────────────────────────────────────────────┘
 ```
 
-## Section 2. Deep Dive: Cross-Origin Resource Sharing (CORS)
+If the screen is blank, the breakdown could be in any one of these layers. DevTools tells you whether the issue occurred before leaving the browser, during transit, or inside Spring Boot.
 
-CORS is consistently the most common blocker students encounter when connecting Angular to Spring Boot.
+---
 
-### What is Origin?
-An origin is defined by three parts: **protocol + domain (host) + port**.
-- `http://localhost:4200` (Angular)
-- `http://localhost:8080` (Spring Boot)
+## Section 2: Understanding Cross-Origin Resource Sharing (CORS)
 
-Because the ports differ (`4200` vs `8080`), these are **two distinct origins**.
+CORS errors are the most common hurdle teams face during initial integration.
 
-### The Browser's Same-Origin Policy (SOP)
-The browser's Same-Origin Policy is a fundamental security safeguard. It restricts scripts running on one origin from accessing resources on another origin unless the receiving server explicitly permits it.
+### What is an Origin?
 
-**Critical Principle**: CORS is enforced by the **browser**, not by Angular. The browser sends an `Origin: http://localhost:4200` request header. If the response from `localhost:8080` lacks a matching `Access-Control-Allow-Origin` header, the browser blocks the JavaScript runtime from reading the response.
+An origin is defined by three components: **protocol + domain (host) + port**.
 
-#### Student Survival Pitfall: Trying to Fix CORS in Angular
-Never attempt to fix CORS by adding `Access-Control-Allow-Origin` headers inside your Angular `HttpClient` calls! That response header must come from the **server** (Spring Boot). Setting it in the Angular request will have zero effect.
+- Frontend: `http://localhost:4200`
+- Backend: `http://localhost:8080`
 
-### How to Fix CORS on the Backend (Spring Boot)
+Because the ports differ (`4200` vs `8080`), the browser classifies them as **two distinct origins**.
 
-CORS must be configured on your Spring Boot application using one of two methods:
+### The Same-Origin Policy (SOP)
 
-#### Method 1: Global WebMvcConfigurer (Recommended for Teams)
+Web browsers enforce the Same-Origin Policy as a baseline security protection. By default, JavaScript executing on `http://localhost:4200` is forbidden from reading data returned from `http://localhost:8080` unless the server explicitly grants permission.
 
-Create a configuration class in your Spring Boot application:
+**Key Rule**: CORS is enforced by the **browser**, not Angular. 
+
+1. Angular sends a standard HTTP request. The browser automatically appends an `Origin: http://localhost:4200` header.
+2. The Spring Boot backend processes the request and sends back a response.
+3. The browser inspects the response headers. If it does not find `Access-Control-Allow-Origin: http://localhost:4200` (or `*`), the browser drops the response and logs a red security error in the console.
+
+> **Common Misconception**: You cannot fix a CORS error by adding headers inside your Angular `HttpClient` request. `Access-Control-Allow-Origin` is a **response** header that must come from the server.
+
+### Configuring CORS in Spring Boot
+
+To resolve CORS, configure your Spring Boot application using either of the following approaches.
+
+#### Approach A: Global WebMvcConfigurer (Recommended)
+
+Add a configuration class to your Spring Boot project to cover all endpoints:
 
 ```java
 package com.example.config;
@@ -106,79 +120,73 @@ public class WebCorsConfig implements WebMvcConfigurer {
 }
 ```
 
-#### Method 2: Controller-Level `@CrossOrigin`
+#### Approach B: Controller-Level `@CrossOrigin`
 
-Annotate your Spring REST controller directly:
+If you want to allow requests on specific endpoints, annotate the controller directly:
 
 ```java
 @RestController
 @RequestMapping("/api/work_orders")
 @CrossOrigin(origins = "http://localhost:4200")
-public class WorkOrderController { ... }
+public class WorkOrderController {
+    // controller endpoints...
+}
 ```
 
-## Section 3. The DevTools Network Tab: Forensic Debugging
+---
 
-When a network request fails, open Developer Tools (`F12`), switch to the **Network** tab, and filter by **Fetch/XHR**.
+### Checkpoint: CORS Verification
 
-### How to Read the 5 Most Common Network Errors
+> **Question**: If you open your browser console and see `Access to XMLHttpRequest at 'http://localhost:8080/api/orders' from origin 'http://localhost:4200' has been blocked by CORS policy`, which project needs code changes?
+>
+> **Answer**: The Spring Boot backend. The server must include the `Access-Control-Allow-Origin` response header. Modifying Angular client code will not resolve this.
+
+---
+
+## Section 3: Inspecting Requests with the Network Tab
+
+When a request fails, press `F12` (or right-click and choose **Inspect**), navigate to the **Network** tab, and filter by **Fetch/XHR**.
+
+### Diagnosing the 5 Most Common Network Results
 
 1. **Status `0` / `net::ERR_CONNECTION_REFUSED`**:
-   - *Cause*: The backend server is not running on port 8080, or the port number in `environment.ts` is incorrect.
-   - *Fix*: Check your terminal or IDE where Spring Boot runs. Verify it is started on port 8080.
-2. **CORS Error in Console (`No 'Access-Control-Allow-Origin' header`)**:
-   - *Cause*: The backend responded, but did not include permission headers for `http://localhost:4200`.
-   - *Fix*: Add `@CrossOrigin` or `WebMvcConfigurer` to your Spring Boot project.
+   - **Root Cause**: The browser could not establish a TCP connection to `localhost:8080`.
+   - **Fix**: Check your terminal or IDE running Spring Boot. Verify the application started without errors and is listening on port 8080.
+2. **CORS Error in Console (`No 'Access-Control-Allow-Origin' header present`)**:
+   - **Root Cause**: The server replied, but omitted CORS permission headers for `http://localhost:4200`.
+   - **Fix**: Add `@CrossOrigin` or a `WebMvcConfigurer` to Spring Boot.
 3. **Status `404 Not Found`**:
-   - *Cause*: The path in `ApiService` does not match the `@RequestMapping` path on your Spring controller.
-   - *Fix*: Compare the exact URL requested in the Network tab with the controller mapping. Watch for missing prefixes or trailing slashes.
+   - **Root Cause**: The endpoint path requested by Angular does not match any `@RequestMapping` or `@GetMapping` path in Spring.
+   - **Fix**: Compare the exact URL in the DevTools Network tab against the Spring controller annotation. Look for spelling differences, missing `/api` prefixes, or trailing slashes.
 4. **Status `500 Internal Server Error`**:
-   - *Cause*: An unhandled exception occurred in Java (NullPointerException, SQL constraint, database connection failure).
-   - *Fix*: Open your Spring Boot console output to view the Java stack trace.
-5. **Status `200 OK` but UI is Blank**:
-   - *Cause*: Field name mismatch between JSON payload and TypeScript interface (for example, Spring serialized `first_name` while Angular expects `firstName`).
-   - *Fix*: Inspect the **Response** tab in DevTools. Compare the exact property names with your TypeScript interface.
+   - **Root Cause**: Spring Boot received the request, but crashed with an unhandled Java exception (e.g., `NullPointerException`, JPA syntax error, database connection refusal).
+   - **Fix**: Switch to your Spring Boot terminal and read the Java stack trace.
+5. **Status `200 OK` but UI is Blank or Undefined**:
+   - **Root Cause**: The network request succeeded, but the JSON payload keys do not match the properties declared on your TypeScript interface.
+   - **Fix**: Click on the request in the Network tab and open the **Response** preview. Check whether the backend is returning snake_case (e.g., `work_order_id`) while your TypeScript interface expects camelCase (`workOrderId`).
 
-> **Simpler Lab Reference in `wsu-test`**:
-> Want to see how route parameters and query parameters bind directly to component `input()` signals without subscribing to `ActivatedRoute`? Open `http://localhost:4200/labs/route-inputs/1042` (Lab 12) in `wsu-test` (`src/app/features/labs/route-inputs-lab/`).
-> For preloading route data with functional resolvers, open `http://localhost:4200/labs/resolved-work-order/1` (Lab 13).
+---
 
-## Section 4. Comprehensive HTTP Troubleshooting Matrix
+## Section 4: Troubleshooting Quick-Reference
 
 | Symptom | Root Cause | Immediate Action |
 | --- | --- | --- |
-| Red error in console: `CORS policy` | Spring Boot missing CORS config | Add `@CrossOrigin(origins = "http://localhost:4200")` to Spring Controller |
-| Red error: `net::ERR_CONNECTION_REFUSED` | Spring Boot is offline | Start Spring Boot app; verify port 8080 in terminal |
-| `Cannot read properties of undefined` in template | Template evaluated before HTTP response arrived | Add `initialValue: []` to `toSignal()`, or use `@if (items().length > 0)` |
-| `NullInjectorError: No provider for _HttpClient` | Missing provider in `app.config.ts` | Add `provideHttpClient()` to `appConfig.providers` |
-| Table shows empty rows with correct number of items | DTO property naming mismatch | Compare Network tab JSON response keys with TypeScript interface fields |
+| Red console error: `CORS policy` | Spring Boot missing CORS config | Add `@CrossOrigin(origins = "http://localhost:4200")` to Spring Controller or add `WebMvcConfigurer` |
+| Red error: `net::ERR_CONNECTION_REFUSED` (Status 0) | Spring Boot is not running | Start the Spring Boot backend; confirm it is listening on port 8080 |
+| `Cannot read properties of undefined` in template | Template tried to read data before the HTTP response finished | Provide `initialValue: []` inside `toSignal()`, or guard the section with `@if (items().length > 0)` |
+| `NullInjectorError: No provider for _HttpClient` | `provideHttpClient()` missing from application config | Add `provideHttpClient()` to the `providers` array in `src/app/app.config.ts` |
+| Table shows the correct number of rows, but every cell is blank | Key naming mismatch between Java DTO and TypeScript interface | Compare DevTools Response JSON keys with your TypeScript model fields |
 
-## Section 5. In-Class Working Session & Verification Checklist
+---
 
-Use the remaining class time to work directly on your team's frontend application. Instructors will circulate to help unblock backend connection issues.
+## Section 5: Workshop Checklist for Homework 5
 
-### Verification Checklist for Homework 4
+Spend the remainder of class working with your team on your frontend integration. Use this checklist to verify your application:
 
-- [ ] Spring Boot backend boots cleanly and serves data on `http://localhost:8080`.
+- [ ] Spring Boot boots cleanly and serves data on `http://localhost:8080`.
 - [ ] Angular app boots on `http://localhost:4200` without console errors.
-- [ ] `provideHttpClient()` is declared in `src/app/app.config.ts`.
-- [ ] `src/environments/environment.ts` contains your backend API base URL.
-- [ ] Data service performs a typed `GET` request.
-- [ ] Template handles all 4 states: Loading spinner, Error alert, Data list, and Empty list.
-- [ ] DevTools Network tab displays a successful `200 OK` request when the view loads.
-
-## Lab References: Simpler Isolated Examples in `wsu-test`
-
-In `wsu-test`, navigate to `http://localhost:4200/labs` to open the **Learning Studio** catalog.
-
-- **Lab 12 — Route Params as Inputs (`/labs/route-inputs/1042`)**:
-  - **Route**: `http://localhost:4200/labs/route-inputs/1042`
-  - **Source Code**: `src/app/features/labs/route-inputs-lab/`
-  - **What it demonstrates**: Binding the `:orderId` route parameter and `?status` query parameter directly to component `input()` signals using `withComponentInputBinding()`.
-  - **Why consult this lab**: Shows how to read URL parameters without injecting `ActivatedRoute` or managing subscriptions.
-
-- **Lab 13 — Resolver + Route-Scoped State (`/labs/resolved-work-order/1`)**:
-  - **Route**: `http://localhost:4200/labs/resolved-work-order/1`
-  - **Source Code**: `src/app/features/labs/resolved-work-order/`
-  - **What it demonstrates**: Functional router resolver preloading work-order data before component activation, and providing a route-scoped context service.
-  - **Why consult this lab**: Demonstrates how to prevent UI flashes by ensuring data is resolved before navigating to a detail view.
+- [ ] `provideHttpClient()` is configured in `src/app/app.config.ts`.
+- [ ] `src/environments/environment.ts` contains the API base URL.
+- [ ] Data service performs a typed `GET` request matching the Spring DTO.
+- [ ] Component handles all 4 states: Loading spinner, Error alert, Data rows, and Empty state message.
+- [ ] DevTools Network tab records a clean `200 OK` status when the screen loads.
