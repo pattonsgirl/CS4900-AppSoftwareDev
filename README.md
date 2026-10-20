@@ -47,8 +47,8 @@ This outline is a proposed ordering.
 | 9 - Oct 19     | APIs - Additional HTTP Methods | APIs - API Specifications, Environments & CORS |
 | 10 - Oct 26    | APIs - Project Work, <br>Review, and Troubleshooting    | HANDOFF API to WebDev <br> Web Design - Setup & <br>The Anatomy of a Modern Angular App   |
 | 11 - Nov 2     | Web Design - Foundations: <br>Standalone Components & Modern Templates  | Web Design - Behavior & <br>State Management with Signals   |
-| 12 - Nov 9     | Web Design - HTTP Requests &<br> Async Programming     | Web Design - Data Round Trip &<br> Full-Stack Display |
-| 13 - Nov 16    | Web Design - Wildcard Topics <br> Testing, Pagination  | Web Design - Project Work, <br>Review, and Troubleshooting  |
+| 12 - Nov 9     | Web Design - HTTP Requests &<br> Async Programming     | Web Design - Project Work, <br>Review, and Troubleshooting  |
+| 13 - Nov 16    | Web Design - Data Round Trip &<br> Full-Stack Display | Web Design - Wildcard Topics <br> Testing, Pagination  |
 | 14 - Nov 23    | Web Design - Project Work, <br>Review, and Troubleshooting  | No Class 11/26 - Thanksgiving Break  |
 | 15 - Nov 30    | Project Polishing <br> Presentation Preparation     | Project Presentation <br> **Dress Code: Business Casual**   |
 | 16 - Dec 7     | ---                                | Final Exam Block - Retrospective <br> 12/10, 2:45 PM - 4:45 PM   |
@@ -65,7 +65,7 @@ This outline is a proposed ordering.
 | UI / UX Module | 16% | Individual Assignments x 4 <br> Group Project Compilation | 70% <br> 30%  |
 | Database Design Module | 16% | Individual Assignments x 5 <br> Group Assignments x 5 <br> Group Project Compilation | 70% <br> 15% <br> 15%  |
 | API Module | 16% | Individual Assignments x 5 <br> Group Project Assignments x 2 <br> Group Project Compilation | 70% <br> 20% <br> 10%  |
-| Web Design Module | 16% | Individual Assignments x 5 <br> Group Project Compilation | 70% <br> 30%  |
+| Web Design Module | 16% | Individual Assignments x 6 <br> Group Project Compilation | 70% <br> 30%  |
 | Project Final Grade  | 10%  |   |  |
 | Project Presentation  | 5%  |   |  |
 | Retrospective <br>& Resume Review  | 5%  |   |  |

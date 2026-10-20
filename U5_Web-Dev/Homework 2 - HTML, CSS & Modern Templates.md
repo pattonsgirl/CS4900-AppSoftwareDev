@@ -1,4 +1,4 @@
-# Assignment 1 - HTML, CSS & Modern Templates
+# Homework 2 - HTML, CSS & Modern Templates
 
 ## Purpose / Objectives
 > The purpose of this assignment is to practice the fundamentals of creating and extending a standalone Angular component. The skills being reinforced are:
@@ -8,14 +8,14 @@
 
 ## Description
 
-Make sure you have cloned / pulled the latest changes from your GROUP UI repository - remember from homework 0 one team member should have initialized the angular project for this repository.
+Make sure you have cloned / pulled the latest changes from your GROUP UI repository - remember from Homework 1 one team member should have initialized the angular project for this repository.
 
-Make a **branch** off of your GROUP UI repository named `lastname-homework1`.  Perform the following tasks on this branch.
+Make a **branch** off of your GROUP UI repository named `lastname-homework2`.  Perform the following tasks on this branch.
 
 ### 1. Generate New Component
 1.  Use the Angular CLI to generate a new standalone component relevant to your project's theme (e.g., `user-list`, `product-card`).
 
-> As a group, much like with the API section, determine if you would rather each work on a different component, all work on one or two members pair up on one to compare methods. The Web Dev series of homeworks will have you work up to making a full CRUD interaction - connect a frontend form to a backend service to perform a full set of data manipulations (Create, Read, Update, Delete).
+> In this assignment, you will build an initial standalone practice component with mock data to learn template rendering and styling. In Homework 3, your team will formally break down your application wireframes into components and distribute tasks across teammates so each developer has dedicated views to build for the rest of the unit.
 
 ### 2. Display the Component
 1.  Add the new component's selector to an existing component's template (like `app.component.html`) to make it visible on the page.
@@ -36,7 +36,7 @@ Make a **branch** off of your GROUP UI repository named `lastname-homework1`.  P
 2.  (Optional Stretch Goal) Add an `@empty` block to your `@for` loop that displays a message when the data array is empty.
 
 ### 7. git add, commit, and push
-1.  Push your commits, including all files for the newly generated component (`.ts`, `.html`, `.css`) and any modified template files, to your `lastname-homework1` branch in your GROUP UI repository.
+1.  Push your commits, including all files for the newly generated component (`.ts`, `.html`, `.css`) and any modified template files, to your `lastname-homework2` branch in your GROUP UI repository.
 
 # Rubric
 
