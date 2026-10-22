@@ -7,8 +7,8 @@
 
 ### Perform the following tasks in the Java service of your group repo:
 
-### 1. Create a branch off of your `lastName-homework-5` branch and name the branch your last name and homework assignment number
-Example: noel-homework-3
+### 1. Create a branch off of your `lastName-homework-4` branch and name the branch your last name and homework assignment number
+Example: noel-homework-5
 
 ### 2. Implement remaining endpoints according to your API definitions document
 - If there are endpoints on your api definition document that have not been implemented yet (and you already have at least one entity GET, POST, PUT working) - go ahead and do them
