@@ -7,18 +7,18 @@ This module introduces front-end web development with modern Angular, focusing o
 The course reference application is [Mr Fix It UI](https://github.com/WSU-kduncan/mr-fixit-ui), which runs against the [mr-fixit-service](https://github.com/WSU-kduncan/mr-fixit-service) backend.
 
 ## Schedule
+| **Class** | **Date**   | **Topic**                                     | **Homework**                                                                              | **Notes**                                                                                   |
+| --------- | ---------- | --------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| 1         | Thu Oct 29 | Setup and the anatomy of a modern Angular app | --                                                                                        | [Class 1](Class%201%20-%20Setup%20%26%20The%20Anatomy%20of%20a%20Modern%20Angular%20App.md) |
+| 2         | Tue Nov 3  | File and component structure                  | [Homework 1](Homework%201%20-%20Setup%20Verification.md)                                  | [Class 2](Class%202%20-%20File%20and%20Component%20Structure.md)                            |
+| 3         | Thu Nov 5  | Behavior and state with signals               | [Homework 2](Homework%202%20-%20HTML%2C%20CSS%20%26%20Modern%20Templates.md)              | [Class 3](Class%203%20-%20Behavior%20%26%20State%20Management%20with%20Signals.md)          |
+| 4         | Tue Nov 10 | HTTP requests and async                       | [Homework 3](Homework%203%20-%20Component%20Decomposition%20%26%20Task%20Distribution.md) | [Class 4](Class%204%20-%20HTTP%20Requests%20%26%20Async%20Programming.md)                   |
+| 5         | Thu Nov 12 | Project work: Digesting HTTP                  | [Homework 4](Homework%204%20-%20Component%20Logic%2C%20Signals%20%26%20Services.md)       | [Class 5](Class%205%20-%20Project%20Work%20%26%20Digesting%20HTTP.md)                       |
+| 6         | Tue Nov 17 | Data round trip and full-stack display        | [Homework 5](Homework%205%20-%20HTTP%20Requests%20%26%20Async%20Programming.md)           | [Class 6](Class%206%20-%20Data%20Round%20Trip%20%26%20Full-Stack%20Display.md)              |
+| 7         | Thu Nov 19 | Wildcard: Testing and pagination              | [Homework 6](Homework%206%20-%20Full%20CRUD%20Interaction.md)                             | [Class 7](Class%207%20-%20Testing%20with%20Jest%20%26%20Client-Side%20Pagination.md)        |
+| 8         | Tue Nov 24 | Project work, review, and troubleshooting     | Group UI Final                                                                            | [Class 8](Class%208%20-%20Project%20Work%2C%20Review%2C%20and%20Troubleshooting.md)         |
+| --        | Thu Nov 26 | Thanksgiving Break (no class)                 | --                                                                                        | --                                                                                          |
 
-| Class | Date | Topic | Homework | Notes |
-| :---: | --- | --- | --- | --- |
-| 1 | Thu Oct 29 | Setup and the anatomy of a modern Angular app | [Homework 1](Homework%201%20-%20Setup%20Verification.md) | [Class 1](Class%201%20-%20Setup%20%26%20The%20Anatomy%20of%20a%20Modern%20Angular%20App.md) |
-| 2 | Tue Nov 3 | File and component structure | [Homework 2](Homework%202%20-%20HTML%2C%20CSS%20%26%20Modern%20Templates.md) | [Class 2](Class%202%20-%20File%20and%20Component%20Structure.md) |
-| 3 | Thu Nov 5 | Behavior and state with signals | [Homework 3](Homework%203%20-%20Component%20Decomposition%20%26%20Task%20Distribution.md) | [Class 3](Class%203%20-%20Behavior%20%26%20State%20Management%20with%20Signals.md) |
-| 4 | Tue Nov 10 | HTTP requests and async | [Homework 4](Homework%204%20-%20Component%20Logic%2C%20Signals%20%26%20Services.md) | [Class 4](Class%204%20-%20HTTP%20Requests%20%26%20Async%20Programming.md) |
-| 5 | Thu Nov 12 | Project work: Digesting HTTP | [Homework 5](Homework%205%20-%20HTTP%20Requests%20%26%20Async%20Programming.md) | [Class 5](Class%205%20-%20Project%20Work%20%26%20Digesting%20HTTP.md) |
-| 6 | Tue Nov 17 | Data round trip and full-stack display | [Homework 6](Homework%206%20-%20Full%20CRUD%20Interaction.md) | [Class 6](Class%206%20-%20Data%20Round%20Trip%20%26%20Full-Stack%20Display.md) |
-| 7 | Thu Nov 19 | Wildcard: Testing and pagination | In class | [Class 7](Class%207%20-%20Testing%20with%20Jest%20%26%20Client-Side%20Pagination.md) |
-| 8 | Tue Nov 24 | Project work, review, and troubleshooting | Group UI Final | [Class 8](Class%208%20-%20Project%20Work%2C%20Review%2C%20and%20Troubleshooting.md) |
-| -- | Thu Nov 26 | Thanksgiving Break (no class) | -- | -- |
 
 ## Class summaries
 
