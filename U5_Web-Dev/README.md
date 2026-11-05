@@ -8,17 +8,17 @@ The course reference application is [Mr Fix It UI](https://github.com/WSU-kdunca
 
 ## Schedule
 
-| Class | Date | Topic | Homework | Notes |
-| :---: | --- | --- | --- | --- |
-| 1 | Thu Oct 29 | Setup and the anatomy of a modern Angular app | [Homework 1](Homework%201%20-%20Setup%20Verification.md) | [Class 1](Class%201%20-%20Setup%20%26%20The%20Anatomy%20of%20a%20Modern%20Angular%20App.md) |
-| 2 | Tue Nov 3 | File and component structure | [Homework 2](Homework%202%20-%20HTML%2C%20CSS%20%26%20Modern%20Templates.md) | [Class 2](Class%202%20-%20File%20and%20Component%20Structure.md) |
-| 3 | Thu Nov 5 | Behavior and state with signals | [Homework 3](Homework%203%20-%20Component%20Decomposition%20%26%20Task%20Distribution.md) | [Class 3](Class%203%20-%20Behavior%20%26%20State%20Management%20with%20Signals.md) |
-| 4 | Tue Nov 10 | HTTP requests and async | [Homework 4](Homework%204%20-%20Component%20Logic%2C%20Signals%20%26%20Services.md) | [Class 4](Class%204%20-%20HTTP%20Requests%20%26%20Async%20Programming.md) |
-| 5 | Thu Nov 12 | Project work: Digesting HTTP | [Homework 5](Homework%205%20-%20HTTP%20Requests%20%26%20Async%20Programming.md) | [Class 5](Class%205%20-%20Project%20Work%20%26%20Digesting%20HTTP.md) |
-| 6 | Tue Nov 17 | Data round trip and full-stack display | [Homework 6](Homework%206%20-%20Full%20CRUD%20Interaction.md) | [Class 6](Class%206%20-%20Data%20Round%20Trip%20%26%20Full-Stack%20Display.md) |
-| 7 | Thu Nov 19 | Wildcard: Testing and pagination | In class | [Class 7](Class%207%20-%20Testing%20with%20Jest%20%26%20Client-Side%20Pagination.md) |
-| 8 | Tue Nov 24 | Project work, review, and troubleshooting | Group UI Final | [Class 8](Class%208%20-%20Project%20Work%2C%20Review%2C%20and%20Troubleshooting.md) |
-| -- | Thu Nov 26 | Thanksgiving Break (no class) | -- | -- |
+|**Class**|**Date**|**Topic**|**Homework**|**Notes**|
+|---|---|---|---|---|
+|1|Thu Oct 29|Setup and the anatomy of a modern Angular app|--|[Class 1](https://www.google.com/search?q=Class%25201%2520-%2520Setup%2520%2526%2520The%2520Anatomy%2520of%2520a%2520Modern%2520Angular%2520App.md)|
+|2|Tue Nov 3|File and component structure|[Homework 1](https://www.google.com/search?q=Homework%25201%2520-%2520Setup%2520Verification.md)|[Class 2](https://www.google.com/search?q=Class%25202%2520-%2520File%2520and%2520Component%2520Structure.md)|
+|3|Thu Nov 5|Behavior and state with signals|[Homework 2](https://www.google.com/search?q=Homework%25202%2520-%2520HTML%252C%2520CSS%2520%2526%2520Modern%2520Templates.md)|[Class 3](https://www.google.com/search?q=Class%25203%2520-%2520Behavior%2520%2526%2520State%2520Management%2520with%2520Signals.md)|
+|4|Tue Nov 10|HTTP requests and async|[Homework 3](https://www.google.com/search?q=Homework%25203%2520-%2520Component%2520Decomposition%2520%2526%2520Task%2520Distribution.md)|[Class 4](https://www.google.com/search?q=Class%25204%2520-%2520HTTP%2520Requests%2520%2526%2520Async%2520Programming.md)|
+|5|Thu Nov 12|Project work: Digesting HTTP|[Homework 4](https://www.google.com/search?q=Homework%25204%2520-%2520Component%2520Logic%252C%2520Signals%2520%2526%2520Services.md)|[Class 5](https://www.google.com/search?q=Class%25205%2520-%2520Project%2520Work%2520%2526%2520Digesting%2520HTTP.md)|
+|6|Tue Nov 17|Data round trip and full-stack display|[Homework 5](https://www.google.com/search?q=Homework%25205%2520-%2520HTTP%2520Requests%2520%2526%2520Async%2520Programming.md)|[Class 6](https://www.google.com/search?q=Class%25206%2520-%2520Data%2520Round%2520Trip%2520%2526%2520Full-Stack%2520Display.md)|
+|7|Thu Nov 19|Wildcard: Testing and pagination|[Homework 6](https://www.google.com/search?q=Homework%25206%2520-%2520Full%2520CRUD%2520Interaction.md)|[Class 7](https://www.google.com/search?q=Class%25207%2520-%2520Testing%2520with%2520Jest%2520%2526%2520Client-Side%2520Pagination.md)|
+|8|Tue Nov 24|Project work, review, and troubleshooting|Group UI Final|[Class 8](https://www.google.com/search?q=Class%25208%2520-%2520Project%2520Work%252C%2520Review%252C%2520and%2520Troubleshooting.md)|
+|--|Thu Nov 26|Thanksgiving Break (no class)|--|--|
 
 ## Class summaries
 
